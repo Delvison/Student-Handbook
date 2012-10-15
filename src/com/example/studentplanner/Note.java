@@ -16,7 +16,6 @@ public class Note {
 	public void editNote(String title, String txt) {
 		this.title = title;
 		this.text = txt;
-		
 	}
 
 }

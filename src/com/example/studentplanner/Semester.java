@@ -14,18 +14,56 @@ public class Semester {
 	  endOfSemester = end;
   }
   
-   public void addEvent() {
-	  //create event
-	   //add onto arraylist
+   public void addEvent(/*parameters...make sure to include (String type)*/ ) {
+	   /*MyEvent event; --the new event
+       -->check if  date and time is availible.
+	   --if (this.safeToAdd())
+	     --create event...(need to distinguish between course and misc though)
+	      --if (type.equals("Course")
+	          --event = new Course();
+	      --if (type.equals("Misc")
+	          --event = new Misc();
+	   --add onto arraylist
+	      --events.add(event);
+	    */
    }
   
-   public void deleteEvent() {
-	 //remove from arraylist
-	//destroy event
+   public void deleteEvent(String eventName) {
+	   /*
+	  --find event in arraylist; store in variable 
+	     --MyEvent event =this.searchForEvent(eventName);
+	 --remove from arraylist
+	   --events.remove(event);
+	  */
    }
    
    public void calculateDaysToEnd() {
 	   //calculate days until end
 	   //assign it to the int var.
+   }
+   
+   public boolean safeToAdd() {
+		boolean availible = false;
+        /*--if no event exist on that time/date
+           (check through arraylist to make sure)
+        --then set availible = true
+		*/
+		return availible;
+		
+	  }
+   
+   public MyEvent searchForEvent(String eventName) { 
+	   MyEvent event = null;
+	   for (MyEvent e : events) //for each event in <events>
+	     if (e.nameOfEvent.equals(eventName))
+	        event = e;
+	   return event;
+   }
+   
+   public void calculateDaysLeft() {
+	   //daysTowardsEnd = (endOfSemester) - (Today's date)
+	   //** ^int obj                ^Calendar obj...so some sort of conversion needed maybe?
+	   
+	   //we should call this method everytime the app is opened up
    }
 }

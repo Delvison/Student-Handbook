@@ -4,9 +4,11 @@ import java.util.Calendar;
 import java.util.ArrayList;
 
 public abstract class MyEvent {
+	Semester currentSemester;
 	String nameOfEvent;
 	String descriptionOfEvent;
     String location;
+    String typeOfEvent; //for distinguishing-purposes
     Calendar dateOfEvent;
 	Calendar eventStartTime;
 	Calendar eventEndTime;
@@ -15,12 +17,12 @@ public abstract class MyEvent {
 	ArrayList<Calendar> datesOfOccurence;
 	
 	public void editEvent() {
-		
+		//give ability to edit variables here
 	}
 	
 	public void addNotebook() {
 		//create notebook
-		//assign it to notebook var.
+		notebook = new Notebook();
 	}
 	
 	public void dateAutomater() {
