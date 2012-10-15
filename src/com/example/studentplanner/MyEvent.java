@@ -11,6 +11,7 @@ public abstract class MyEvent {
 	Calendar eventStartTime;
 	Calendar eventEndTime;
 	boolean hasreocurrence;
+	Notebook notebook;
 	ArrayList<Calendar> datesOfOccurence;
 	
 	public void editEvent() {
@@ -18,11 +19,13 @@ public abstract class MyEvent {
 	}
 	
 	public void addNotebook() {
-		
+		//create notebook
+		//assign it to notebook var.
 	}
 	
 	public void dateAutomater() {
-		
+		//program dates of occurrence into 
+		//calendar?
 	}
 
 }

@@ -15,11 +15,17 @@ public class Semester {
   }
   
    public void addEvent() {
-	  
+	  //create event
+	   //add onto arraylist
    }
   
    public void deleteEvent() {
-	
+	 //remove from arraylist
+	//destroy event
    }
-  
+   
+   public void calculateDaysToEnd() {
+	   //calculate days until end
+	   //assign it to the int var.
+   }
 }
