@@ -6,7 +6,7 @@ public class Notebook {
   String title;
   ArrayList<Note> notes;
   
-  Notebook() {
+  public Notebook() {
     //constructor	  
   }
   

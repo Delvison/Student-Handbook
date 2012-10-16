@@ -8,7 +8,8 @@ public class Note {
 	String text;
 	int charLimit; //character limit
 	
-	Note(String title, String txt) {
+	public Note(String title, String txt) {
+		// charLimit somewhere here
 		this.title = title;
 		this.text = txt;
 	}

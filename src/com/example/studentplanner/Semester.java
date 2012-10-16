@@ -9,7 +9,7 @@ public class Semester {
   ArrayList<MyEvent> events;
   int daysTowardsEnd; 
   
-  Semester(Calendar start, Calendar end) {
+  public Semester(Calendar start, Calendar end) {
 	  startOfSemester = start;
 	  endOfSemester = end;
   }
@@ -49,7 +49,6 @@ public class Semester {
         --then set availible = true
 		*/
 		return availible;
-		
 	  }
    
    public MyEvent searchForEvent(String eventName) { 

@@ -6,6 +6,10 @@ public class Course extends MyEvent {
 	String type = "Course";
 	ArrayList<Assignment> assignments;
 	ArrayList<Exam> exams;
+	
+	public Course(){
+		//constructor
+	}
 
   public void addAssignment() {
 	Assignment a = new Assignment();
