@@ -14,6 +14,8 @@ getTime() --->>		public final Date getTime()
 --->>The class Date represents a specific instant in time, with millisecond precision.
 
 **-->maybe use the GregorianCalendar class instead of Calendar class.
+---> here is a video that shows how to use GregorianCalendar effectively:
+http://www.youtube.com/watch?v=W9mtmppKtok
 
 ====Tue Oct 16 16:45:29 EDT 2012
 --need to think about data storage (storing events
