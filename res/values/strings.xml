@@ -4,5 +4,15 @@
     <string name="hello_world">TESTING!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="fall">Fall</string>
+    <string name="spring">Spring</string>
+    <string name="winter">Winter</string>
+    <string name="summer">Summer</string>
+    <string-array name="session_array">
+        <item>Fall</item>
+        <item>Spring</item>
+        <item>Winter</item>
+        <item>Summer</item>
+     </string-array>
 
 </resources>

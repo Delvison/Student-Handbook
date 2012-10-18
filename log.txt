@@ -1,3 +1,19 @@
+====Wed Oct 17 17:24:29 EDT 2012
+-->SOME NOTES ON WORKING WITH JAVA CALENDAR OBJECTS
+http://www.ehow.com/way_5516618_java-time-tutorials.html
+
+-->EXAMPLE HERE
+**GregorianCalendar meeting = new GregorianCalendar(2009, 12, 14, 8, 00); // 8:00 AM on December 14, 2009.
+**To use our GregorianCalendar objects, we will need to convert the value to a Date class. For example:
+**Date meetingDate = meeting.getTime();
+
+getTime() --->>		public final Date getTime()
+			Returns a Date object representing this Calendar's time value 			(millisecond offset from the Epoch").
+			Returns: a Date representing the time value.
+
+--->>The class Date represents a specific instant in time, with millisecond precision.
+
+**-->maybe use the GregorianCalendar class instead of Calendar class.
 
 ====Tue Oct 16 16:45:29 EDT 2012
 --need to think about data storage (storing events

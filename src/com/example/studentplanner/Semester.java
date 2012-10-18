@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.ArrayList;
 
 public class Semester {
+  String session; //fall, spring, winter or summer
   Calendar startOfSemester;
   Calendar endOfSemester;
   ArrayList<MyEvent> events;
@@ -14,9 +15,9 @@ public class Semester {
 	  endOfSemester = end;
   }
   
-   public void addEvent(/*parameters...make sure to include (String type)*/ ) {
+  public void addEvent(String name, Calendar date, Calendar time) {
 	   /*MyEvent event; --the new event
-       -->check if  date and time is availible.
+       -->check if date and time is availible.
 	   --if (this.safeToAdd())
 	     --create event...(need to distinguish between course and misc though)
 	      --if (type.equals("Course")
@@ -42,12 +43,18 @@ public class Semester {
 	   //assign it to the int var.
    }
    
-   public boolean safeToAdd() {
+   public boolean safeToAdd(Calendar date, Calendar time) {
 		boolean availible = false;
         /*--if no event exist on that time/date
            (check through arraylist to make sure)
         --then set availible = true
 		*/
+		  for (MyEvent e : events) //for each event in <events>
+			 if (e.dateOfEvent != date) {
+			   if (e.eventStartTime != time) {
+				   availible = true;
+			   }
+			 }
 		return availible;
 	  }
    
