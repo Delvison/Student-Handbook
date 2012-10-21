@@ -22,15 +22,16 @@ public class Semester {
    * first ask for the variable that are parameters in this constructor
    * then edit the other variables in the MyEvent class
    */
-  public void addEvent(String type, String name, GregorianCalendar date) {
+  public void addEvent(String type, GregorianCalendar date, String name, String desc, String loc, boolean b) {
 	 MyEvent event = null;
-	 Date d = date.getTime(); //check if date and time is availible.
-	 if (this.safeToAdd(d)) { //create event. distinguish between course and misc.
+	
+	 if (this.safeToAdd(date.getTime())) {
+		 //need an exception //create event. distinguish between course and misc.
 	     if (type.equals("Course")) {
-	         event = new Course();
+	         event = new Course(name, desc, loc, b);
 	     }
 	     if (type.equals("Misc")){
-	          event = new Misc();
+	          event = new Misc(name, desc, loc, b);
 	     }
 	 }
 	      events.add(event); //--add onto arraylist
@@ -38,7 +39,7 @@ public class Semester {
   
    public void deleteEvent(String eventName) {
    //--find event in arraylist; store in variable 
-	   MyEvent event =this.searchForEvent(eventName);
+	   MyEvent event = this.searchForEvent(eventName);
    //--remove from arraylist
 	   events.remove(event); 
    }
@@ -70,7 +71,7 @@ public class Semester {
    public static long countDaysBetween(Date start, Date end) {
 	   int MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24; //for conversion
 	   if (end.before(start)) { // Date end should be after Date start
-		   throw new IllegalArgumentException("SpaceTime Continuum Shattered!");
+		   throw new IllegalArgumentException("ERROR!");
 	   }
 	   //reset all hours mins and secs to zero on start date
 	   Calendar startCal = GregorianCalendar.getInstance();

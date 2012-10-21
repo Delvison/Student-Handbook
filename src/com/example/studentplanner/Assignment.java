@@ -6,12 +6,12 @@ public class Assignment {
   String name;
   Calendar dueDate;
   String description;
-  int pointsRecieved;
+  int pointsReceived;
   int maxPoints;
   int grade;
   boolean isComplete;
-  
-  public Assignment(){
+  //have 2 constructors..one with or without maxpoints
+  public Assignment(String name, Calendar dueDate, String description, int maxPoints){
 	  //constructor
   }
   

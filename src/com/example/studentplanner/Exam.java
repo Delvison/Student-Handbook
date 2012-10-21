@@ -1,15 +1,16 @@
 package com.example.studentplanner;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Exam {
   String name;
-  Calendar Date;
-  int pointsRecieved;
+  GregorianCalendar Date;
+  int pointsReceived;
   int maxPoints;
   int grade;
+  boolean isComplete; // if checked, it wont show in masterview
   
-  public Exam() {
+  public Exam(String name, GregorianCalendar dueDate, int maxPoints) {
 	  //constructor
   }
 }

@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         //createSem = (Button) findViewById(R.id.button1);
     }
 
-        public void handleClick(View v){
+    public void handleClick(View v){
             
             //Create an intent to start the new activity.
                // Our intention is to start secondActivity

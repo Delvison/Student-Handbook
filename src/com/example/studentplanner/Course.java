@@ -1,25 +1,27 @@
 package com.example.studentplanner;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class Course extends MyEvent {
-	typeOfEvent = "Course";
 	ArrayList<Assignment> assignments;
 	ArrayList<Exam> exams;
 	int avg;
 	
-	public Course(String name, String descript, String loc){ 
-		hasreoccurence = true; 
+	
+	public Course(String name, String descript, String loc, boolean b){ 
+	    typeOfEvent = "Course";
+		hasReoccurence = true; 
 		nameOfEvent = name; 
 		descriptionOfEvent = descript;
 		location = loc; 
-		//eventStartTime a Calendar object?
-		//eventEndTime a Calendar object? (Maybe this should just be duration based?)
-		//datesOfOccurence a Calendar object? (Calendar objects aren't repeating, DAY_OF_WEEK maybe?)
+		//eventStartTime a GregorianCalendar object?
+		//eventEndTime a GregorianCalendar object? (Maybe this should just be duration based?)
+		//datesOfOccurence a GregorianCalendar object? (GregorianCalendar objects aren't repeating, DAY_OF_WEEK maybe?)
 	}
 
-  public void addAssignment(String name, Calendar dueDate, String description, int maxPoints) {
-	Assignment a = new Assignment(name, dueDate, description, 0, maxPoints, 0, false); //Check with Assignment Class
+  public void addAssignment(String name, GregorianCalendar dueDate, String description, int maxPoints) {
+	Assignment a = new Assignment(name, dueDate, description, maxPoints); //Check with Assignment Class
 	assignments.add(a);
   }
 
@@ -40,8 +42,8 @@ public class Course extends MyEvent {
 	   return assign;   
   }
   
-  public void addExam(String name, Calendar dueDate, int maxPoints) {
-	Exam e = new Exam(name, dueDate, 0, maxPoints, 0, false); //Check with Exam Class
+  public void addExam(String name, GregorianCalendar dueDate, int maxPoints) {
+	Exam e = new Exam(name, dueDate, maxPoints); //Check with Exam Class
 	exams.add(e);
   }
 
@@ -49,7 +51,7 @@ public class Course extends MyEvent {
 	 //--search for exam obj.
 	   Exam e = this.searchForExam(examName);
 	 //--remove exam obj.
-       exams.remove(e)
+       exams.remove(e);
   }
   
   public Exam searchForExam(String eName) {
@@ -61,5 +63,4 @@ public class Course extends MyEvent {
 	   }
 	   return exam;
   }
-
 }

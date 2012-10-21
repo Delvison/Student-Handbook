@@ -1,25 +1,19 @@
 package com.example.studentplanner;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.ArrayList;
 
-public abstract class MyEvent {
+public class MyEvent {
 	Semester currentSemester;
 	String nameOfEvent;
 	String descriptionOfEvent;
     String location;
-    String typeOfEvent; //for distinguishing-purposes
-    Calendar dateOfEvent;
-	//Calendar eventStartTime; remove date eventStartTime, do not need to create new object for the start time
-	Calendar eventEndTime;
-	boolean hasReocurrence;
+    static String typeOfEvent; //for distinguishing-purposes
+    GregorianCalendar dateOfEvent;
+	GregorianCalendar eventEndTime;
+	boolean hasReoccurence;
 	Notebook notebook;
-	ArrayList<Calendar> datesOfOccurence;
-	
-	public void editEvent() {
-		//give ability to edit variables here
-		
-	}
+	ArrayList<GregorianCalendar> datesOfOccurence;
 	
 	public void setName(String name){
 		this.nameOfEvent = name;
@@ -45,15 +39,17 @@ public abstract class MyEvent {
 		}
 	}
 	
+	//in case we want to change the time
 	public void setEventStartTime(int hour, int minute){
-		dateOfEvent.set(Calendar.HOUR, hour);
-		dateOfEvent.set(Calendar.MINUTE, minute);
+		dateOfEvent.set(GregorianCalendar.HOUR, hour);
+		dateOfEvent.set(GregorianCalendar.MINUTE, minute);
 	}
 	
+	//in case we want to change the time
 	public void setEventEndTime(int hour, int minute){
 		if(eventEndTime != null){
-			eventEndTime.set(Calendar.HOUR, hour);
-			eventEndTime.set(Calendar.MINUTE, minute);
+			eventEndTime.set(GregorianCalendar.HOUR, hour);
+			eventEndTime.set(GregorianCalendar.MINUTE, minute);
 		}
 	}
 	
@@ -64,40 +60,34 @@ public abstract class MyEvent {
 	
 	public void dateAutomater(String occurence) {
 		//program dates of occurrence into 
-		//calendar?
+		//GregorianCalendar?
 		
-		if(hasReocurrence){
-			Calendar start = dateOfEvent;
-			Calendar end = eventEndTime;
+		if(hasReoccurence){
+			GregorianCalendar start = dateOfEvent;
+			GregorianCalendar end = eventEndTime;
 		
 			if(occurence == "Weekly"){
-				//add Calendar Event to dateOfOccurence weekly until end of semester
+				//add GregorianCalendar Event to dateOfOccurence weekly until end of semester
 				while(start.compareTo(end)<0){
-					start.roll(Calendar.DATE, 7);
+					start.roll(GregorianCalendar.DATE, 7);
 					datesOfOccurence.add(start);
 				}
 				
 			}else if(occurence == "Monthly"){
-				//add Calendar Event to dateofOccurence monthly until end of semester
+				//add GregorianCalendar Event to dateofOccurence monthly until end of semester
 				while(start.compareTo(end)<0){
-					start.roll(Calendar.MONTH, true);
+					start.roll(GregorianCalendar.MONTH, true);
 					datesOfOccurence.add(start);
 				}
-				
 			}else if(occurence == "MWF"){
-				//add Calendar Event to dateofOccurence Monday Wednesday Friday until end of semester
+				//add GregorianCalendar Event to dateofOccurence Monday Wednesday Friday until end of semester
 			}else if(occurence == "TR"){
-				//add Calendar Event to dateofOccurence Tuesday Thursday until end of semester
+				//add GregorianCalendar Event to dateofOccurence Tuesday Thursday until end of semester
 			}else if(occurence =="MW"){
-				//add Calendar Event to dateofOccurence Monday Wednesday until end of semester
-				
+				//add GregorianCalendar Event to dateofOccurence Monday Wednesday until end of semester
 			}
 			
 			//event of type "Course" might have labs that account for extra class slots
 		}
-		
 	}
-
-	public abstract void setTypeOfEvent(String type);
-
 }
