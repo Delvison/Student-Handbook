@@ -1,59 +1,60 @@
 package com.example.studentplanner;
 
-import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Semester {
-  String session; //fall, spring, winter or summer
-  Calendar startOfSemester;
-  Calendar endOfSemester;
+  String term; //fall, spring, winter or summer
+  GregorianCalendar startOfSemester;
+  GregorianCalendar endOfSemester;
   ArrayList<MyEvent> events;
-  int daysTowardsEnd; 
+  long daysTowardsEnd; 
   
-  public Semester(Calendar start, Calendar end) {
-	  startOfSemester = start;
-	  endOfSemester = end;
+  public Semester(String session, GregorianCalendar start, GregorianCalendar end) {
+    startOfSemester = start;
+	endOfSemester = end;
+	term = session;
   }
   
-  public void addEvent(String name, Calendar date, Calendar time) {
-	   /*MyEvent event; --the new event
-       -->check if date and time is availible.
-	   --if (this.safeToAdd())
-	     --create event...(need to distinguish between course and misc though)
-	      --if (type.equals("Course")
-	          --event = new Course();
-	      --if (type.equals("Misc")
-	          --event = new Misc();
-	   --add onto arraylist
-	      --events.add(event);
-	    */
+  /*the creation of an event MUST be in two parts!
+   * first ask for the variable that are parameters in this constructor
+   * then edit the other variables in the MyEvent class
+   */
+  public void addEvent(String type, String name, GregorianCalendar date) {
+	 MyEvent event = null;
+	 Date d = date.getTime(); //check if date and time is availible.
+	 if (this.safeToAdd(d)) { //create event. distinguish between course and misc.
+	     if (type.equals("Course")) {
+	         event = new Course();
+	     }
+	     if (type.equals("Misc")){
+	          event = new Misc();
+	     }
+	 }
+	      events.add(event); //--add onto arraylist
    }
   
    public void deleteEvent(String eventName) {
-	   /*
-	  --find event in arraylist; store in variable 
-	     --MyEvent event =this.searchForEvent(eventName);
-	 --remove from arraylist
-	   --events.remove(event);
-	  */
+   //--find event in arraylist; store in variable 
+	   MyEvent event =this.searchForEvent(eventName);
+   //--remove from arraylist
+	   events.remove(event); 
    }
    
    public void calculateDaysToEnd() {
-	   //calculate days until end
-	   //assign it to the int var.
+	   GregorianCalendar t=  new GregorianCalendar();
+	   Date currentDate = t.getTime();
+	   Date endDate = endOfSemester.getTime();
+	   daysTowardsEnd = countDaysBetween(currentDate, endDate);
    }
    
-   public boolean safeToAdd(Calendar date, Calendar time) {
-		boolean availible = false;
-        /*--if no event exist on that time/date
-           (check through arraylist to make sure)
-        --then set availible = true
-		*/
+   public boolean safeToAdd(Date dateOfEvent) {
+		boolean availible = false; //if no event exist at the given time then set to true
 		  for (MyEvent e : events) //for each event in <events>
-			 if (e.dateOfEvent != date) {
-			   if (e.eventStartTime != time) {
+			 if (e.dateOfEvent.getTime().compareTo(dateOfEvent) != 0) {
 				   availible = true;
-			   }
 			 }
 		return availible;
 	  }
@@ -65,11 +66,28 @@ public class Semester {
 	        event = e;
 	   return event;
    }
-   
-   public void calculateDaysLeft() {
-	   //daysTowardsEnd = (endOfSemester) - (Today's date)
-	   //** ^int obj                ^Calendar obj...so some sort of conversion needed maybe?
-	   
-	   //we should call this method everytime the app is opened up
-   }
+
+   public static long countDaysBetween(Date start, Date end) {
+	   int MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24; //for conversion
+	   if (end.before(start)) { // Date end should be after Date start
+		   throw new IllegalArgumentException("SpaceTime Continuum Shattered!");
+	   }
+	   //reset all hours mins and secs to zero on start date
+	   Calendar startCal = GregorianCalendar.getInstance();
+	   startCal.setTime(start);
+	   startCal.set(Calendar.HOUR_OF_DAY, 0);
+	   startCal.set(Calendar.MINUTE, 0);
+	   startCal.set(Calendar.SECOND, 0);
+	   long startTime = startCal.getTimeInMillis();
+
+	   //reset all hours mins and secs to zero on end date
+	   Calendar endCal = GregorianCalendar.getInstance();
+	   endCal.setTime(end);
+	   endCal.set(Calendar.HOUR_OF_DAY, 0);
+	   endCal.set(Calendar.MINUTE, 0);
+	   endCal.set(Calendar.SECOND, 0);
+	   long endTime = endCal.getTimeInMillis();
+
+	   return (endTime - startTime) / MILLISECONDS_IN_DAY;
+	   }		   
 }
