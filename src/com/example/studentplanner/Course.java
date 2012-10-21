@@ -3,16 +3,23 @@ package com.example.studentplanner;
 import java.util.ArrayList;
 
 public class Course extends MyEvent {
-	String type = "Course";
+	typeOfEvent = "Course";
 	ArrayList<Assignment> assignments;
 	ArrayList<Exam> exams;
+	int avg;
 	
-	public Course(){
-		//constructor
+	public Course(String name, String descript, String loc){ 
+		hasreoccurence = true; 
+		nameOfEvent = name; 
+		descriptionOfEvent = descript;
+		location = loc; 
+		//eventStartTime a Calendar object?
+		//eventEndTime a Calendar object? (Maybe this should just be duration based?)
+		//datesOfOccurence a Calendar object? (Calendar objects aren't repeating, DAY_OF_WEEK maybe?)
 	}
 
-  public void addAssignment() {
-	Assignment a = new Assignment();
+  public void addAssignment(String name, Calendar dueDate, String description, int maxPoints) {
+	Assignment a = new Assignment(name, dueDate, description, 0, maxPoints, 0, false); //Check with Assignment Class
 	assignments.add(a);
   }
 
@@ -33,18 +40,16 @@ public class Course extends MyEvent {
 	   return assign;   
   }
   
-  public void addExam() {
-	//Exam e = new Exam();
-	//exams.add(e);
+  public void addExam(String name, Calendar dueDate, int maxPoints) {
+	Exam e = new Exam(name, dueDate, 0, maxPoints, 0, false); //Check with Exam Class
+	exams.add(e);
   }
 
-  public void deleteExam(/*String examName*/) {
-	/*
-	 --search for exam obj.
-	   --Exam e = this.searchForExam(examName);
-	 --remove exam obj.
-       --exams.remove(a)
-	 */
+  public void deleteExam(String examName) {
+	 //--search for exam obj.
+	   Exam e = this.searchForExam(examName);
+	 //--remove exam obj.
+       exams.remove(e)
   }
   
   public Exam searchForExam(String eName) {
