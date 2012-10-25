@@ -49,4 +49,28 @@ public class Exam {
   public void calculateGrade() {
 	  this.grade = ((pointsReceived)/(maxPoints));
   }
+  
+  public String getName() {
+	 return this.name;
+  }
+  
+  public GregorianCalendar getdueDate() {
+	  return this.dueDate;
+  }
+  
+  public int getPointsReceived() {
+	  return this.pointsReceived;
+  }
+  
+  public int getMaxPoints() {
+	  return this.maxPoints;
+  }
+  
+  public int getGrade() {
+	  return this.grade;
+  }
+  
+  public boolean getIsComplete() {
+	  return this.isComplete;
+  }
 }
