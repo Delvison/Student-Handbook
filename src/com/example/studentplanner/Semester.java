@@ -10,6 +10,7 @@ public class Semester {
   GregorianCalendar startOfSemester;
   GregorianCalendar endOfSemester;
   ArrayList<MyEvent> events;
+  ArrayList<GregorianCalendar> occurences;
   long daysTowardsEnd; 
   
   public Semester(String session, GregorianCalendar start, GregorianCalendar end) {
@@ -25,7 +26,7 @@ public class Semester {
   public void addEvent(String type, GregorianCalendar date, String name, String desc, String loc, boolean b) {
 	 MyEvent event = null;
 	
-	 if (this.safeToAdd(date.getTime())) {
+	 if (this.safeToAdd(date)) {
 		 //need an exception //create event. distinguish between course and misc.
 	     if (type.equals("Course")) {
 	         event = new Course(name, desc, loc, b);
@@ -51,11 +52,11 @@ public class Semester {
 	   daysTowardsEnd = countDaysBetween(currentDate, endDate);
    }
    
-   public boolean safeToAdd(Date dateOfEvent) {
-		boolean availible = false; //if no event exist at the given time then set to true
-		  for (MyEvent e : events) //for each event in <events>
-			 if (e.dateOfEvent.getTime().compareTo(dateOfEvent) != 0) {
-				   availible = true;
+   public boolean safeToAdd(GregorianCalendar dateOfEvent) {
+		boolean availible = true; //if no event exist at the given time then set to true
+		  for (GregorianCalendar c : occurences) //for each event in <events>
+			 if (c.compareTo(dateOfEvent) == 0) {
+				   availible = false;
 			 }
 		return availible;
 	  }
