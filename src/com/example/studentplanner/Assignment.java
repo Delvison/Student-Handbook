@@ -54,5 +54,28 @@ public class Assignment {
   public void calculateGrade() {
 	  grade = ((pointsReceived)/(maxPoints));
   }
-  //should we also have get methods?
+
+  public String getName() {
+	  return this.name;
+  }
+  
+  public GregorianCalendar getDueDate() {
+	  return this.dueDate;
+  }
+  
+  public String getDescription() {
+	  return this.description;
+  }
+  
+  public int getPointsRecieved() {
+	  return this.pointsReceived;
+  }
+  
+  public int getMaxPoints() {
+	  return this.maxPoints;
+  }
+   
+  public boolean getIsComplete() {
+	  return this.isComplete;
+  }
 }
