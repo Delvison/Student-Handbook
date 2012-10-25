@@ -19,6 +19,10 @@ public class MyEvent {
 		this.nameOfEvent = name;
 	}
 	
+    public void setSemester(Semester currentSemester){
+    	this.currentSemester = currentSemester;
+    }
+	
 	public void setDescription(String description){
 		this.descriptionOfEvent = description;		
 	}
@@ -89,5 +93,10 @@ public class MyEvent {
 			
 			//event of type "Course" might have labs that account for extra class slots
 		}
+	}
+	
+	public void printEvent(){
+		//Overwritten by child
+	
 	}
 }
