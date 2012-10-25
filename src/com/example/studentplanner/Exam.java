@@ -49,4 +49,5 @@ public class Exam {
   public void calculateGrade() {
 	  this.grade = ((pointsReceived)/(maxPoints));
   }
+  //should we also have get methods?
 }

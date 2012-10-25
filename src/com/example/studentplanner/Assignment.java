@@ -54,4 +54,5 @@ public class Assignment {
   public void calculateGrade() {
 	  grade = ((pointsReceived)/(maxPoints));
   }
+  //should we also have get methods?
 }
