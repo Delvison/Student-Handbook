@@ -21,8 +21,11 @@ public class Progress {
 	    		maxBound = maxBound + e.maxPoints;
 	    	}
 	    }
-	    average = (accGrade/maxBound) * 100;
-	    return c.avg = average;
+	    if(maxBound = 0) return c.avg = 100;
+	    else{ 
+	    	average = (accGrade/maxBound) * 100;
+	    	return c.avg = average;
+	    }
 	}
 }
 
