@@ -24,18 +24,20 @@ public class Semester {
    * then edit the other variables in the MyEvent class
    */
   public void addEvent(String type, GregorianCalendar date, String name, String desc, String loc, boolean b) {
-	 MyEvent event = null;
-	
-	 if (this.safeToAdd(date)) {
+
+	 if (events.size() == 0 || this.safeToAdd(date) ) {
 		 //need an exception //create event. distinguish between course and misc.
 	     if (type.equals("Course")) {
-	         event = new Course(name, desc, loc, b);
+	         Course event = new Course(name, desc, loc, b);
+                 events.add(event); //--add onto arraylist
 	     }
-	     if (type.equals("Misc")){
-	          event = new Misc(name, desc, loc, b);
+	     else if (type.equals("Misc")){
+	          Misc event = new Misc(name, desc, loc, b);
+                  this.events.add(event); //--add onto arraylist
 	     }
+	 occurences.add(date);
 	 }
-	      events.add(event); //--add onto arraylist
+
    }
   
    public void deleteEvent(String eventName) {

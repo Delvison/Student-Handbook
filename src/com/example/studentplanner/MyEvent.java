@@ -5,7 +5,7 @@ package com.example.studentplanner;
 import java.util.GregorianCalendar;
 import java.util.ArrayList;
 
-public class MyEvent {
+public abstract class MyEvent {
 	Semester currentSemester;
 	String nameOfEvent;
 	String descriptionOfEvent;
@@ -163,4 +163,10 @@ public class MyEvent {
 		System.out.println("Dates of occurence: " );
 	
 	}
+	 public abstract void addAssignment(String name, GregorianCalendar dueDate, String description, int maxPoints);
+     public abstract Exam searchForExam(String eName);
+     public abstract void deleteExam(String examName);
+     public abstract void addExam(String name, GregorianCalendar dueDate, int maxPoints);
+     public abstract Assignment searchForAssignment(String aName);
+     public abstract void deleteAssignment(String assignmentName);
 }

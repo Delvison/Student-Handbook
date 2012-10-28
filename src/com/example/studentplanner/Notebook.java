@@ -56,11 +56,8 @@ public class Notebook {
   public void deleteNote(String title) {
 	  //remove note from ArrayList
 	  //destroy note
-	  for(Note n:notes){
-		  if(n.title.equals(title)){
-			  notes.remove(n);
-		  }
-	  }
+	  Note n = getNote(title);
+	  notes.remove(n);
 	  
   }
 }
