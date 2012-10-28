@@ -1,3 +1,25 @@
+
+====Sat Oct 27 11:31:13 EDT 2012 delvison (Java Debugging Session)
+--Bugs Found!
+--instatiate events ArrayList in Semester Constructor
+--safeToAdd() gets NullpointerException if arraylist is empty!
+  ==FIX: dont call it if the arraylist is empty
+       **  if (events.size() == 0 || this.safeToAdd(date) )
+--problems with addEvent, inheritance and addAsignment (see pics)
+   **Make MyEvent abstract
+   **give MyEvent abstract addAssignment (Misc too)
+   **fixed addEvent() --> see fixedaddEvent.png
+   **also put super.typeOfEvent = this.typeOfEvent; in constructor
+--nullpointerexception on course's addAsignment
+   **instantiate the arraylist in course constructor!
+--**Need to give MyEvent abstract methods to all of Course and Misc methods. Basically, all should have same methods.
+--addNotebook never passes the MyEvent object
+  ==FIX: --pass the object through addNotebook() (notebook = new Notebook(this);)
+         --public Notebook(MyEvent e){.. this.event = e;
+**instantiate arraylist in Notebook constructor
+**occurences should be instatiated and hold ALL dates!
+**deleteNote gave trouble. see changes.
+
 ====Wed Oct 17 17:24:29 EDT 2012
 -->SOME NOTES ON WORKING WITH JAVA CALENDAR OBJECTS
 http://www.ehow.com/way_5516618_java-time-tutorials.html
