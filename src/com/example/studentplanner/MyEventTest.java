@@ -21,6 +21,8 @@ public class MyEventTest {
 		cr1.notebook.getNote("8/29/2012").setText("This is the first day of notes");
 		
 		
+		
+		
 		Course cr2 = new Course("CSC 365", "Data Structures", "Snygg 106", true);
 		cr2.setSemester(semester);
 		cr1.setDateOfEvent(8, 27, 2012, 9, 35);
@@ -44,11 +46,15 @@ public class MyEventTest {
 		cr1.setEventEndTime(8, 55);
 		
 		
+		cr1.printEvent();
 		
+		cr1.dateAutomater("Weekly");
 		
+		cr1.printEvent();
 		
-		
-		
+		for(int i = 0; i <semester.occurences.size();i++){
+			System.out.println(semester.occurences.get(i).toString());
+		}	
 		
 	}
 	

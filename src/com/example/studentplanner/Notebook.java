@@ -1,5 +1,6 @@
 package com.example.studentplanner;
 
+
 import java.util.ArrayList;
 
 public class Notebook {
@@ -7,11 +8,14 @@ public class Notebook {
   ArrayList<Note> notes;
   MyEvent event;
   
-  public Notebook() {
+  public Notebook(MyEvent e) {
+	  notes = new ArrayList<Note>();
+	  setEvent(e);
 	  setTitle(event.nameOfEvent + " Notebook");
   }
   
   public Notebook(String title){
+	  notes = new ArrayList<Note>();
 	  setTitle(title);
   }
   

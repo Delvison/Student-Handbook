@@ -1,5 +1,7 @@
 package com.example.studentplanner;
 
+
+
 import java.util.GregorianCalendar;
 import java.util.ArrayList;
 
@@ -13,7 +15,7 @@ public class MyEvent {
 	GregorianCalendar eventEndTime;
 	boolean hasReoccurence;
 	Notebook notebook;
-	ArrayList<GregorianCalendar> datesOfOccurence;
+	ArrayList<GregorianCalendar> eventDatesOfOccurence;
 	
 	public void setName(String name){
 		this.nameOfEvent = name;
@@ -45,21 +47,25 @@ public class MyEvent {
 	
 	//in case we want to change the time
 	public void setEventStartTime(int hour, int minute){
-		dateOfEvent.set(GregorianCalendar.HOUR, hour);
+		dateOfEvent.set(GregorianCalendar.HOUR_OF_DAY, hour);
 		dateOfEvent.set(GregorianCalendar.MINUTE, minute);
 	}
 	
 	//in case we want to change the time
 	public void setEventEndTime(int hour, int minute){
 		if(eventEndTime != null){
-			eventEndTime.set(GregorianCalendar.HOUR, hour);
+			eventEndTime.set(GregorianCalendar.HOUR_OF_DAY, hour);
 			eventEndTime.set(GregorianCalendar.MINUTE, minute);
 		}
 	}
 	
 	public void addNotebook() {
 		//create notebook
-		notebook = new Notebook();
+		notebook = new Notebook(this);
+	}
+	
+	public void addNotebook(String notebookTitle){
+		notebook = new Notebook(notebookTitle);
 	}
 	
 	public void dateAutomater(String occurence) {
@@ -74,29 +80,87 @@ public class MyEvent {
 				//add GregorianCalendar Event to dateOfOccurence weekly until end of semester
 				while(start.compareTo(end)<0){
 					start.roll(GregorianCalendar.DATE, 7);
-					datesOfOccurence.add(start);
+					if(start.compareTo(end)<0)
+					currentSemester.occurences.add(start);
+					eventDatesOfOccurence.add(start);
 				}
 				
 			}else if(occurence == "Monthly"){
 				//add GregorianCalendar Event to dateofOccurence monthly until end of semester
 				while(start.compareTo(end)<0){
 					start.roll(GregorianCalendar.MONTH, true);
-					datesOfOccurence.add(start);
+					if(start.compareTo(end)<0)
+					currentSemester.occurences.add(start);
+					eventDatesOfOccurence.add(start);
 				}
 			}else if(occurence == "MWF"){
 				//add GregorianCalendar Event to dateofOccurence Monday Wednesday Friday until end of semester
+				while(start.compareTo(end)<0){
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 2){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 2);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 4){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 2);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 6){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 3);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+					
+				}
+				
 			}else if(occurence == "TR"){
 				//add GregorianCalendar Event to dateofOccurence Tuesday Thursday until end of semester
+				while(start.compareTo(end)<0){
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 3){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 2);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 5){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 5);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+				}
 			}else if(occurence =="MW"){
 				//add GregorianCalendar Event to dateofOccurence Monday Wednesday until end of semester
+				while(start.compareTo(end)<0){
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 2){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 2);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+					if(start.get(GregorianCalendar.DAY_OF_WEEK) == 4){
+						start.roll(GregorianCalendar.DAY_OF_WEEK, 5);
+						if(start.compareTo(end)<0)
+						currentSemester.occurences.add(start);
+						eventDatesOfOccurence.add(start);
+					}
+			     }
 			}
-			
 			//event of type "Course" might have labs that account for extra class slots
 		}
 	}
 	
 	public void printEvent(){
-		//Overwritten by child
+		System.out.println(typeOfEvent + ": " + nameOfEvent + ", " + currentSemester);
+		System.out.println("Description: " + descriptionOfEvent);
+		System.out.println("Location: " + location);
+		System.out.println("Start date: " + dateOfEvent.toString());
+		System.out.println("End date: " + eventEndTime.toString());
+		System.out.println("Dates of occurence: " );
 	
 	}
 }

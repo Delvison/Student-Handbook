@@ -1,5 +1,6 @@
 package com.example.studentplanner;
 
+
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -15,6 +16,8 @@ public class Course extends MyEvent {
 		nameOfEvent = name; 
 		descriptionOfEvent = descript;
 		location = loc; 
+		assignments = new ArrayList<Assignment>();
+		exams = new ArrayList<Exam>();
 		//eventStartTime a GregorianCalendar object?
 		//eventEndTime a GregorianCalendar object? (Maybe this should just be duration based?)
 		//datesOfOccurence a GregorianCalendar object? (GregorianCalendar objects aren't repeating, DAY_OF_WEEK maybe?)
