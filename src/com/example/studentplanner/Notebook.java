@@ -9,13 +9,13 @@ public class Notebook {
   MyEvent event;
   
   public Notebook(MyEvent e) {
-	  notes = new ArrayList<Note>();
+	  this.notes = new ArrayList<Note>();
 	  setEvent(e);
 	  setTitle(event.nameOfEvent + " Notebook");
   }
   
   public Notebook(String title){
-	  notes = new ArrayList<Note>();
+	  this.notes = new ArrayList<Note>();
 	  setTitle(title);
   }
   
@@ -27,7 +27,7 @@ public class Notebook {
   public void addNote(){
 	  Note n = new Note();
 	  n.notebook = this;
-	  notes.add(n);
+	  this.notes.add(n);
   }
   
   public void setTitle(String title){
@@ -49,7 +49,7 @@ public class Notebook {
 	  //add note to arraylist
 	  Note n = new Note(title);
 	  n.notebook = this;
-	  notes.add(n);
+	  this.notes.add(n);
   }
   
   
@@ -57,7 +57,7 @@ public class Notebook {
 	  //remove note from ArrayList
 	  //destroy note
 	  Note n = getNote(title);
-	  notes.remove(n);
+	  this.notes.remove(n);
 	  
   }
 }

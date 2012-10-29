@@ -12,13 +12,13 @@ public class Note {
 	public Note(){
 		Calendar cal = Calendar.getInstance();
 		setTitle(cal.toString());
-		date = cal;
+		this.date = cal;
 	}
 	
 	public Note(String title) {
 		// charLimit somewhere here
 		setTitle(title);
-		date = Calendar.getInstance();
+		this.date = Calendar.getInstance();
 	}
 	
 	public void setTitle(String title){

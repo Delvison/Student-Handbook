@@ -14,9 +14,10 @@ public class Semester {
   long daysTowardsEnd; 
   
   public Semester(String session, GregorianCalendar start, GregorianCalendar end) {
-    startOfSemester = start;
-	endOfSemester = end;
-	term = session;
+    this.startOfSemester = start;
+    this.endOfSemester = end;
+    this.term = session;
+    events = new ArrayList<MyEvent>();
   }
   
   /*the creation of an event MUST be in two parts!
@@ -29,13 +30,13 @@ public class Semester {
 		 //need an exception //create event. distinguish between course and misc.
 	     if (type.equals("Course")) {
 	         Course event = new Course(name, desc, loc, b);
-                 events.add(event); //--add onto arraylist
+	         this.events.add(event); //--add onto arraylist
 	     }
 	     else if (type.equals("Misc")){
 	          Misc event = new Misc(name, desc, loc, b);
                   this.events.add(event); //--add onto arraylist
 	     }
-	 occurences.add(date);
+	     this.occurences.add(date);
 	 }
 
    }
@@ -44,7 +45,7 @@ public class Semester {
    //--find event in arraylist; store in variable 
 	   MyEvent event = this.searchForEvent(eventName);
    //--remove from arraylist
-	   events.remove(event); 
+	   this.events.remove(event); 
    }
    
    public void calculateDaysToEnd() {
@@ -65,7 +66,7 @@ public class Semester {
    
    public MyEvent searchForEvent(String eventName) { 
 	   MyEvent event = null;
-	   for (MyEvent e : events) //for each event in <events>
+	   for (MyEvent e : this.events) //for each event in <events>
 	     if (e.nameOfEvent.equals(eventName))
 	        event = e;
 	   return event;
