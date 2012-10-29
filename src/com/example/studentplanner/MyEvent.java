@@ -35,27 +35,27 @@ public abstract class MyEvent {
 
 	public void setDateOfEvent(int month, int day, int year){
 		if(dateOfEvent != null){ 
-			dateOfEvent.set(year,month,day);
+			this.dateOfEvent.set(year,month,day);
 		}
 	}
 	
 	public void setDateOfEvent(int month, int day, int year, int startHour, int startMinute){
-		if(dateOfEvent != null){
-			dateOfEvent.set(year, month, day, startHour, startMinute);
+		if(this.dateOfEvent != null){
+			this.dateOfEvent.set(year, month, day, startHour, startMinute);
 		}
 	}
 	
 	//in case we want to change the time
 	public void setEventStartTime(int hour, int minute){
-		dateOfEvent.set(GregorianCalendar.HOUR_OF_DAY, hour);
-		dateOfEvent.set(GregorianCalendar.MINUTE, minute);
+		this.dateOfEvent.set(GregorianCalendar.HOUR_OF_DAY, hour);
+		this.dateOfEvent.set(GregorianCalendar.MINUTE, minute);
 	}
 	
 	//in case we want to change the time
 	public void setEventEndTime(int hour, int minute){
-		if(eventEndTime != null){
-			eventEndTime.set(GregorianCalendar.HOUR_OF_DAY, hour);
-			eventEndTime.set(GregorianCalendar.MINUTE, minute);
+		if(this.eventEndTime != null){
+			this.eventEndTime.set(GregorianCalendar.HOUR_OF_DAY, hour);
+			this.eventEndTime.set(GregorianCalendar.MINUTE, minute);
 		}
 	}
 	
