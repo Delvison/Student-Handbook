@@ -1,5 +1,8 @@
 package com.example.studentplanner;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +12,8 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
     Button createSem;
+	ArrayList<Semester> sessions;
+
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,14 +24,10 @@ public class MainActivity extends Activity {
     }
 
     public void handleClick(View v){
-            
-            //Create an intent to start the new activity.
-               // Our intention is to start secondActivity
-            Intent intent = new Intent();
-            intent.setClass(this,SemesterCreate.class);
-            startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
+        startActivity(intent);
            }
-        
+ 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);

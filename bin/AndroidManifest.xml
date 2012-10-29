@@ -31,7 +31,7 @@
         </activity>
 
         <activity
-            android:name=".SemesterCreate"
+            android:name=".CreateSemesterActivity"
             android:label="@string/title_activity_semester_create" >
             <intent-filter>
                 <action android:name="com.example.studentplanner.SEM" />
