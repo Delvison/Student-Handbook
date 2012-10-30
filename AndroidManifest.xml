@@ -20,24 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Menu"
+        <activity android:name=".Menu"
             android:label="Student Planner" >
-            <intent-filter>
-                <action android:name="com.example.studentplanner.MENU" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".CreateSemesterActivity"
             android:label="@string/title_activity_semester_create" >
-            <intent-filter>
-                <action android:name="com.example.studentplanner.SEM" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

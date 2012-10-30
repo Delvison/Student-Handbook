@@ -1,18 +1,14 @@
 package com.example.studentplanner;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
     Button createSem;
-	ArrayList<Semester> sessions;
 
     
     @Override
@@ -20,13 +16,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         //if statement to have alternate views (if a semester doesnt exist then show a button to create one)
         setContentView(R.layout.main_view);
-        //createSem = (Button) findViewById(R.id.button1);
+        createSem = (Button) findViewById(R.id.createSem);
     }
 
     public void handleClick(View v){
         Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
         startActivity(intent);
-           }
+    }
  
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -5,42 +5,54 @@ import java.util.GregorianCalendar;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 
 public class CreateSemesterActivity extends Activity {
-
-    @Override
+    Button createSemester;
+    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_semester_create);
+        setContentView(R.layout.create_semester);
+        createSemester = (Button) findViewById(R.id.createSemester);
     }
 
-    public void handleClick(View v){
+    public void handleClick1(View v){
+    	
+    	SQLiteDatabase db = openOrCreateDatabase("SemesterDB", MODE_PRIVATE, null);
+    	db.execSQL("CREATE TABLE IF NOT EXISTS Semesters (Session VARCHAR, YearStart INT," +
+    			" MonthStart INT, DayStart INT,YearEnd INT, MonthEnd INT, DayEnd INT )");
+    	
     	//extract session from view
     	Spinner sessionSpinner = (Spinner) findViewById(R.id.sessionSpinner);
     	String session = (String) sessionSpinner.getSelectedItem();
     	
     	//extract start date from view
-    	 DatePicker startDatePicker = (DatePicker) findViewById(R.id.semesterStartDate);
+    	DatePicker startDatePicker = (DatePicker) findViewById(R.id.semesterStartDate);
         int startDay = startDatePicker.getDayOfMonth();
         int startMonth = startDatePicker.getMonth();
         int startYear = startDatePicker.getYear();
-        String startDate = startYear+","+startMonth+","+startDay;
-        
-      //extract end date from view
-   	   DatePicker endDatePicker = (DatePicker) findViewById(R.id.semesterEndDate);
-       int endDay = startDatePicker.getDayOfMonth();
-       int endMonth = startDatePicker.getMonth();
-       int endYear = startDatePicker.getYear();
-       String endDate = endYear+","+endMonth+","+endDay;
+            
+        //extract end date from view
+   	    DatePicker endDatePicker = (DatePicker) findViewById(R.id.semesterEndDate);
+        int endDay = startDatePicker.getDayOfMonth();
+        int endMonth = startDatePicker.getMonth();
+        int endYear = startDatePicker.getYear();
 
-       Semester s = new Semester(session,new GregorianCalendar(startYear,startMonth,startDay),new GregorianCalendar(endYear,endMonth,endDay));
-    	
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        String sessionName = (String) session+" "+startYear;
+        //Semester s = new Semester(sessionName,new GregorianCalendar(startYear,startMonth,startDay),new GregorianCalendar(endYear,endMonth,endDay));d
+        
+        db.execSQL("INSERT INTO Semesters VALUES('sessionName','startYear','startMonth','startDay','endYear','endMonth','endDay');");
+        db.close();		
+      
+        Intent intent = new Intent(getApplicationContext(), CreateExamActivity.class);
         startActivity(intent);
+         
+         
     }
 
 }

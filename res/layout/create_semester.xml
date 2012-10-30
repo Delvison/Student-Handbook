@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center|fill|fill_horizontal"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <Spinner
@@ -40,9 +40,10 @@
         android:text="When does the semester end?" />
 
    <Button
-       android:id="@+id/button1"
+       android:id="@+id/createSemester"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="Done!" />
+       android:text="Done!" 
+       android:onClick="handleClick1" />
 
 </LinearLayout>
