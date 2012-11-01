@@ -1,23 +1,72 @@
 package com.example.studentplanner;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends Activity {
-    Button createSem;
+public class MainActivity extends ListActivity {
+    //ArrayList<String> semesters = new ArrayList<String>();
+    String[] semesterArr;
+    static final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
+		"Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
+		"Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
 
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //if statement to have alternate views (if a semester doesnt exist then show a button to create one)
-        setContentView(R.layout.main_view);
-        createSem = (Button) findViewById(R.id.createSem);
+    	SQLiteDatabase db = openOrCreateDatabase("SemesterDB", MODE_PRIVATE, null);
+        Cursor c= db.rawQuery("SELECT Session FROM Semesters", null);
+        int i = c.getCount();
+        semesterArr = new String[i];
+    	int count = 0;
+    	
+        if (i != 0 ){
+
+           c.moveToFirst();
+    	   while(c.isAfterLast()==false) {
+             // semesters.add(c.getString(c.getColumnIndex("Session"))); // do the same for other columns
+              semesterArr[count] = c.getString(c.getColumnIndex("Session"));
+              count++;
+              c.moveToNext();
+           }
+    	   c.close();
+       	   db.close();
+       	   
+       	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_menu_view,semesterArr));//needs an array
+
+    	ListView listView = getListView();
+    	listView.setTextFilterEnabled(true);
+
+    	listView.setOnItemClickListener(new OnItemClickListener() {
+    		public void onItemClick(AdapterView<?> parent, View view,
+    				int position, long id) {
+    		    // When clicked, show a toast with the TextView text
+    		    Toast.makeText(getApplicationContext(),
+    			((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+    		}
+    	});
+       	   
+        } else {
+            Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
+            startActivity(intent);
+            db.close();
+        }
+ 
     }
+    
 
     public void handleClick(View v){
         Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);

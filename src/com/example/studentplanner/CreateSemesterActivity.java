@@ -4,6 +4,7 @@ import java.util.GregorianCalendar;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
@@ -43,16 +44,27 @@ public class CreateSemesterActivity extends Activity {
         int endMonth = startDatePicker.getMonth();
         int endYear = startDatePicker.getYear();
 
-        String sessionName = (String) session+" "+startYear;
+        String sessionName = (String) session+" "+Integer.toString(startYear);
         //Semester s = new Semester(sessionName,new GregorianCalendar(startYear,startMonth,startDay),new GregorianCalendar(endYear,endMonth,endDay));d
+        ContentValues values = new ContentValues();
+        values.put("Session", sessionName);
+        values.put("YearStart", startYear);
+       
+        values.put("MonthStart", startMonth);
+        values.put("DayStart", startYear);
+
+        values.put("YearEnd", endYear);
+        values.put("MonthEnd", endMonth);
+
+        values.put("DayEnd", endDay);
         
-        db.execSQL("INSERT INTO Semesters VALUES('sessionName','startYear','startMonth','startDay','endYear','endMonth','endDay');");
+        db.insert("Semesters", null, values);
+        
+        //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();		
       
-        Intent intent = new Intent(getApplicationContext(), CreateExamActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-         
-         
     }
 
 }

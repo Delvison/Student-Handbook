@@ -28,6 +28,16 @@
             android:name=".CreateSemesterActivity"
             android:label="@string/title_activity_semester_create" >
         </activity>
+        <activity
+            android:name=".CreateExamActivity"
+            android:label="Add an Exam" >
+        </activity>
+        <activity
+            android:name=".CreateAssignmentActivity"
+            android:label="Add an Assignment" >
+        </activity>
+        
+        
     </application>
 
 </manifest>
