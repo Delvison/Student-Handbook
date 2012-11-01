@@ -1,12 +1,10 @@
 package com.example.studentplanner;
 
-import java.util.ArrayList;
-
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -14,60 +12,75 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
-    //ArrayList<String> semesters = new ArrayList<String>();
     String[] semesterArr;
-    static final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
-		"Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
-		"Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    	SQLiteDatabase db = openOrCreateDatabase("SemesterDB", MODE_PRIVATE, null);
-        Cursor c= db.rawQuery("SELECT Session FROM Semesters", null);
-        int i = c.getCount();
-        semesterArr = new String[i];
-    	int count = 0;
-    	
-        if (i != 0 ){
+        try{
+            //open database
+    	    SQLiteDatabase db = openOrCreateDatabase("SemesterDB", MODE_PRIVATE, null);
+    	    //query. receive a cursor
+    	    Cursor c= db.rawQuery("SELECT Session FROM Semesters", null);
+    	    //count how many items in cursor. add 1 to leave space for add semester option
+    	    int i = c.getCount() + 1;
+    	    //instantiate array of semesters by size of the cursor + 1
+    	    semesterArr = new String[i];
+    	    //set up a count int to keep track of array positions
+    	    int count = 0;
+            //move the cursor to first position
+    	    c.moveToFirst();
+    	    
+            //while the cursor position isn't passed the last item in the cursor 
+    	    while(c.isAfterLast()==false) {
+    	    		//store the string in "Session" column into the array of semesters
+    	    		semesterArr[count] = c.getString(c.getColumnIndex("Session"));
+    	    		//increment count
+    	    		count++;
+    	    		//move cursor by 1
+    	    		c.moveToNext();
+    	    }
+    	    //add an "add semester option
+    	    semesterArr[count] = new String("+Add Semester");
+    	    //close the cursor
+    	    c.close();
+    	    //close the database
+       	   	db.close();
+       	   	//set a listadapter, use the semester_menu_view view and the semesterArr array
+       	   	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_menu_view,semesterArr));//needs an array
+       	   	//get the list view from the view
+       	   	ListView listView = getListView();
+       	   	//set the listview's textfilter to enabled
+       	   	listView.setTextFilterEnabled(true);
+       	   	//add an onclicklistener
+       	   	listView.setOnItemClickListener(new OnItemClickListener() {
+    		
+       	   		public void onItemClick(AdapterView<?> parent, View view,
+       	   			int position, long id) {
+       	   				//this string holds the list item clicked
+       	   				String rightMeow = semesterArr[position];
 
-           c.moveToFirst();
-    	   while(c.isAfterLast()==false) {
-             // semesters.add(c.getString(c.getColumnIndex("Session"))); // do the same for other columns
-              semesterArr[count] = c.getString(c.getColumnIndex("Session"));
-              count++;
-              c.moveToNext();
-           }
-    	   c.close();
-       	   db.close();
-       	   
-       	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_menu_view,semesterArr));//needs an array
-
-    	ListView listView = getListView();
-    	listView.setTextFilterEnabled(true);
-
-    	listView.setOnItemClickListener(new OnItemClickListener() {
-    		public void onItemClick(AdapterView<?> parent, View view,
-    				int position, long id) {
-    		    // When clicked, show a toast with the TextView text
-    		    Toast.makeText(getApplicationContext(),
-    			((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-    		}
-    	});
-       	   
-        } else {
-            Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
+       	   				// When clicked, show a toast with the TextView text
+       	   				//Toast.makeText(getApplicationContext(),
+       	   				//((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+       	   				//if item clicked equals add semester
+       	   				
+       	   				if (rightMeow.equals("+Add Semester")){  
+       	   					Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
+       	   					//then go to the CreateSemesterActivity
+       	   					startActivity(intent);
+       	   				}
+       	   		}
+       	   	}); //close listener
+       	  
+        }catch(SQLiteException e){
+        	Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
             startActivity(intent);
-            db.close();
         }
- 
-    }
+    }//end of onCreate()
     
-
     public void handleClick(View v){
         Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
         startActivity(intent);

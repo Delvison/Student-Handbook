@@ -16,8 +16,9 @@
         <item>Summer</item>
     </string-array>
 
-    <string name="title_activity_create_semester">CreateSemester</string>
-    <string name="title_activity_semester_create">SemesterCreate</string>
+    <string name="title_activity_create_semester">Create Semester</string>
+    <string name="title_activity_semester_create">Semester Create</string>
     <string name="title_activity_semester_menu">Semester Menu</string>
-
+    <string name="semesterString">SemesterNameHere</string>
+    
 </resources>
