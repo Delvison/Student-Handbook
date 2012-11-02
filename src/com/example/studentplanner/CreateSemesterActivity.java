@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -24,7 +23,7 @@ public class CreateSemesterActivity extends Activity {
 
     public void handleClick1(View v){
     	
-    	SQLiteDatabase db = openOrCreateDatabase("SemesterDB", MODE_PRIVATE, null);
+    	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
     	db.execSQL("CREATE TABLE IF NOT EXISTS Semesters (Session VARCHAR, YearStart INT," +
     			" MonthStart INT, DayStart INT,YearEnd INT, MonthEnd INT, DayEnd INT )");
     	
