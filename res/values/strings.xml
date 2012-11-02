@@ -20,5 +20,6 @@
     <string name="title_activity_semester_create">Semester Create</string>
     <string name="title_activity_semester_menu">Semester Menu</string>
     <string name="semesterString">SemesterNameHere</string>
+    <string name="courseString">course name here</string>
     
 </resources>

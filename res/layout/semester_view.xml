@@ -10,4 +10,23 @@
         android:text="@string/semesterString"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <Button
+        android:id="@+id/coursesButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Courses" />
+    
+        <Button
+        android:id="@+id/miscButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Misc" />
+        
+        <Button
+        android:id="@+id/masterbutton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MasterView" />
+    
+
 </TableLayout>

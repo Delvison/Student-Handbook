@@ -21,7 +21,7 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         try{
             //open database
-    	    SQLiteDatabase db = openOrCreateDatabase("SemesterDB", MODE_PRIVATE, null);
+    	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
     	    //query. receive a cursor
     	    Cursor c= db.rawQuery("SELECT Session FROM Semesters", null);
     	    //count how many items in cursor. add 1 to leave space for add semester option
@@ -81,11 +81,6 @@ public class MainActivity extends ListActivity {
         }
     }//end of onCreate()
     
-    public void handleClick(View v){
-        Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
-        startActivity(intent);
-    }
- 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
