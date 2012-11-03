@@ -66,4 +66,9 @@ public class Course extends MyEvent {
 	   }
 	   return exam;
   }
+  
+  public String getGrade() {
+	  String average = Integer.toString(avg);
+	  return average;
+  }
 }
