@@ -17,7 +17,7 @@ public class CreateSemesterActivity extends Activity {
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_semester);
+        setContentView(R.layout.create_semester_view);
         createSemester = (Button) findViewById(R.id.createSemester);
     }
 
@@ -39,22 +39,22 @@ public class CreateSemesterActivity extends Activity {
             
         //extract end date from view
    	    DatePicker endDatePicker = (DatePicker) findViewById(R.id.semesterEndDate);
-        int endDay = startDatePicker.getDayOfMonth();
-        int endMonth = startDatePicker.getMonth();
-        int endYear = startDatePicker.getYear();
+        int endDay = endDatePicker.getDayOfMonth();
+        int endMonth = endDatePicker.getMonth();
+        int endYear = endDatePicker.getYear();
 
         String sessionName = (String) session+" "+Integer.toString(startYear);
         //Semester s = new Semester(sessionName,new GregorianCalendar(startYear,startMonth,startDay),new GregorianCalendar(endYear,endMonth,endDay));d
         ContentValues values = new ContentValues();
+        
         values.put("Session", sessionName);
+        
         values.put("YearStart", startYear);
-       
         values.put("MonthStart", startMonth);
         values.put("DayStart", startYear);
 
         values.put("YearEnd", endYear);
         values.put("MonthEnd", endMonth);
-
         values.put("DayEnd", endDay);
         
         db.insert("Semesters", null, values);

@@ -75,8 +75,8 @@ public class Semester {
    public static long countDaysBetween(Date start, Date end) {
 	   int MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24; //for conversion
 	   if (end.before(start)) { // Date end should be after Date start
-		   throw new IllegalArgumentException("ERROR!");
-	   }
+		   return 0;
+	   } else {
 	   //reset all hours mins and secs to zero on start date
 	   Calendar startCal = GregorianCalendar.getInstance();
 	   startCal.setTime(start);
@@ -94,5 +94,6 @@ public class Semester {
 	   long endTime = endCal.getTimeInMillis();
 
 	   return (endTime - startTime) / MILLISECONDS_IN_DAY;
-	   }		   
+	   }
+   }		   
 }

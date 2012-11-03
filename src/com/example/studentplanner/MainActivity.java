@@ -49,7 +49,7 @@ public class MainActivity extends ListActivity {
     	    //close the database
        	   	db.close();
        	   	//set a listadapter, use the semester_menu_view view and the semesterArr array
-       	   	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_menu_view,semesterArr));//needs an array
+       	   	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_listview,semesterArr));//needs an array
        	   	//get the list view from the view
        	   	ListView listView = getListView();
        	   	//set the listview's textfilter to enabled
@@ -70,6 +70,10 @@ public class MainActivity extends ListActivity {
        	   				if (rightMeow.equals("+Add Semester")){  
        	   					Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
        	   					//then go to the CreateSemesterActivity
+       	   					startActivity(intent);
+       	   				} else {
+       	   					Intent intent = new Intent(getApplicationContext(), SemesterActivity.class);
+       	   					intent.putExtra("key", rightMeow);
        	   					startActivity(intent);
        	   				}
        	   		}

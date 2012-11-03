@@ -36,7 +36,10 @@
             android:name=".CreateAssignmentActivity"
             android:label="Add an Assignment" >
         </activity>
-        
+        <activity
+            android:name=".SemesterActivity"
+            android:label="Hello!" >
+        </activity>
         
     </application>
 
