@@ -31,8 +31,11 @@ public class SemesterActivity extends Activity {
 	        sNameInView.setText(sName);
 	        this.initSemester(sName);
 	        daysInView = (TextView) findViewById(R.id.textView2);
+	        if (days != 0){
 	        daysInView.setText(Long.toString(days)+" days left!");
-	        
+	        } else{
+	        	daysInView.setText("Semester Over.");
+	        }
 	    }
 	   
 	   public void initSemester(String sem){

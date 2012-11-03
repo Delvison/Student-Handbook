@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/semesterString"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <Button
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/semesterString"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/miscButton1"
+        android:layout_marginTop="92dp"
+        android:layout_toLeftOf="@+id/miscButton1" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+                <Button
         android:id="@+id/coursesButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Courses" />
-    
-        <Button
+        </TableRow>
+         <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+                    <Button
         android:id="@+id/miscButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Misc" />
-    
+        android:text="Events" />
 
-</TableLayout>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

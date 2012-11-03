@@ -6,40 +6,42 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class ExamActivity extends Activity {
+public class EditExamActivity extends Activity{
 	String eName;
-	TextView eNameInView;
-	TextView daysInView;
-	TextView rcvdInView;
-	TextView maxInView;
-	TextView courseInView;
-
-	long days;
+	EditText eNameInView;
+	DatePicker dateInView;
+	EditText rcvdInView;
+	EditText maxInView;
+	EditText courseInView;
+	Assignment as;
+	SQLiteDatabase db;
 	
      	@Override
 	   public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.exam_view);
+	        setContentView(R.layout.assignment_view);
 	        Bundle extras = getIntent().getExtras();
 	        if (extras != null){
 	        	eName = extras.getString("key");
 	        }
 	       // R.string.semesterString = sName;
-	        eNameInView = (TextView) findViewById(R.id.examView1);
-	        eNameInView.setText(eName);
 	        this.initAssignment(eName);
-	        daysInView = (TextView) findViewById(R.id.textView5);
-	        daysInView.setText(Long.toString(days)+" days left!");
+	 
 	        
 	    }
 
 	  public void initAssignment(String e){
+	    	//db.execSQL("CREATE TABLE IF NOT EXISTS Assignments (Name VARCHAR, DueYear INT," +
+	    		//	" DueMonth INT, DueDay INT, Description VARCHAR, MaxPoints INT, Course VARCHAR)");
 		   //open database
-  	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
+  	   db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
   	       //get values for the current semester being viewed
-       Cursor c = db.rawQuery("select * from Exams where name ='"+e+"'", null);
+       Cursor c = db.rawQuery("select * from Courses where name ='"+e+"'", null);
          //get those values
        c.moveToFirst();
        String name = c.getString(c.getColumnIndex("Name"));
@@ -51,25 +53,26 @@ public class ExamActivity extends Activity {
        String course = c.getString(c.getColumnIndex("Course"));
          //close cursor and database
        c.close();
-       db.close();
-         //create a semester object
-       Exam ex = new Exam(name,new GregorianCalendar(dueYear,dueMonth,dueDay));
-         //calculate days toward end
-       ex.calculateDaysDue();
-       days = ex.daysTilDue;
        
-       TextView dateInView = (TextView) findViewById(R.id.textView2);
-       dateInView.setText(Integer.toString(dueYear)+"/"+Integer.toString(dueMonth)+"/"+Integer.toString(dueDay));
+       eNameInView = (EditText) findViewById(R.id.editText1);
+       eNameInView.setText(name);
        
-       rcvdInView = (TextView) findViewById(R.id.textView7);
+       dateInView = (DatePicker) findViewById(R.id.datePicker1);
+       dateInView.updateDate(dueYear, dueMonth, dueDay);
+       
+       rcvdInView = (EditText) findViewById(R.id.editText2);
        rcvdInView.setText(ptsRcvd);
        
-       maxInView = (TextView) findViewById(R.id.textView9);
+       maxInView = (EditText) findViewById(R.id.editText3);
        maxInView.setText(ptsMax);
        
-       courseInView = (TextView) findViewById(R.id.textView8);
-       courseInView.setText(course);
-       
 	   }
-}
+	  
+	   public void handleClick1(View v){
+		   //replace values in db
+		  // db.update(table, values, whereClause, whereArgs)
+		   //close db
+		   db.close();
+	   }
 
+}

@@ -51,7 +51,7 @@ public class CreateSemesterActivity extends Activity {
         
         values.put("YearStart", startYear);
         values.put("MonthStart", startMonth);
-        values.put("DayStart", startYear);
+        values.put("DayStart", startDay);
 
         values.put("YearEnd", endYear);
         values.put("MonthEnd", endMonth);
