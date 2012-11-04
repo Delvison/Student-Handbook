@@ -9,10 +9,9 @@ public class Course extends MyEvent {
 	ArrayList<Exam> exams;
 	int avg;
 	
-	
 	public Course(String name, String descript, String loc, boolean b){ 
 	    typeOfEvent = "Course";
-		hasReoccurence = true; 
+		this.hasReoccurence = true; 
 		nameOfEvent = name; 
 		descriptionOfEvent = descript;
 		location = loc; 

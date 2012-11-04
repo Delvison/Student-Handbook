@@ -21,7 +21,7 @@
     <string name="title_activity_semester_menu">Semester Menu</string>
     <string name="semesterString">SemesterNameHere</string>
     <string name="courseString">course name here</string>
-    <string name="descriptionString">description goes here</string>
+    <string name="descriptionString ">description goes here</string>
     <string name="locationString">where yo class at</string>
     <string name="miscString">name of misc</string>
     <string name="gradeString">grade of this course</string>
