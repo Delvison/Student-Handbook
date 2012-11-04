@@ -15,12 +15,13 @@ import android.widget.TimePicker;
 
 public class CreateCourseActivity extends Activity {
     Button createCourse;
-    String[] spinnerOccur;
+
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_course);
         createCourse = (Button) findViewById(R.id.createCourse);
+ 
     }
 
     public void handleClick1(View v){
