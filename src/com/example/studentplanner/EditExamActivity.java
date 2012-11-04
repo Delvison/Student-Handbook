@@ -60,10 +60,10 @@ public class EditExamActivity extends Activity{
        dateInView = (DatePicker) findViewById(R.id.datePicker1);
        dateInView.updateDate(dueYear, dueMonth, dueDay);
        
-       rcvdInView = (EditText) findViewById(R.id.editText2);
+       rcvdInView = (EditText) findViewById(R.id.editText3);
        rcvdInView.setText(ptsRcvd);
        
-       maxInView = (EditText) findViewById(R.id.editText3);
+       maxInView = (EditText) findViewById(R.id.editText4);
        maxInView.setText(ptsMax);
        
 	   }
