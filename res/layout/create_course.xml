@@ -88,13 +88,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/createCourse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="handleClick1"
-            android:text="Add this Course" />
-
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
@@ -106,6 +99,13 @@
             android:id="@+id/reoccurSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/createCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="handleClick1"
+            android:text="Add this Course" />
 
     </LinearLayout>
 

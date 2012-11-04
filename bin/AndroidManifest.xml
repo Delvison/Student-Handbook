@@ -56,7 +56,10 @@
             android:name=".NoteViewActivity"
             android:label="Note" >
         </activity>
-        
+        <activity
+            android:name=".CourseActivity"
+            android:label="Course" >
+        </activity>
     </application>
 
 </manifest>
