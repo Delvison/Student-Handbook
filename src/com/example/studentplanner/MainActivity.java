@@ -1,6 +1,8 @@
 package com.example.studentplanner;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
     String[] semesterArr;
@@ -80,9 +83,28 @@ public class MainActivity extends ListActivity {
        	   	}); //close listener
        	  
         }catch(SQLiteException e){
-        	Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
-            startActivity(intent);
-        }
+            // Create the alert box
+           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+
+           // Set the message to display
+           alertbox.setMessage("Welcome! To get started please click on Add Semester!");
+
+           // Add a neutral button to the alert box and assign a click listener
+           alertbox.setNeutralButton("Add Semester", new DialogInterface.OnClickListener() {
+
+               // Click listener on the neutral button of alert box
+               public void onClick(DialogInterface arg0, int arg1) {
+
+                   // The neutral button was clicked
+            	   Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
+                   startActivity(intent);
+               }
+           });
+
+            // show the alert box
+           alertbox.show();
+       }
+        
     }//end of onCreate()
     
     @Override

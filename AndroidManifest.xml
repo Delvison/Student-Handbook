@@ -40,7 +40,14 @@
             android:name=".SemesterActivity"
             android:label="Hello!" >
         </activity>
-        
+         <activity
+            android:name=".CreateCourseActivity"
+            android:label="Hello!" >
+        </activity>      
+        <activity
+            android:name=".CourseListviewActivity"
+            android:label="Courses" >
+        </activity>
     </application>
 
 </manifest>

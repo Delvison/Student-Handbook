@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SemesterActivity extends Activity {
@@ -17,6 +19,8 @@ public class SemesterActivity extends Activity {
 	TextView sNameInView;
 	TextView daysInView;
 	long days;
+	Button courses;
+	Button Events;
 	
      	@Override
 	   public void onCreate(Bundle savedInstanceState) {
@@ -77,10 +81,15 @@ public class SemesterActivity extends Activity {
 	            startActivity(new Intent(this, CreateAssignmentActivity.class));
 	          return true;
 	          case R.id.viewEvents:
-		            startActivity(new Intent(this, CreateExamActivity.class));
+		            startActivity(new Intent(this, CreateCourseActivity.class));
 		          return true;
 	          
 		    }
 	        return super.onOptionsItemSelected(item);
 	    }
+	   
+	   public void clickHandler(View v) {
+		     Intent intent = new Intent(getApplicationContext(), CourseListviewActivity.class);
+		        startActivity(intent);
+	   }
 }
