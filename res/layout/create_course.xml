@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center|fill_vertical"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|fill_vertical"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +30,6 @@
 
                 <requestFocus />
             </EditText>
-
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +50,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textMultiLine" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -70,13 +69,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10" />
-
         </LinearLayout>
 
         <TimePicker
             android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Day of Class"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <DatePicker
             android:id="@+id/datePicker1"
@@ -87,8 +92,21 @@
             android:id="@+id/createCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add this Course"
-            android:onClick="handleClick1" />
+            android:onClick="handleClick1"
+            android:text="Add this Course" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Occurences"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Spinner
+            android:id="@+id/reoccurSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     </ScrollView>
