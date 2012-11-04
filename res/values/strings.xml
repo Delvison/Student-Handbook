@@ -25,5 +25,11 @@
     <string name="locationString">where yo class at</string>
     <string name="miscString">name of misc</string>
     <string name="gradeString">grade of this course</string>
+    <string-array name="reoccurenceStringArray">
+        <item >MWF</item>
+        <item >TH</item>
+        <item >WM</item>
+        <item >Weekly</item>
+    </string-array>
     
 </resources>
