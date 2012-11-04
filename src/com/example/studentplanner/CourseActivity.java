@@ -23,14 +23,20 @@ public class CourseActivity extends Activity {
 	        	cName = extras.getString("key");
 	        }
 	        this.initCourse(cName);
+	        courseName = (TextView) findViewById(R.id.textView1);
+	        courseName.setText(cName);
+
+
 	    }
 
 	  public void initCourse(String c){
-		 // db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR, Description VARCHAR," +
-	    	//		" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT )");
+	
+	    //	db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR, Description VARCHAR," +
+	    //	    	" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT, " +
+	    //			" Occurences VARCHAR)");
 	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 	       //get values for the current semester being viewed
-    Cursor cursor = db.rawQuery("select * from Courses where name ='"+c+"'", null);
+    Cursor cursor = db.rawQuery("select * from Courses where CourseName ='"+c+"'", null);
       //get those values
     cursor.moveToFirst();
     String name = cursor.getString(cursor.getColumnIndex("CourseName"));
@@ -49,17 +55,16 @@ public class CourseActivity extends Activity {
       //create a course object
     Course co = new Course(name,desc,loc,true);
      //display information on the view
-     courseName = (TextView) findViewById(R.id.textView1);
      cDesc = (TextView) findViewById(R.id.textView2);
      cTime = (TextView) findViewById(R.id.textView4);
      cLoc = (TextView) findViewById(R.id.textView3);
      cDays = (TextView) findViewById(R.id.textView5);
      
-     courseName.setText(name);
      cDesc.setText(desc);
      cTime.setText(startHr+":"+startMin);
      cLoc.setText(loc);
      cDays.setText(occur);
+    
      }
 }
 

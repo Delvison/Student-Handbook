@@ -1,6 +1,8 @@
 package com.example.studentplanner;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -80,25 +82,25 @@ public class CourseListviewActivity extends ListActivity {
 	       	  
 	        }catch(SQLiteException e){
 	            // Create the alert box
-	          // AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+	           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
 
 	           // Set the message to display
-	         //  alertbox.setMessage("Welcome! To get started please click on Add Semester!");
+	           alertbox.setMessage("Welcome! To get started please click on Add Course!");
 
 	           // Add a neutral button to the alert box and assign a click listener
-	        //   alertbox.setNeutralButton("Add Semester", new DialogInterface.OnClickListener() {
+	           alertbox.setNeutralButton("Add Course", new DialogInterface.OnClickListener() {
 
 	               // Click listener on the neutral button of alert box
-	          //     public void onClick(DialogInterface arg0, int arg1) {
+	               public void onClick(DialogInterface arg0, int arg1) {
 
 	                   // The neutral button was clicked
-	            	 //  Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
-	                 //  startActivity(intent);
-	              // }
-	          // });
+	            	   Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
+	                   startActivity(intent);
+	               }
+	           });
 
 	            // show the alert box
-	          // alertbox.show();
+	           alertbox.show();
 	       }
 	        
 	    }//end of onCreate()
