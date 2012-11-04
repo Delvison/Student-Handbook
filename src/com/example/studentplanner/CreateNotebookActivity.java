@@ -1,9 +1,9 @@
 package com.example.studentplanner;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.Menu;
+import android.os.Bundle;
+import android.view.View;
 
 public class CreateNotebookActivity extends Activity {
 
@@ -11,12 +11,6 @@ public class CreateNotebookActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_notebook_view);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.create_notebook_view, menu);
-        return true;
     }
     
     public void handleClick1(View v){

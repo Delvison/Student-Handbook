@@ -11,10 +11,4 @@ public class NoteViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_view);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.note_view, menu);
-        return true;
-    }
 }

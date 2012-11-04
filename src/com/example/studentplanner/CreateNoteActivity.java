@@ -12,9 +12,4 @@ public class CreateNoteActivity extends Activity {
         setContentView(R.layout.create_note_view);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.create_note_view, menu);
-        return true;
-    }
 }

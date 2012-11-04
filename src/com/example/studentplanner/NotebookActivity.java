@@ -25,18 +25,13 @@ public class NotebookActivity extends Activity {
     	//creates a new database. Needs to be connected to a single database and added as a table
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
     	
-    	Cursor c = db.rawQuery("select , null);
-    	c.moveToFirst();
+    	//Cursor c = db.rawQuery("select , null);
+    	//c.moveToFirst();
     	for(int i =0; i<notes.size();i++){
         	//dynamically create note buttons based on the Note array
-    		Button tempButton = new Button();
+    		//Button tempButton = new Button();
         }
     	
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.notebook_view, menu);
-        return true;
-    }
 }
