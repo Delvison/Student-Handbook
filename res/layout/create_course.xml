@@ -98,7 +98,8 @@
         <Spinner
             android:id="@+id/reoccurSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+              android:entries="@array/reoccurenceStringArray" />
 
         <Button
             android:id="@+id/createCourse"
