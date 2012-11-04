@@ -7,12 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 public class CreateCourseActivity extends Activity {
     Button createCourse;
+    String[] spinnerOccur;
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +26,11 @@ public class CreateCourseActivity extends Activity {
     public void handleClick1(View v){
     	
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
+    	//db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR, Description VARCHAR," +
+    	//		" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT )");
     	db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR, Description VARCHAR," +
-    			" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT )");
+    	    	" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT " +
+    			" Occurences VARCHAR)");
     	
     	//extract courseName from view
     	EditText editName = (EditText) findViewById(R.id.editName);
@@ -49,6 +55,9 @@ public class CreateCourseActivity extends Activity {
         int startMinute = timePicker1.getCurrentMinute(); //is this right?
         int startHour = timePicker1.getCurrentHour(); //is this right?
 
+        Spinner reoccurSpinner = (Spinner) findViewById(R.id.reoccurSpinner);
+        String occurences = (String) reoccurSpinner.getSelectedItem();
+        
         ContentValues values = new ContentValues();
         
         values.put("CourseName", course);
@@ -61,6 +70,8 @@ public class CreateCourseActivity extends Activity {
 
         values.put("HourStart", startHour);
         values.put("MinuteStart", startMinute);
+        
+        values.put("Occurences", occurences);
         
         db.insert("Courses", null, values);
         
