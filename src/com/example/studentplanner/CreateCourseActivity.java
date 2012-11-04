@@ -1,5 +1,6 @@
 package com.example.studentplanner;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,10 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TimePicker;
 
-public class CreateCourseActivity {
+public class CreateCourseActivity extends Activity {
     Button createCourse;
     
     public void onCreate(Bundle savedInstanceState) {
@@ -28,15 +28,15 @@ public class CreateCourseActivity {
     	
     	//extract courseName from view
     	EditText editName = (EditText) findViewById(R.id.editName);
-    	String course = (String) editName.toString();
+    	String course = (String) editName.getText().toString();
     	
     	//extract description from view
     	EditText editDescription = (EditText) findViewById(R.id.editDescription);
-    	String descript = (String) editDescription.toString();
+    	String descript = (String) editDescription.getText().toString();
     	
     	//extract location from view
     	EditText editLocation = (EditText) findViewById(R.id.editLocation);
-    	String loc = (String) editLocation.toString();
+    	String loc = (String) editLocation.getText().toString();
     	
     	//extract start date from view
     	DatePicker datePicker1 = (DatePicker) findViewById(R.id.datePicker1);
@@ -67,7 +67,8 @@ public class CreateCourseActivity {
         //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();		
       
-        Intent intent = new Intent(getApplicationContext(), SemesterActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        //putExtras() ... take user to the new course they just created
         startActivity(intent);
         
     }
