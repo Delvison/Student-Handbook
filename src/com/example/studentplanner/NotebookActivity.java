@@ -24,11 +24,12 @@ public class NotebookActivity extends Activity {
     public void initNotebook(){
     	//creates a new database. Needs to be connected to a single database and added as a table
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
+    	
     	Cursor c = db.rawQuery("select , null);
     	c.moveToFirst();
     	for(int i =0; i<notes.size();i++){
         	//dynamically create note buttons based on the Note array
-    		
+    		Button tempButton = new Button();
         }
     	
     }
