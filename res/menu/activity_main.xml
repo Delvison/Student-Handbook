@@ -2,4 +2,5 @@
     <item android:id="@+id/addEvent" android:orderInCategory="100" android:title="+Add Event"></item>
     <item android:id="@+id/addAssignment" android:orderInCategory="100" android:title="+Add Assignment"></item>
     <item android:id="@+id/viewEvents" android:orderInCategory="100" android:title="View Events"></item>
+    <item android:id="@+id/item1" android:title="Edit Semester" android:orderInCategory="100"></item>
 </menu>

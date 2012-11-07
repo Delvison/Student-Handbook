@@ -14,43 +14,51 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class CourseListviewActivity extends ListActivity {
-	String[] courseArr;
+
+public class AssignmentListviewActivity extends ListActivity {
+	String[] assignArr;
+	String cName;
+	
 	
 	   @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
+	        Bundle extras = getIntent().getExtras();
+	        if (extras != null){
+	        	cName = extras.getString("key");
+	        }
+	        
 	        try{
 	            //open database
 	    	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 	    	    //query. receive a cursor
-	    	    Cursor c= db.rawQuery("SELECT CourseName FROM Courses", null);
+	    	    Cursor cursor = db.rawQuery("select Name from Assignments where Course ='"+cName+"'", null);
 	    	    //count how many items in cursor. add 1 to leave space for add semester option
-	    	    int i = c.getCount() + 1;
+	    	    int i = cursor.getCount() + 1;
 	    	    //instantiate array of semesters by size of the cursor + 1
-	    	    courseArr = new String[i];
+	    	    assignArr = new String[i];
 	    	    //set up a count int to keep track of array positions
 	    	    int count = 0;
 	            //move the cursor to first position
-	    	    c.moveToFirst();
+	    	    cursor.moveToFirst();
 	    	    
 	            //while the cursor position isn't passed the last item in the cursor 
-	    	    while(c.isAfterLast()==false) {
+	    	    while(cursor.isAfterLast()==false) {
 	    	    		//store the string in "Session" column into the array of semesters
-	    	    		courseArr[count] = c.getString(c.getColumnIndex("CourseName"));
+	    	    		assignArr[count] = cursor.getString(cursor.getColumnIndex("Name"));
 	    	    		//increment count
 	    	    		count++;
 	    	    		//move cursor by 1
-	    	    		c.moveToNext();
+	    	    		cursor.moveToNext();
 	    	    }
 	    	    //add an "add semester option
-	    	    courseArr[count] = new String("+Add Course");
+	    	    assignArr[count] = new String("+Add Assignment");
 	    	    //close the cursor
-	    	    c.close();
+	    	    cursor.close();
 	    	    //close the database
 	       	   	db.close();
 	       	   	//set a listadapter, use the semester_menu_view view and the semesterArr array
-	       	   	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_listview,courseArr));//needs an array
+	       	   	setListAdapter(new ArrayAdapter<String>(this, R.layout.assignment_listview,assignArr));//needs an array
 	       	   	//get the list view from the view
 	       	   	ListView listView = getListView();
 	       	   	//set the listview's textfilter to enabled
@@ -61,19 +69,19 @@ public class CourseListviewActivity extends ListActivity {
 	       	   		public void onItemClick(AdapterView<?> parent, View view,
 	       	   			int position, long id) {
 	       	   				//this string holds the list item clicked
-	       	   				String rightMeow = courseArr[position];
+	       	   				String rightMeow = assignArr[position];
 
 	       	   				// When clicked, show a toast with the TextView text
 	       	   				//Toast.makeText(getApplicationContext(),
 	       	   				//((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 	       	   				//if item clicked equals add semester
 	       	   				
-	       	   				if (rightMeow.equals("+Add Course")){  
-	       	   					Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
+	       	   				if (rightMeow.equals("+Add Assignment")){  
+	       	   					Intent intent = new Intent(getApplicationContext(), CreateAssignmentActivity.class);
 	       	   					//then go to the CreateSemesterActivity
 	       	   					startActivity(intent);
 	       	   				} else {
-	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+	       	   					Intent intent = new Intent(getApplicationContext(), AssignmentActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
 	       	   				}
@@ -81,20 +89,21 @@ public class CourseListviewActivity extends ListActivity {
 	       	   	}); //close listener
 	       	  
 	        }catch(SQLiteException e){
+
 	            // Create the alert box
 	           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
 
 	           // Set the message to display
-	           alertbox.setMessage("No Courses Found. To get started please click on Add Course!");
+	           alertbox.setMessage("No Assignments Exist for this Course!");
 
 	           // Add a neutral button to the alert box and assign a click listener
-	           alertbox.setNeutralButton("Add Course", new DialogInterface.OnClickListener() {
+	           alertbox.setNeutralButton("Add Assignment", new DialogInterface.OnClickListener() {
 
 	               // Click listener on the neutral button of alert box
 	               public void onClick(DialogInterface arg0, int arg1) {
 
 	                   // The neutral button was clicked
-	            	   Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
+	            	   Intent intent = new Intent(getApplicationContext(), CreateAssignmentActivity.class);
 	                   startActivity(intent);
 	               }
 	           });

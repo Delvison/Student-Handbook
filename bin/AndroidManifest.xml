@@ -42,7 +42,7 @@
         </activity>
          <activity
             android:name=".CreateCourseActivity"
-            android:label="Hello!" >
+            android:label="Create Course" >
         </activity>      
         <activity
             android:name=".CourseListviewActivity"
@@ -60,6 +60,32 @@
             android:name=".CourseActivity"
             android:label="Course" >
         </activity>
+          <activity
+            android:name=".AssignmentListviewActivity"
+            android:label="Assignments" >
+        </activity>
+           <activity
+            android:name=".AssignmentActivity"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".EditAssignmentActivity"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".ExamListviewActivity"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".ExamActivity"
+            android:label="Assignments" >
+        </activity>
+         <activity
+            android:name=".EditExamActivity"
+            android:label="Assignments" >
+        </activity>
+        
+        
     </application>
 
 </manifest>

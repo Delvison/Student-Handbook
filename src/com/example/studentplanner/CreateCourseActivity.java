@@ -28,7 +28,7 @@ public class CreateCourseActivity extends Activity {
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
     	//db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR, Description VARCHAR," +
     	//		" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT )");
-    	db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR, Description VARCHAR," +
+    	db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR unique, Description VARCHAR," +
     	    	" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT, " +
     			" Occurences VARCHAR)");
     	
@@ -78,7 +78,7 @@ public class CreateCourseActivity extends Activity {
         //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();		
       
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CourseListviewActivity.class);
         //putExtras() ... take user to the new course they just created
         startActivity(intent);
         

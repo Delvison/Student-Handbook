@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Edit" />
+        android:text="Edit" 
+        android:onClick="clickHandler"/>
+        
 
     <TextView
         android:id="@+id/examView1"
@@ -107,5 +109,24 @@
         android:layout_alignBottom="@+id/textView6"
         android:layout_toRightOf="@+id/textView4"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="25dp"
+        android:text="Status:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="Status"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
