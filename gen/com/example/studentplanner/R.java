@@ -9,8 +9,9 @@ package com.example.studentplanner;
 
 public final class R {
     public static final class array {
-        public static final int reoccurenceStringArray=0x7f060001;
-        public static final int session_array=0x7f060000;
+        public static final int reoccurenceStringArray=0x7f050002;
+        public static final int semesters=0x7f050000;
+        public static final int session_array=0x7f050001;
     }
     public static final class attr {
     }
@@ -22,6 +23,7 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int LinearLayout1=0x7f09003b;
         public static final int addAssignment=0x7f090040;
         public static final int addEvent=0x7f09003f;
@@ -113,28 +115,127 @@ public final class R {
         public static final int progress_view=0x7f030013;
         public static final int semester_listview=0x7f030014;
         public static final int semester_view=0x7f030015;
+=======
+        public static final int RelativeLayout1=0x7f090035;
+        public static final int addAssignment=0x7f090040;
+        public static final int addEvent=0x7f09003f;
+        public static final int assignmentButton=0x7f09001b;
+        public static final int assignmentDatePicker1=0x7f090020;
+        public static final int assignmentText1=0x7f09001f;
+        public static final int assignmentText2=0x7f090021;
+        public static final int assignmentView1=0x7f090014;
+        public static final int button1=0x7f090002;
+        public static final int button2=0x7f090037;
+        public static final int button3=0x7f090039;
+        public static final int checkBox1=0x7f090029;
+        public static final int courseSpinner1=0x7f09001e;
+        public static final int coursesButton1=0x7f09003e;
+        public static final int createAssignment=0x7f09000e;
+        public static final int createCourse=0x7f090026;
+        public static final int createExam=0x7f090011;
+        public static final int createMisc=0x7f09002a;
+        public static final int createSem=0x7f090034;
+        public static final int createSemester=0x7f09002e;
+        public static final int datePicker1=0x7f090001;
+        public static final int datePicker2=0x7f090009;
+        public static final int editButton1=0x7f090013;
+        public static final int editDescription=0x7f090023;
+        public static final int editLocation=0x7f090024;
+        public static final int editName=0x7f090022;
+        public static final int editText1=0x7f09000c;
+        public static final int editText2=0x7f09000d;
+        public static final int editText3=0x7f09002f;
+        public static final int editText4=0x7f090030;
+        public static final int editText5=0x7f090031;
+        public static final int examButton=0x7f09001d;
+        public static final int examDatePicker1=0x7f090028;
+        public static final int examText1=0x7f090027;
+        public static final int examView1=0x7f090033;
+        public static final int listView1=0x7f090032;
+        public static final int miscButton1=0x7f09003d;
+        public static final int progressBar1=0x7f09003c;
+        public static final int progressButton=0x7f09001c;
+        public static final int radio0=0x7f090004;
+        public static final int radio2=0x7f090005;
+        public static final int radioGroup1=0x7f090003;
+        public static final int reoccurSpinner=0x7f090025;
+        public static final int semesterEndDate=0x7f09002d;
+        public static final int semesterStartDate=0x7f09002c;
+        public static final int sessionSpinner=0x7f09002b;
+        public static final int spinner1=0x7f090007;
+        public static final int spinner2=0x7f090010;
+        public static final int tableRow1=0x7f090012;
+        public static final int tableRow2=0x7f090036;
+        public static final int tableRow3=0x7f090038;
+        public static final int tableRow4=0x7f09003a;
+        public static final int tableRow5=0x7f09003b;
+        public static final int textView1=0x7f090006;
+        public static final int textView10=0x7f090019;
+        public static final int textView11=0x7f09001a;
+        public static final int textView2=0x7f090008;
+        public static final int textView3=0x7f09000a;
+        public static final int textView4=0x7f09000b;
+        public static final int textView5=0x7f09000f;
+        public static final int textView6=0x7f090015;
+        public static final int textView7=0x7f090018;
+        public static final int textView8=0x7f090016;
+        public static final int textView9=0x7f090017;
+        public static final int timePicker1=0x7f090000;
+        public static final int viewEvents=0x7f090041;
+    }
+    public static final class layout {
+        public static final int activity_main=0x7f030000;
+        public static final int activity_semester_create=0x7f030001;
+        public static final int add_assignment_view=0x7f030002;
+        public static final int add_exam_view=0x7f030003;
+        public static final int assignment_view=0x7f030004;
+        public static final int course_listview=0x7f030005;
+        public static final int course_view=0x7f030006;
+        public static final int create_assignment_view=0x7f030007;
+        public static final int create_course=0x7f030008;
+        public static final int create_exam_view=0x7f030009;
+        public static final int create_misc=0x7f03000a;
+        public static final int create_note_view=0x7f03000b;
+        public static final int create_notebook_view=0x7f03000c;
+        public static final int create_semester=0x7f03000d;
+        public static final int create_semester_view=0x7f03000e;
+        public static final int edit_assignment_view=0x7f03000f;
+        public static final int edit_exam_view=0x7f030010;
+        public static final int events_view=0x7f030011;
+        public static final int exam_view=0x7f030012;
+        public static final int main_view=0x7f030013;
+        public static final int misc_listview=0x7f030014;
+        public static final int misc_view=0x7f030015;
+        public static final int note_view=0x7f030016;
+        public static final int notebook_view=0x7f030017;
+        public static final int progress_view=0x7f030018;
+        public static final int semester_button=0x7f030019;
+        public static final int semester_listview=0x7f03001a;
+        public static final int semester_menu_view=0x7f03001b;
+        public static final int semester_view=0x7f03001c;
+>>>>>>> c7573793d3269f5e5ccd85be34ae32d767f5dd62
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int courseString=0x7f05000c;
-        public static final int descriptionString =0x7f05000d;
-        public static final int fall=0x7f050004;
-        public static final int gradeString=0x7f050010;
-        public static final int hello_world=0x7f050001;
-        public static final int locationString=0x7f05000e;
-        public static final int menu_settings=0x7f050002;
-        public static final int miscString=0x7f05000f;
-        public static final int semesterString=0x7f05000b;
-        public static final int spring=0x7f050005;
-        public static final int summer=0x7f050007;
-        public static final int title_activity_create_semester=0x7f050008;
-        public static final int title_activity_main=0x7f050003;
-        public static final int title_activity_semester_create=0x7f050009;
-        public static final int title_activity_semester_menu=0x7f05000a;
-        public static final int winter=0x7f050006;
+        public static final int app_name=0x7f060000;
+        public static final int courseString=0x7f06000c;
+        public static final int descriptionString =0x7f06000d;
+        public static final int fall=0x7f060004;
+        public static final int gradeString=0x7f060010;
+        public static final int hello_world=0x7f060001;
+        public static final int locationString=0x7f06000e;
+        public static final int menu_settings=0x7f060002;
+        public static final int miscString=0x7f06000f;
+        public static final int semesterString=0x7f06000b;
+        public static final int spring=0x7f060005;
+        public static final int summer=0x7f060007;
+        public static final int title_activity_create_semester=0x7f060008;
+        public static final int title_activity_main=0x7f060003;
+        public static final int title_activity_semester_create=0x7f060009;
+        public static final int title_activity_semester_menu=0x7f06000a;
+        public static final int winter=0x7f060006;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
