@@ -74,10 +74,12 @@ public class MainActivity extends ListActivity {
        	   					Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
        	   					//then go to the CreateSemesterActivity
        	   					startActivity(intent);
+       	   					finish();
        	   				} else {
        	   					Intent intent = new Intent(getApplicationContext(), SemesterActivity.class);
        	   					intent.putExtra("key", rightMeow);
        	   					startActivity(intent);
+       	   					
        	   				}
        	   		}
        	   	}); //close listener
@@ -98,10 +100,12 @@ public class MainActivity extends ListActivity {
                    // The neutral button was clicked
             	   Intent intent = new Intent(getApplicationContext(), CreateSemesterActivity.class);
                    startActivity(intent);
+                   finish();
                }
            });
 
             // show the alert box
+           alertbox.setCancelable(false);
            alertbox.show();
        }
         

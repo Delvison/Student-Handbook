@@ -72,7 +72,7 @@ Button createMisc;
         values.put("HourStart", startHour);
         values.put("MinuteStart", startMinute);
         
-        values.put("Occurences", occurences);
+     //   values.put("Occurences", occurences);
         
         db.insert("Miscs", null, values);
         

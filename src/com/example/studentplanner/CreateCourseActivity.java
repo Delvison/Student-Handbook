@@ -81,6 +81,7 @@ public class CreateCourseActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), CourseListviewActivity.class);
         //putExtras() ... take user to the new course they just created
         startActivity(intent);
+        finish();
         
     }
 }

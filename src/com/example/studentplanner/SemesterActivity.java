@@ -83,7 +83,11 @@ public class SemesterActivity extends Activity {
 	          case R.id.viewEvents:
 		            startActivity(new Intent(this, CreateCourseActivity.class));
 		          return true;
-	          
+	          case R.id.editSemester:
+	        	  Intent i = new Intent(this, EditSemesterActivity.class);
+	        	  i.putExtra("key", sName);
+	        	  startActivity(i);
+		            return true;
 		    }
 	        return super.onOptionsItemSelected(item);
 	    }

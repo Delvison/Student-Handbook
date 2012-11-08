@@ -72,10 +72,12 @@ public class CourseListviewActivity extends ListActivity {
 	       	   					Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
 	       	   					//then go to the CreateSemesterActivity
 	       	   					startActivity(intent);
+	       	   					finish();
 	       	   				} else {
 	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
+	       	   					finish();
 	       	   				}
 	       	   		}
 	       	   	}); //close listener

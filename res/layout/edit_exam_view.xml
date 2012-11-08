@@ -10,8 +10,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Delete" 
-        android:onClick="deleteHandler" />
+        android:onClick="deleteHandler"
+        android:text="Delete" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Complete? (Check if completed.)" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +55,6 @@
             android:id="@+id/datePicker1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -70,8 +75,6 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number|textPersonName" >
-
-            <requestFocus />
         </EditText>
 
         <TextView
@@ -88,22 +91,13 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number" />
-
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Complete? (Check if completed.)" />
-    
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Done" 
-        android:onClick="doneHandler"/>
-    
+        android:onClick="doneHandler"
+        android:text="Done" />
 
 </LinearLayout>

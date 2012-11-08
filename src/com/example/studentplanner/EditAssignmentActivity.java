@@ -1,7 +1,9 @@
 package com.example.studentplanner;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -100,7 +102,7 @@ public class EditAssignmentActivity extends Activity {
 		values.put("Course", course);
 		if (complete.isChecked()) {
 			values.put("Complete", 1);
-		}else{
+		} else {
 			values.put("Complete", 0);
 		}
 
@@ -113,15 +115,44 @@ public class EditAssignmentActivity extends Activity {
 				CourseActivity.class);
 		intent.putExtra("key", course);
 		startActivity(intent);
+		finish();
 	}
-	
-	public void deleteHandler(View v) {
-		db.delete("Assignments", "Name=" + "'" + aName + "'", null);
-		db.close();
 
-		Intent intent = new Intent(getApplicationContext(),
-				CourseActivity.class);
-		intent.putExtra("key", course);
-		startActivity(intent);
+	public void deleteHandler(View v) {
+
+		AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+
+		// Set the message to display
+		alertbox.setMessage("WARNING! This will delete this Assignment."
+				+ " Would you like to continue?");
+
+		// when clicked no
+		alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				// do nothing
+			}
+		});
+		// when clicked yes
+		alertbox.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
+
+			// Click listener on the neutral button of alert box
+			public void onClick(DialogInterface arg0, int arg1) {
+				db.delete("Assignments", "Name=" + "'" + aName + "'", null);
+
+				// must also delete everything belonging to semester
+				db.close();
+				// The neutral button was clicked
+				Intent intent = new Intent(getApplicationContext(),
+						CourseActivity.class);
+				intent.putExtra("key", course);
+				startActivity(intent);
+				finish();
+			}
+		});
+
+		// show the alert box
+		alertbox.show();
 	}
 }

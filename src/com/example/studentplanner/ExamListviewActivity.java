@@ -80,10 +80,12 @@ public class ExamListviewActivity extends ListActivity {
 	       	   					Intent intent = new Intent(getApplicationContext(), CreateExamActivity.class);
 	       	   					//then go to the CreateSemesterActivity
 	       	   					startActivity(intent);
+	       	   					finish();
 	       	   				} else {
 	       	   					Intent intent = new Intent(getApplicationContext(), ExamActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
+	       	   					finish();
 	       	   				}
 	       	   		}
 	       	   	}); //close listener

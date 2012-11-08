@@ -71,6 +71,7 @@ public class CreateSemesterActivity extends Activity {
 			Intent intent = new Intent(getApplicationContext(),
 					MainActivity.class);
 			startActivity(intent);
+			finish();
 		} catch (SQLiteConstraintException e) {
 			// Create the alert box
 			AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
@@ -84,12 +85,6 @@ public class CreateSemesterActivity extends Activity {
 
 						// Click listener on the neutral button of alert box
 						public void onClick(DialogInterface arg0, int arg1) {
-
-							// The neutral button was clicked
-							Intent intent = new Intent(getApplicationContext(),
-									CreateSemesterActivity.class);
-							startActivity(intent);
-
 						}
 					});
 

@@ -1,5 +1,11 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Light" />
+    <style name="AppTheme" parent="android:Theme" />      
+  <style name="MyCustomTheme" parent="android:Theme">
+    <!--    <item name="android:windowBackground">@drawable/my_gradient</item> -->
+   </style>
+          <style name="MyCustomButton" parent="android:Widget.Button">
+        <!--   <item name="android:background">@drawable/patched_button</item> -->
+       </style>
 
 </resources>

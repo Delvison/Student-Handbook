@@ -80,10 +80,12 @@ public class AssignmentListviewActivity extends ListActivity {
 	       	   					Intent intent = new Intent(getApplicationContext(), CreateAssignmentActivity.class);
 	       	   					//then go to the CreateSemesterActivity
 	       	   					startActivity(intent);
+	       	   					finish();
 	       	   				} else {
 	       	   					Intent intent = new Intent(getApplicationContext(), AssignmentActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
+	       	   					finish();
 	       	   				}
 	       	   		}
 	       	   	}); //close listener

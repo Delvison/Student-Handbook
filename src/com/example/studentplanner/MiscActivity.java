@@ -56,7 +56,7 @@ public class MiscActivity extends Activity {
     cursor.close();
     db.close();
       //create a course object
-    Misc mi = new Misc(name,desc,loc,b);							//how are we getting the boolean value now
+   // Misc mi = new Misc(name,desc,loc,b);							//how are we getting the boolean value now
      //display information on the view
      mDesc = (TextView) findViewById(R.id.textView2);
      mTime = (TextView) findViewById(R.id.textView4);

@@ -77,6 +77,7 @@ public class CreateAssignmentActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
         intent.putExtra("key", course);
         startActivity(intent);
+        finish();
     }
     
     public void populateCourses() {
