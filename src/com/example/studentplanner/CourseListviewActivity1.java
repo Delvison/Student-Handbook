@@ -14,7 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class CourseListviewActivity extends ListActivity {
+public class CourseListviewActivity1 extends ListActivity {
 	String[] courseArr;
 	
 	   @Override
@@ -72,12 +72,10 @@ public class CourseListviewActivity extends ListActivity {
 	       	   					Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
 	       	   					//then go to the CreateSemesterActivity
 	       	   					startActivity(intent);
-	       	   					finish();
 	       	   				} else {
-	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity1.class);
+	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
-	       	   					finish();
 	       	   				}
 	       	   		}
 	       	   	}); //close listener
@@ -87,7 +85,7 @@ public class CourseListviewActivity extends ListActivity {
 	           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
 
 	           // Set the message to display
-	           alertbox.setMessage("No Courses Found. To get started please click on Add Course!");
+	           alertbox.setMessage("Welcome! To get started please click on Add Course!");
 
 	           // Add a neutral button to the alert box and assign a click listener
 	           alertbox.setNeutralButton("Add Course", new DialogInterface.OnClickListener() {

@@ -65,6 +65,20 @@
             android:theme="@style/MyCustomTheme"
             android:label="Course" >
         </activity>
+<<<<<<< HEAD
+        <activity
+            android:name=".CourseActivity1"
+            android:label="Course1" >
+        </activity>
+        <activity
+            android:name=".CourseListviewActivity1"
+            android:label="Courses1" >
+        </activity>
+         <activity
+            android:name=".CreateNoteActivity"
+            android:label="CreateNote" >
+        </activity>
+=======
           <activity
             android:name=".AssignmentListviewActivity"
             android:theme="@style/MyCustomTheme"
@@ -101,6 +115,7 @@
             android:label="Assignments" >
         </activity>
         
+>>>>>>> 8a83f1ba34fc8afe80273e9ca25c6b6d43a8594b
     </application>
 
 </manifest>

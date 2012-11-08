@@ -94,6 +94,6 @@ public class SemesterActivity extends Activity {
 	   
 	   public void clickHandler(View v) {
 		     Intent intent = new Intent(getApplicationContext(), CourseListviewActivity.class);
-		        startActivity(intent);
+		      startActivity(intent);
 	   }
 }
