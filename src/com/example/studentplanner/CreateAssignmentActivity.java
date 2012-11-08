@@ -39,16 +39,15 @@ public class CreateAssignmentActivity extends Activity {
     public void handleClick(View v){
     	
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
-    	db.execSQL("CREATE TABLE IF NOT EXISTS Assignments (Name VARCHAR, DueYear INT," +
-    			" DueMonth INT, DueDay INT, Description VARCHAR, PointsRecieved INT, MaxPoints INT, Course VARCHAR)");
+    	db.execSQL("CREATE TABLE IF NOT EXISTS Assignments (Name VARCHAR unique, DueYear INT," +
+    			" DueMonth INT, DueDay INT, Description VARCHAR, PointsRecieved INT, MaxPoints INT, Course VARCHAR, Complete INT)");
     	
     	//extract name from view
     	EditText nameText = (EditText) findViewById(R.id.assignmentText1);
     	String name = nameText.getText().toString();
   
-    	
     	//extract start date from view
-    	DatePicker assignmentDatePicker = (DatePicker) findViewById(R.id.semesterStartDate);
+    	DatePicker assignmentDatePicker = (DatePicker) findViewById(R.id.assignmentDatePicker1);
         int dueDay = assignmentDatePicker.getDayOfMonth();
         int dueMonth = assignmentDatePicker.getMonth();
         int dueYear = assignmentDatePicker.getYear();
@@ -56,12 +55,11 @@ public class CreateAssignmentActivity extends Activity {
         //extract description from the view
         EditText decText = (EditText) findViewById(R.id.assignmentText2);
         String description = decText.getText().toString();
-    	String course = (String) courses.getSelectedItem();
+    	String course = (String) courses.getSelectedItem().toString();
 
         ContentValues values = new ContentValues();
         
-        values.put("Name", name);
-        
+        values.put("Name", name);    
         values.put("DueYear", dueYear);
         values.put("DueMonth", dueMonth);
         values.put("DueDay", dueDay);
@@ -69,14 +67,17 @@ public class CreateAssignmentActivity extends Activity {
         values.put("PointsRecieved", 0);
         values.put("MaxPoints", 0);
         values.put("Course", course);
+        values.put("Complete", 0);
 
         db.insert("Assignments", null, values);
         
         //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();
       
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        intent.putExtra("key", course);
         startActivity(intent);
+        finish();
     }
     
     public void populateCourses() {
@@ -84,7 +85,7 @@ public class CreateAssignmentActivity extends Activity {
     	//open database
 	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 	    //query. receive a cursor
-	    Cursor c= db.rawQuery("SELECT Name FROM Assignments", null);
+	    Cursor c= db.rawQuery("SELECT CourseName FROM Courses", null);
 	    //count how many items in cursor. add 1 to leave space for add semester option
 	    int i = c.getCount();
 	    //instantiate array of semesters by size of the cursor + 1
@@ -97,7 +98,7 @@ public class CreateAssignmentActivity extends Activity {
         //while the cursor position isn't passed the last item in the cursor 
 	    while(c.isAfterLast()==false) {
 	    		//store the string in "Session" column into the array of semesters
-	    		coursesArr[count] = c.getString(c.getColumnIndex("Name"));
+	    		coursesArr[count] = c.getString(c.getColumnIndex("CourseName"));
 	    		//increment count
 	    		count++;
 	    		//move cursor by 1

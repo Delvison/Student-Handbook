@@ -20,41 +20,33 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="@string/semesterString"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/size" />
 
-
-
-
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/miscButton1"
-        android:layout_marginTop="92dp"
-        android:layout_toLeftOf="@+id/miscButton1" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-                <Button
-        android:id="@+id/coursesButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Courses"
-        android:onClick="clickHandler" />
-        
-        </TableRow>
-         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-                    <Button
+
+    
+
+    <Button
+        android:id="@+id/coursesButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="52dp"
+        android:onClick="clickHandler"
+        android:text="Courses" />
+
+    <Button
         android:id="@+id/miscButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/coursesButton1"
         android:text="Events" />
-
-        </TableRow>
-    </TableLayout>
 
 </RelativeLayout>

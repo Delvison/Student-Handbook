@@ -20,46 +20,52 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu"
-            android:label="Student Planner" >
-        </activity>
-
         <activity
             android:name=".CreateSemesterActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="@string/title_activity_semester_create" >
         </activity>
         <activity
             android:name=".CreateExamActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Add an Exam" >
         </activity>
         <activity
             android:name=".CreateAssignmentActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Add an Assignment" >
         </activity>
         <activity
             android:name=".SemesterActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Hello!" >
         </activity>
          <activity
             android:name=".CreateCourseActivity"
-            android:label="Hello!" >
+            android:theme="@style/MyCustomTheme"
+            android:label="Create Course" >
         </activity>      
         <activity
             android:name=".CourseListviewActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Courses" >
         </activity>
         <activity
             android:name=".NotebookActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Notebook" >
         </activity>
         <activity
             android:name=".NoteViewActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Note" >
         </activity>
         <activity
             android:name=".CourseActivity"
+            android:theme="@style/MyCustomTheme"
             android:label="Course" >
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".CourseActivity1"
             android:label="Course1" >
@@ -72,6 +78,44 @@
             android:name=".CreateNoteActivity"
             android:label="CreateNote" >
         </activity>
+=======
+          <activity
+            android:name=".AssignmentListviewActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+           <activity
+            android:name=".AssignmentActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".EditAssignmentActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".ExamListviewActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".ExamActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+         <activity
+            android:name=".EditExamActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+         <activity
+            android:name=".EditSemesterActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+        
+>>>>>>> 8a83f1ba34fc8afe80273e9ca25c6b6d43a8594b
     </application>
 
 </manifest>

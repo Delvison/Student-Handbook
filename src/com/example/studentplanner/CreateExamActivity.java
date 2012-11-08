@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -35,8 +34,8 @@ public class CreateExamActivity extends Activity {
     public void handleClick(View v){
     	
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
-    	db.execSQL("CREATE TABLE IF NOT EXISTS Exams (Name VARCHAR, DueYear INT," +
-    			" DueMonth INT, DueDay INT, PointsRecieved INT, MaxPoints INT, Course VARCHAR)");
+    	db.execSQL("CREATE TABLE IF NOT EXISTS Exams (Name VARCHAR unique, DueYear INT," +
+    			" DueMonth INT, DueDay INT, PointsRecieved INT, MaxPoints INT, Course VARCHAR, Complete INT)");
     	
     	//extract name from view
     	EditText nameText = (EditText) findViewById(R.id.examText1);
@@ -62,14 +61,17 @@ public class CreateExamActivity extends Activity {
         values.put("PointsRecieved", 0);
         values.put("MaxPoints", 0);
         values.put("Course", course);
+        values.put("Complete", 0);
 
         db.insert("Exams", null, values);
         
         //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();
       
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        intent.putExtra("key", course);
         startActivity(intent);
+        finish();
     }
     
     public void populateCourses() {
@@ -77,7 +79,7 @@ public class CreateExamActivity extends Activity {
     	//open database
 	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 	    //query. receive a cursor
-	    Cursor c= db.rawQuery("SELECT Name FROM Assignments", null);
+	    Cursor c= db.rawQuery("SELECT CourseName FROM Courses", null);
 	    //count how many items in cursor. add 1 to leave space for add semester option
 	    int i = c.getCount();
 	    //instantiate array of semesters by size of the cursor + 1
@@ -90,7 +92,7 @@ public class CreateExamActivity extends Activity {
         //while the cursor position isn't passed the last item in the cursor 
 	    while(c.isAfterLast()==false) {
 	    		//store the string in "Session" column into the array of semesters
-	    		coursesArr[count] = c.getString(c.getColumnIndex("Name"));
+	    		coursesArr[count] = c.getString(c.getColumnIndex("CourseName"));
 	    		//increment count
 	    		count++;
 	    		//move cursor by 1
