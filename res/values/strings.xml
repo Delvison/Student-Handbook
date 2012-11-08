@@ -31,5 +31,10 @@
         <item >MW</item>
         <item >Weekly</item>
     </string-array>
+    <string name="Add Note">Add Note</string>
+    <string name="Create Note">Create Note</string>
+    <string name="current date in title">current date in title</string>
+    <string name="Title">Title</string>
+    <string name="Done">Done</string>
     
 </resources>

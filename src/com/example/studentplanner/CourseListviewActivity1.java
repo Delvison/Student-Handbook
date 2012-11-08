@@ -14,7 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class CourseListviewActivity extends ListActivity {
+public class CourseListviewActivity1 extends ListActivity {
 	String[] courseArr;
 	
 	   @Override
@@ -73,7 +73,7 @@ public class CourseListviewActivity extends ListActivity {
 	       	   					//then go to the CreateSemesterActivity
 	       	   					startActivity(intent);
 	       	   				} else {
-	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity1.class);
+	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
 	       	   				}

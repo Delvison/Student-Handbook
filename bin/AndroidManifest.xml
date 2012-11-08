@@ -60,6 +60,18 @@
             android:name=".CourseActivity"
             android:label="Course" >
         </activity>
+        <activity
+            android:name=".CourseActivity1"
+            android:label="Course1" >
+        </activity>
+        <activity
+            android:name=".CourseListviewActivity1"
+            android:label="Courses1" >
+        </activity>
+         <activity
+            android:name=".CreateNoteActivity"
+            android:label="CreateNote" >
+        </activity>
     </application>
 
 </manifest>

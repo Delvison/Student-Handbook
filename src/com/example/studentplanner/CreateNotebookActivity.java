@@ -11,7 +11,8 @@ public class CreateNotebookActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_notebook_view);
-    }
+    
+}
     
     public void handleClick1(View v){
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
