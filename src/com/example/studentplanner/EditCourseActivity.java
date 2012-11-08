@@ -1,18 +1,17 @@
 package com.example.studentplanner;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-public class EditCourseActivity {
+public class EditCourseActivity extends Activity {
 	String cName;
 	EditText cNameInView;
 	TimePicker timeInView;
@@ -65,7 +64,17 @@ public class EditCourseActivity {
 		locInView.setText(loc);
 
 		reoccurInView = (Spinner) findViewById(R.id.reoccurSpinner);
-		//reoccurInView.setText????;
+		
+		int p = 0;
+		if (name.equals("MWF"))
+			p = 0;
+		if (name.equals("TH"))
+			p = 1;
+		if (name.equals("MW"))
+			p = 2;
+		if (name.equals("Weekly"))
+			p = 3;
+		reoccurInView.setSelection(p);		
 	}
 
 	public void handleClick(View v) {
@@ -75,7 +84,7 @@ public class EditCourseActivity {
 		int minGot = timeInView.getCurrentMinute();
 		String descGot = (String) descInView.getText().toString();
 		String locGot = (String) locInView.getText().toString();
-		//String occurGot = (String) reoccurInView.getSomething????
+		String occurGot = (String) reoccurInView.getSelectedItem().toString();
 
 		ContentValues values = new ContentValues();
 		values.put("CourseName", nameGot);
@@ -85,7 +94,7 @@ public class EditCourseActivity {
 		values.put("Location", locGot);
 		values.put("Occurences", occurGot);
 
-		db.update("Course", values, "Name=" + "'" + name + "'", null);
+		db.update("Courses", values, "Name=" + "'" + name + "'", null);
 		// close db
 
 		db.close();
