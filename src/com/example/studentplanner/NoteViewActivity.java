@@ -59,7 +59,7 @@ public class NoteViewActivity extends Activity {
 
 	public void doneHandle() {
 		// Intent to go back to notebook_view
-		Intent intent = new Intent(getApplicationContext(),NotebookActivity.class);
+		//Intent intent = new Intent(getApplicationContext(),NotebookActivity.class);
 		nText = noteText.getText().toString();
 		
 		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
