@@ -74,7 +74,7 @@ public class CourseListviewActivity extends ListActivity {
 	       	   					startActivity(intent);
 	       	   					finish();
 	       	   				} else {
-	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity1.class);
+	       	   					Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
 	       	   					intent.putExtra("key", rightMeow);
 	       	   					startActivity(intent);
 	       	   					finish();

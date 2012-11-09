@@ -18,7 +18,6 @@ public class EditCourseActivity extends Activity {
 	EditText descInView;
 	EditText locInView;
 	Spinner reoccurInView;
-	Course co;
 	SQLiteDatabase db;
 	String name;
 
@@ -41,7 +40,7 @@ public class EditCourseActivity extends Activity {
 				+ "'", null);
 		// get those values
 		c.moveToFirst();
-		name = c.getString(c.getColumnIndex("Name"));
+		name = c.getString(c.getColumnIndex("CourseName"));
 		String desc = c.getString(c.getColumnIndex("Description"));
 		String loc = c.getString(c.getColumnIndex("Location"));
 		int hour = c.getInt(c.getColumnIndex("HourStart"));
