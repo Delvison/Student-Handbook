@@ -30,7 +30,7 @@ public class CreateCourseActivity extends Activity {
     	//		" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT )");
     	db.execSQL("CREATE TABLE IF NOT EXISTS Courses (CourseName VARCHAR unique, Description VARCHAR," +
     	    	" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT, " +
-    			" Occurences VARCHAR)");
+    			" Occurences VARCHAR, Semester VARCHAR)");
     	
     	//extract courseName from view
     	EditText editName = (EditText) findViewById(R.id.editName);
@@ -58,6 +58,9 @@ public class CreateCourseActivity extends Activity {
         Spinner reoccurSpinner = (Spinner) findViewById(R.id.reoccurSpinner);
         String occurences = (String) reoccurSpinner.getSelectedItem();
         
+        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        String semester = (String) spinner2.getSelectedItem();
+        
         ContentValues values = new ContentValues();
         
         values.put("CourseName", course);
@@ -72,14 +75,15 @@ public class CreateCourseActivity extends Activity {
         values.put("MinuteStart", startMinute);
         
         values.put("Occurences", occurences);
+        values.put("Semester", semester);
         
         db.insert("Courses", null, values);
         
         //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();		
       
-        Intent intent = new Intent(getApplicationContext(), CourseListviewActivity.class);
-        //putExtras() ... take user to the new course they just created
+        Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        intent.putExtra("key", course);
         startActivity(intent);
         finish();
         

@@ -92,4 +92,11 @@ public class CourseActivity extends Activity {
 		intent.putExtra("key", cName);
 		startActivity(intent);
 	}
+	
+	public void progressClick(View v) {
+		Intent intent = new Intent(getApplicationContext(),
+				ProgressActivity.class);
+		intent.putExtra("key", cName);
+		startActivity(intent);
+	}
 }

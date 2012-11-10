@@ -30,7 +30,7 @@ Button createMisc;
     	//		" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT )");
     	db.execSQL("CREATE TABLE IF NOT EXISTS Miscs (MiscName VARCHAR, Description VARCHAR," +
     	    	" Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT, " +
-    			" Occurences VARCHAR)");
+    			" Occurences VARCHAR, Semester VARCHAR)");
     	
     	//extract miscName from view
     	EditText editName = (EditText) findViewById(R.id.editName);
@@ -56,8 +56,11 @@ Button createMisc;
         int startHour = timePicker1.getCurrentHour(); //is this right?
 
         //This really needs to be implemented in the Misc_view.xml
-        //Spinner reoccurSpinner = (Spinner) findViewById(R.id.reoccurSpinner);
-        //String occurences = (String) reoccurSpinner.getSelectedItem();
+        Spinner reoccurSpinner = (Spinner) findViewById(R.id.reoccurSpinner);
+        String occurences = (String) reoccurSpinner.getSelectedItem();
+        
+        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        String semester = (String) spinner2.getSelectedItem();
         
         ContentValues values = new ContentValues();
         
@@ -72,15 +75,16 @@ Button createMisc;
         values.put("HourStart", startHour);
         values.put("MinuteStart", startMinute);
         
-     //   values.put("Occurences", occurences);
+        values.put("Occurences", occurences);
+        values.put("Semester", semester);
         
         db.insert("Miscs", null, values);
         
         //db.execSQL("INSERT INTO Semesters VALUES(sessionName,startYear,startMonth,startDay,endYear,endMonth,endDay);");
         db.close();		
       
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        //putExtras() ... take user to the new course they just created
+        Intent intent = new Intent(getApplicationContext(), MiscActivity.class);
+        intent.putExtra("key", misc);
         startActivity(intent);
         
     }

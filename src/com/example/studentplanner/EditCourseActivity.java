@@ -1,7 +1,9 @@
 package com.example.studentplanner;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +22,7 @@ public class EditCourseActivity extends Activity {
 	Spinner reoccurInView;
 	SQLiteDatabase db;
 	String name;
+	String semester;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class EditCourseActivity extends Activity {
 		int hour = c.getInt(c.getColumnIndex("HourStart"));
 		int minute = c.getInt(c.getColumnIndex("MinuteStart"));
 		String occur = c.getString(c.getColumnIndex("Occurences"));
+		semester = c.getString(c.getColumnIndex("Semester"));
 		// close cursor and database
 		c.close();
 
@@ -92,6 +96,7 @@ public class EditCourseActivity extends Activity {
 		values.put("Description", descGot);
 		values.put("Location", locGot);
 		values.put("Occurences", occurGot);
+		values.put("Semester", semester);
 
 		db.update("Courses", values, "Name=" + "'" + name + "'", null);
 		// close db
@@ -99,18 +104,43 @@ public class EditCourseActivity extends Activity {
 		db.close();
 
 		Intent intent = new Intent(getApplicationContext(),
-				SemesterActivity.class);
-		//intent.putExtra("key", course);
+				CourseActivity.class);
+		intent.putExtra("key", nameGot);
 		startActivity(intent);
+		finish();
 	}
 	
 	public void deleteHandler(View v) {
-		db.delete("Courses", "Name=" + "'" + cName + "'", null);
-		db.close();
+		AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
 
-		Intent intent = new Intent(getApplicationContext(),
-				SemesterActivity.class);
-		//intent.putExtra("key", course);
-		startActivity(intent);
+		// Set the message to display
+		alertbox.setMessage("WARNING! This will delete this Course."
+				+ " Would you like to continue?");
+
+		// when clicked no
+		alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				// do nothing
+			}
+		});
+		// when clicked yes
+		alertbox.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
+
+			// Click listener on the neutral button of alert box
+			public void onClick(DialogInterface arg0, int arg1) {
+				db.delete("Courses", "CourseName=" + "'" + cName + "'", null);
+				db.close();
+				Intent intent = new Intent(getApplicationContext(),
+						SemesterActivity.class);
+				intent.putExtra("key", semester);
+				startActivity(intent);
+				finish();
+			}
+		});
+
+		// show the alert box
+		alertbox.show();
 	}
 }

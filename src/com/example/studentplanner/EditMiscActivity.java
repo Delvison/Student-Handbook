@@ -1,7 +1,9 @@
 package com.example.studentplanner;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,6 +24,7 @@ public class EditMiscActivity extends Activity {
 	Spinner reoccurInView;
 	SQLiteDatabase db;
 	String name;
+	String semester;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class EditMiscActivity extends Activity {
 	    int startMth = c.getInt(c.getColumnIndex("MonthStart"));
 	    int startDay = c.getInt(c.getColumnIndex("DayStart"));
 		String occur = c.getString(c.getColumnIndex("Occurences"));
+		semester = c.getString(c.getColumnIndex("Semester"));
 		// close cursor and database
 		c.close();
 
@@ -72,18 +76,14 @@ public class EditMiscActivity extends Activity {
 
 		reoccurInView = (Spinner) findViewById(R.id.spinner1);
 		
-		/*
 		int p = 0;
-		if (name.equals("MWF"))
+		if (name.equals("Monthly"))
 			p = 0;
-		if (name.equals("TH"))
-			p = 1;
-		if (name.equals("MW"))
-			p = 2;
 		if (name.equals("Weekly"))
-			p = 3;
-		reoccurInView.setSelection(p);		
-		*/
+			p = 1;
+		if (name.equals("Not Reoccuring"))
+			p = 2;
+		reoccurInView.setSelection(p);
 	}
 
 	public void handleClick(View v) {
@@ -108,6 +108,7 @@ public class EditMiscActivity extends Activity {
 		values.put("Description", descGot);
 		values.put("Location", locGot);
 		values.put("Occurences", occurGot);
+		values.put("Semester", semester);
 
 		db.update("Miscs", values, "Name=" + "'" + name + "'", null);
 		// close db
@@ -115,18 +116,42 @@ public class EditMiscActivity extends Activity {
 		db.close();
 
 		Intent intent = new Intent(getApplicationContext(),
-				SemesterActivity.class);
-		//intent.putExtra("key", course);
+				MiscActivity.class);
+		intent.putExtra("key", nameGot);
 		startActivity(intent);
 	}
 	
 	public void deleteHandler(View v) {
-		db.delete("Miscs", "Name=" + "'" + mName + "'", null);
-		db.close();
+		AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
 
-		Intent intent = new Intent(getApplicationContext(),
-				SemesterActivity.class);
-		//intent.putExtra("key", course);
-		startActivity(intent);
+		// Set the message to display
+		alertbox.setMessage("WARNING! This will delete this Misc Event."
+				+ " Would you like to continue?");
+
+		// when clicked no
+		alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				// do nothing
+			}
+		});
+		// when clicked yes
+		alertbox.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
+
+			// Click listener on the neutral button of alert box
+			public void onClick(DialogInterface arg0, int arg1) {
+				db.delete("Miscs", "MiscName=" + "'" + mName + "'", null);
+				db.close();
+				Intent intent = new Intent(getApplicationContext(),
+						SemesterActivity.class);
+				intent.putExtra("key", semester);
+				startActivity(intent);
+				finish();
+			}
+		});
+
+		// show the alert box
+		alertbox.show();
 	}
 }

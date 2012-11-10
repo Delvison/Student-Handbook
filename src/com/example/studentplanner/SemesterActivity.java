@@ -94,6 +94,14 @@ public class SemesterActivity extends Activity {
 	   
 	   public void clickHandler(View v) {
 		     Intent intent = new Intent(getApplicationContext(), CourseListviewActivity.class);
+		     intent.putExtra("key", sName);
 		      startActivity(intent);
 	   }
+	   
+		public void miscClick(View v) {
+			Intent intent = new Intent(getApplicationContext(),
+					MiscListviewActivity.class);
+			intent.putExtra("key", sName);
+			startActivity(intent);
+		}
 }
