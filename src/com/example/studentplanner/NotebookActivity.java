@@ -68,6 +68,7 @@ public class NotebookActivity extends ListActivity {
    	   				String note = stringArray[position];
    	   				Intent intent = new Intent(getApplicationContext(), NoteViewActivity.class);
    	   				intent.putExtra("NoteName", note);
+					intent.putExtra("CourseName",courseName);
    	   				startActivity(intent);
    	   				
    	   		}
