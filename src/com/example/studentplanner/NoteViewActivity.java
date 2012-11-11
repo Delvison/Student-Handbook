@@ -1,16 +1,15 @@
 package com.example.studentplanner;
 
-import com.example.studentplanner.R.id;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.Menu;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class NoteViewActivity extends Activity {
 	String cName;
@@ -21,6 +20,7 @@ public class NoteViewActivity extends Activity {
 	TextView noteName;
 	EditText noteText;
 	Bundle extras;
+	Button doneButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,9 +55,10 @@ public class NoteViewActivity extends Activity {
 		}
 		cursor.close();
 		db.close();
+		doneButton = (Button) findViewById(R.id.button1);
 	}
 
-	public void doneHandle() {
+	public void doneHandle(View v) {
 		// Intent to go back to notebook_view
 		//Intent intent = new Intent(getApplicationContext(),NotebookActivity.class);
 		nText = noteText.getText().toString();
@@ -70,7 +71,10 @@ public class NoteViewActivity extends Activity {
 		db.update("Notes",values,"NoteName = '"+nName+"'",null);
 		db.close();
 		
-		finish();
+		Intent intent = new Intent(getApplicationContext(), NotebookActivity.class);
+		intent.putExtra("CourseName", cName);
+		
+		startActivity(intent);
 
 	}
 }
