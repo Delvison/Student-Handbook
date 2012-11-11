@@ -62,6 +62,7 @@
         </activity>
         <activity
             android:name=".CourseActivity"
+<<<<<<< HEAD
             android:label="Course"
             android:theme="@style/MyCustomTheme" >
         </activity>
@@ -70,6 +71,16 @@
             android:label="CreateNote" >
         </activity>
         <activity
+=======
+            android:theme="@style/MyCustomTheme"
+            android:label="Course" >
+        </activity>
+         <activity
+            android:name=".CreateNoteActivity"
+            android:label="CreateNote" >
+        </activity>
+          <activity
+>>>>>>> ec116ace1172e78c83a681ef5b53761df3db2265
             android:name=".AssignmentListviewActivity"
             android:label="Assignments"
             android:theme="@style/MyCustomTheme" >
@@ -109,6 +120,40 @@
             android:label="Edit"
             android:theme="@style/MyCustomTheme" >
         </activity>
+<<<<<<< HEAD
+=======
+        <activity
+            android:name=".EditCourseActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Courses" >
+        </activity>
+        <activity
+            android:name=".EditMiscActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Miscs" >
+        </activity>
+        <activity
+            android:name=".MiscActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Miscs" >
+        </activity>
+        <activity
+            android:name=".MiscListviewActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Miscs" >
+        </activity>
+        <activity
+            android:name=".CreateMiscActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+        <activity
+            android:name=".ProgressActivity"
+            android:theme="@style/MyCustomTheme"
+            android:label="Assignments" >
+        </activity>
+        
+>>>>>>> ec116ace1172e78c83a681ef5b53761df3db2265
     </application>
 
 </manifest>

@@ -92,11 +92,19 @@ public class CourseActivity extends Activity {
 		intent.putExtra("key", cName);
 		startActivity(intent);
 	}
+<<<<<<< HEAD
 
 	public void notebookHandler(View v) {
 		Intent intent = new Intent(getApplicationContext(),
 				NotebookActivity.class);
 		intent.putExtra("CourseName", cName);
+=======
+	
+	public void progressClick(View v) {
+		Intent intent = new Intent(getApplicationContext(),
+				ProgressActivity.class);
+		intent.putExtra("key", cName);
+>>>>>>> ec116ace1172e78c83a681ef5b53761df3db2265
 		startActivity(intent);
 	}
 }
