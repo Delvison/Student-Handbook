@@ -4,6 +4,7 @@ import com.example.studentplanner.R.id;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,20 +35,19 @@ public class NoteViewActivity extends Activity {
 		if (extras != null) {
 			cName = extras.getString("CourseName");
 			courseName.setText(cName);
-
 			nName = (String) extras.getString("NoteName");
 			noteName.setText(nName);
 
 		}
-		initComponents();
+		initComponents(cName);
 	}
 
-	public void initComponents() { 
+	public void initComponents(String c) { 
 		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
 				null);
-		db.execSQL("CREATE TABLE IF NOT EXISTS Notes (CourseName VARCHAR, NoteName VARCHAR, Note VARCHAR)");
-
-		Cursor cursor = db.rawQuery("select * from Notes where CourseName = '"+cName+"' where NoteName = '"+nName+"'", null);
+		//Cursor cursor = db.rawQuery("select Note from Notes where CourseName = '"+c+"' AND where NoteName = '"+nName+"'", null);
+		Cursor cursor = db.rawQuery("select * from Notes where NoteName = '"+nName+"'", null);
+		cursor.moveToFirst();
 		nText = cursor.getString(cursor.getColumnIndex("Note"));
 		
 		if(nText != null){
@@ -64,7 +64,10 @@ public class NoteViewActivity extends Activity {
 		
 		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 		db.execSQL("update Notes set Note='"+nText+"' where NoteName = '"+nName+"'");
-
+		ContentValues values = new ContentValues();
+        values.put("Note", nText);	
+        
+		db.update("Notes",values,"NoteName = '"+nName+"'",null);
 		db.close();
 		
 		finish();

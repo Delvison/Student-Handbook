@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,8 +31,6 @@ public class CreateNoteActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
 			courseName = extras.getString("CourseName");
-			
-			
 		}  
         nName = (EditText) findViewById(R.id.editText1);
         cBox = (CheckBox) findViewById(R.id.checkBox1);
@@ -55,7 +54,16 @@ public class CreateNoteActivity extends Activity {
 
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS Notes (CourseName VARCHAR, NoteName VARCHAR,Note VARCHAR)");
-		db.execSQL("INSERT INTO Notes VALUES('"+courseName+"','"+noteName+"',null)");
+		//db.execSQL("INSERT INTO Notes VALUES('"+courseName+"','"+noteName+"',null)");
+		ContentValues values = new ContentValues();  
+		values.put("CourseName", courseName );
+		values.put("NoteName", noteName );
+		values.put("Note", "" );
+
+        db.insert("Notes", null, values);
+		
+		
+		
 		db.close();
 		
 		Intent intent = new Intent(getApplicationContext(), NoteViewActivity.class);

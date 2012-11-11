@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/Create Note"
+        android:text="@string/createNote"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText1"
-        android:text="@string/current date in title" />
+        android:text="@string/currentDateTitle" />
 
     <TextView
         android:id="@+id/textView2"

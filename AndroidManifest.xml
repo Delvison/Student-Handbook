@@ -22,100 +22,93 @@
         </activity>
         <activity
             android:name=".CreateSemesterActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="@string/title_activity_semester_create" >
+            android:label="@string/title_activity_semester_create"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateExamActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Add an Exam" >
+            android:label="Add an Exam"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateAssignmentActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Add an Assignment" >
+            android:label="Add an Assignment"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".SemesterActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Hello!" >
+            android:label="Hello!"
+            android:theme="@style/MyCustomTheme" >
         </activity>
-         <activity
+        <activity
             android:name=".CreateCourseActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Create Course" >
-        </activity>      
+            android:label="Create Course"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
         <activity
             android:name=".CourseListviewActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Courses" >
+            android:label="Courses"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".NotebookActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Notebook" >
+            android:label="Notebook"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".NoteViewActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Note" >
+            android:label="Note"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CourseActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Course" >
-        </activity>
-<<<<<<< HEAD
-        <activity
-            android:name=".CourseActivity1"
-            android:label="Course1" >
+            android:label="Course"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
-            android:name=".CourseListviewActivity1"
-            android:label="Courses1" >
-        </activity>
-         <activity
             android:name=".CreateNoteActivity"
             android:label="CreateNote" >
         </activity>
-=======
-          <activity
+        <activity
             android:name=".AssignmentListviewActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
-           <activity
+        <activity
             android:name=".AssignmentActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditAssignmentActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ExamListviewActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ExamActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
-         <activity
+        <activity
             android:name=".EditExamActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
-         <activity
+        <activity
             android:name=".EditSemesterActivity"
-            android:theme="@style/MyCustomTheme"
-            android:label="Assignments" >
+            android:label="Assignments"
+            android:theme="@style/MyCustomTheme" >
         </activity>
-        
->>>>>>> 8a83f1ba34fc8afe80273e9ca25c6b6d43a8594b
+        <activity
+            android:name=".EditCourseActivity"
+            android:label="Edit"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
     </application>
 
 </manifest>

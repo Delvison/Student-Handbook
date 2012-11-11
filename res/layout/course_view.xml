@@ -12,75 +12,69 @@
         android:layout_gravity="right"
         android:text="DAYS" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/courseString"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="@dimen/size" />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/courseString"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/size" />
 
-            <TextView
-                android:id="@+id/descView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="description here"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/descView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="description here"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/locView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/locationString"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/locView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/locationString"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/timeView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="TIME" />
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="TIME" />
 
-            <Button
-                android:id="@+id/assignmentButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="63dp"
-                android:onClick="clickHandler"
-                android:text="Assignments" />
+    <Button
+        android:id="@+id/assignmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:onClick="clickHandler"
+        android:text="Assignments" />
 
-<<<<<<< HEAD
     <Button
         android:id="@+id/progressButton"
-        android:layout_width="wrap_content"
+        android:layout_width="303dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:onClick="notebookHandler"
         android:text="Notebook" />
-=======
-            <Button
-                android:id="@+id/examButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="examClick"
-                android:text="Exams" />
->>>>>>> 8a83f1ba34fc8afe80273e9ca25c6b6d43a8594b
 
-            <Button
-                android:id="@+id/progressButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Progress" />
+    <Button
+        android:id="@+id/examButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="examClick"
+        android:text="Exams" />
 
-            <Button
-                android:id="@+id/progressButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Notebook" />
+    <Button
+        android:id="@+id/progressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Progress" />
+
+    
 
 </LinearLayout>
