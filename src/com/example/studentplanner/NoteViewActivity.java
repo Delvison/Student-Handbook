@@ -50,7 +50,7 @@ public class NoteViewActivity extends Activity {
 		cursor.moveToFirst();
 		nText = cursor.getString(cursor.getColumnIndex("Note"));
 		
-		if(nText != null){
+		if(nText != ""){
 			noteText.setText(nText);
 		}
 		cursor.close();

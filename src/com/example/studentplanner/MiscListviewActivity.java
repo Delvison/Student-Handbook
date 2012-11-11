@@ -16,15 +16,20 @@ import android.widget.ListView;
 
 public class MiscListviewActivity extends ListActivity {
 	String[] miscArr;
+	String sName;
 	
 	   @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
+			Bundle extras = getIntent().getExtras();
+			if (extras != null) {
+				sName = extras.getString("key");
+			}
 	        try{
 	            //open database
 	    	    SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 	    	    //query. receive a cursor
-	    	    Cursor c= db.rawQuery("SELECT MiscName FROM Miscs", null);
+	    	    Cursor c= db.rawQuery("SELECT MiscName FROM Miscs where Semester ='"+sName+"'", null);
 	    	    //count how many items in cursor. add 1 to leave space for add semester option
 	    	    int i = c.getCount() + 1;
 	    	    //instantiate array of semesters by size of the cursor + 1

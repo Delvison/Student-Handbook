@@ -53,33 +53,24 @@
         android:text="Assignments" />
 
     <Button
-        android:id="@+id/progressButton"
-        android:layout_width="303dp"
+        android:id="@+id/examButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:onClick="examClick"
+        android:text="Exams" />
+
+    <Button
+        android:id="@+id/progressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+                android:onClick="progressClick"
+        android:text="Progress" />
+
+    <Button
+        android:id="@+id/progressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="notebookHandler"
         android:text="Notebook" />
-
-    <Button
-        android:id="@+id/examButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="examClick"
-        android:text="Exams" />
-
-    <Button
-        android:id="@+id/examButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="examClick"
-        android:text="Exams" />
-
-    <Button
-        android:id="@+id/progressButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Progress" />
 
 </LinearLayout>

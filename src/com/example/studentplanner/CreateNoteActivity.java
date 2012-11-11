@@ -61,9 +61,7 @@ public class CreateNoteActivity extends Activity {
 		values.put("Note", "" );
 
         db.insert("Notes", null, values);
-		
-		
-		
+
 		db.close();
 		
 		Intent intent = new Intent(getApplicationContext(), NoteViewActivity.class);

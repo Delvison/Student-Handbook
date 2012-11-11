@@ -47,6 +47,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/coursesButton1"
+        android:onClick="miscClick"
+        
         android:text="Events" />
 
 </RelativeLayout>

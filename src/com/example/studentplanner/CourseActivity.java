@@ -97,6 +97,7 @@ public class CourseActivity extends Activity {
 		Intent intent = new Intent(getApplicationContext(),
 				NotebookActivity.class);
 		intent.putExtra("CourseName", cName);
+		startActivity(intent);
 	}
 	
 	public void progressClick(View v) {

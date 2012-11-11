@@ -66,7 +66,7 @@ public final class R {
         public static final int editText3=0x7f0a0034;
         public static final int editText4=0x7f0a0035;
         public static final int editText5=0x7f0a0036;
-        public static final int examButton=0x7f0a0020;
+        public static final int examButton=0x7f0a001f;
         public static final int examDatePicker1=0x7f0a002b;
         public static final int examText1=0x7f0a002a;
         public static final int examView1=0x7f0a003a;
@@ -74,7 +74,7 @@ public final class R {
         public static final int locView=0x7f0a001c;
         public static final int miscButton1=0x7f0a003f;
         public static final int progressBar1=0x7f0a003d;
-        public static final int progressButton=0x7f0a001f;
+        public static final int progressButton=0x7f0a0020;
         public static final int radio0=0x7f0a0004;
         public static final int radio2=0x7f0a0005;
         public static final int radioGroup1=0x7f0a0003;
