@@ -28,8 +28,8 @@ public class NoteViewActivity extends Activity {
 		setContentView(R.layout.note_view);
 		extras = getIntent().getExtras();
 
-		courseName = (TextView) findViewById(R.id.textView1);
-		noteName = (TextView) findViewById(R.id.textView2);
+		courseName = (TextView) findViewById(R.id.textView2);
+		noteName = (TextView) findViewById(R.id.textView1);
 		noteText = (EditText) findViewById(R.id.editText1);
 
 		if (extras != null) {
