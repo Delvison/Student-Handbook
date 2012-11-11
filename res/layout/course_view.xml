@@ -61,15 +61,13 @@
         android:layout_centerVertical="true"
         android:onClick="notebookHandler"
         android:text="Notebook" />
-<<<<<<< HEAD
-=======
-            <Button
-                android:id="@+id/examButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="examClick"
-                android:text="Exams" />
->>>>>>> ec116ace1172e78c83a681ef5b53761df3db2265
+
+    <Button
+        android:id="@+id/examButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="examClick"
+        android:text="Exams" />
 
     <Button
         android:id="@+id/examButton"
@@ -83,7 +81,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Progress" />
-
-    
 
 </LinearLayout>

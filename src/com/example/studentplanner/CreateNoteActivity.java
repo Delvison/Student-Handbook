@@ -71,7 +71,7 @@ public class CreateNoteActivity extends Activity {
 		intent.putExtra("NoteName",noteName);
 		
 		startActivity(intent);
-    	
+    	finish();
     }
 
 }
