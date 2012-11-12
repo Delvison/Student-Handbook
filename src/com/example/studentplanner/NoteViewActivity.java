@@ -75,6 +75,7 @@ public class NoteViewActivity extends Activity {
 		intent.putExtra("CourseName", cName);
 		
 		startActivity(intent);
+		finish();
 
 	}
 }

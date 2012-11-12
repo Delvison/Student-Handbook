@@ -94,6 +94,7 @@ public class ExamListviewActivity extends ListActivity {
 
 	            // Create the alert box
 	           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+				alertbox.setCancelable(false);
 
 	           // Set the message to display
 	           alertbox.setMessage("No Exams Exist for this Course!");
@@ -107,8 +108,17 @@ public class ExamListviewActivity extends ListActivity {
 	                   // The neutral button was clicked
 	            	   Intent intent = new Intent(getApplicationContext(), CreateExamActivity.class);
 	                   startActivity(intent);
+	                   finish();
 	               }
 	           });
+				alertbox.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+
+							// Click listener on the neutral button of alert box
+							public void onClick(DialogInterface arg0, int arg1) {
+								finish();
+							}
+						});
 
 	            // show the alert box
 	           alertbox.show();

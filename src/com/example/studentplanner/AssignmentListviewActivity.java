@@ -97,6 +97,7 @@ public class AssignmentListviewActivity extends ListActivity {
 
 	           // Set the message to display
 	           alertbox.setMessage("No Assignments Exist for this Course!");
+				alertbox.setCancelable(false);
 
 	           // Add a neutral button to the alert box and assign a click listener
 	           alertbox.setNeutralButton("Add Assignment", new DialogInterface.OnClickListener() {
@@ -107,9 +108,18 @@ public class AssignmentListviewActivity extends ListActivity {
 	                   // The neutral button was clicked
 	            	   Intent intent = new Intent(getApplicationContext(), CreateAssignmentActivity.class);
 	                   startActivity(intent);
+	                   finish();
 	               }
 	           });
 
+				alertbox.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+
+							// Click listener on the neutral button of alert box
+							public void onClick(DialogInterface arg0, int arg1) {
+								finish();
+							}
+						});
 	            // show the alert box
 	           alertbox.show();
 	       }

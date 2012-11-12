@@ -83,6 +83,7 @@ public class CourseListviewActivity extends ListActivity {
 	        }catch(SQLiteException e){
 	            // Create the alert box
 	           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+				alertbox.setCancelable(false);
 
 	           // Set the message to display
 	           alertbox.setMessage("Welcome! To get started please click on Add Course!");
@@ -96,9 +97,18 @@ public class CourseListviewActivity extends ListActivity {
 	                   // The neutral button was clicked
 	            	   Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
 	                   startActivity(intent);
+	                   finish();
 	               }
 	           });
 
+				alertbox.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+
+							// Click listener on the neutral button of alert box
+							public void onClick(DialogInterface arg0, int arg1) {
+								finish();
+							}
+						});
 	            // show the alert box
 	           alertbox.show();
 	       }
