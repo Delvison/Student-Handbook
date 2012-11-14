@@ -67,7 +67,7 @@ public class CreateMiscActivity extends Activity {
         int startHour = timePicker1.getCurrentHour(); //is this right?
 
         //This really needs to be implemented in the Misc_view.xml
-        Spinner reoccurSpinner = (Spinner) findViewById(R.id.reoccurSpinner);
+        Spinner reoccurSpinner = (Spinner) findViewById(R.id.spinner1);
         String occurences = (String) reoccurSpinner.getSelectedItem();
         
         String semester = (String) semesters.getSelectedItem().toString();

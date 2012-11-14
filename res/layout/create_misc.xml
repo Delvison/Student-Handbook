@@ -118,6 +118,7 @@
             android:id="@+id/createMisc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="handleClick1"
             android:text="Add this Misc Event" />
 
     </LinearLayout>
