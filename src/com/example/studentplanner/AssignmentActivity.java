@@ -94,5 +94,6 @@ public class AssignmentActivity extends Activity {
 		    Intent intent = new Intent(getApplicationContext(), EditAssignmentActivity.class);
 	        intent.putExtra("key", aName);
 	        startActivity(intent);
+	        finish();
 	   }
 }

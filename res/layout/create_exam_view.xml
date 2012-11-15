@@ -50,10 +50,10 @@
 
     <Button
         android:id="@+id/createExam"
-        android:layout_width="wrap_content"
+        android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:text="Add!" 
-        android:onClick="handleClick" />
+        android:onClick="handleClick"
+        android:text="Add!" />
 
 </LinearLayout>
 </ScrollView>

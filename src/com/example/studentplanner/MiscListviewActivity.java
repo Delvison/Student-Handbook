@@ -76,11 +76,6 @@ public class MiscListviewActivity extends ListActivity {
 					// this string holds the list item clicked
 					String rightMeow = miscArr[position];
 
-					// When clicked, show a toast with the TextView text
-					// Toast.makeText(getApplicationContext(),
-					// ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-					// if item clicked equals add semester
-
 					if (rightMeow.equals("+Add Misc Event")) {
 						Intent intent = new Intent(getApplicationContext(),
 								CreateMiscActivity.class);
@@ -88,7 +83,7 @@ public class MiscListviewActivity extends ListActivity {
 						startActivity(intent);
 					} else {
 						Intent intent = new Intent(getApplicationContext(),
-								CourseActivity.class);
+								MiscActivity.class);
 						intent.putExtra("key", rightMeow);
 						startActivity(intent);
 					}

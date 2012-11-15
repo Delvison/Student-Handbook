@@ -41,9 +41,9 @@
 
    <Button
        android:id="@+id/createSemester"
-       android:layout_width="wrap_content"
+       android:layout_width="130dp"
        android:layout_height="wrap_content"
-       android:text="Done!" 
-       android:onClick="handleClick1" />
+       android:onClick="handleClick1"
+       android:text="Done!" />
 
 </LinearLayout>

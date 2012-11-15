@@ -1,9 +1,11 @@
 package com.example.studentplanner;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class MiscActivity extends Activity {
@@ -69,4 +71,12 @@ public class MiscActivity extends Activity {
      mDays.setText(occur);
     
      }
+	  
+	  public void editHandler(View v) {
+			Intent intent = new Intent(getApplicationContext(),
+					EditMiscActivity.class);
+			intent.putExtra("key", mName);
+			startActivity(intent);
+			finish();
+	  }
 }

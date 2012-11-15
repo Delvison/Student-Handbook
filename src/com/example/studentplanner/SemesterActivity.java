@@ -14,12 +14,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class SemesterActivity extends ListActivity {
 	String sName;
@@ -49,7 +47,7 @@ public class SemesterActivity extends ListActivity {
 		} else {
 			daysInView.setText("Semester Over.");
 		}
-		this.popEvents();
+		//this.popEvents();
 		this.list();
 	}
 
@@ -113,8 +111,8 @@ public class SemesterActivity extends ListActivity {
 				"Course5", "Course6" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Choose a course.");
-		this.popCourses();
-		builder.setItems(courseArr, new DialogInterface.OnClickListener() {
+		//this.popCourses();
+		builder.setItems(items, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
 				// this string holds the list item clicked
 				String rightMeow = courseArr[item];
@@ -229,7 +227,7 @@ public class SemesterActivity extends ListActivity {
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
 		setListAdapter(new ArrayAdapter<String>(this,
-				R.layout.semester_listview, assArr));// needs an array
+				R.layout.semester_listview, l));// needs an array
 		// get the list view from the view
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled

@@ -41,7 +41,7 @@ public class EditMiscActivity extends Activity {
 		// open database
 		db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 		// get values for the current semester being viewed
-		Cursor c = db.rawQuery("select * from Miscs where name ='" + x
+		Cursor c = db.rawQuery("select * from Miscs where MiscName ='" + x
 				+ "'", null);
 		// get those values
 		c.moveToFirst();
@@ -110,7 +110,7 @@ public class EditMiscActivity extends Activity {
 		values.put("Occurences", occurGot);
 		values.put("Semester", semester);
 
-		db.update("Miscs", values, "Name=" + "'" + name + "'", null);
+		db.update("Miscs", values, "MiscName=" + "'" + mName + "'", null);
 		// close db
 
 		db.close();
@@ -119,6 +119,7 @@ public class EditMiscActivity extends Activity {
 				MiscActivity.class);
 		intent.putExtra("key", nameGot);
 		startActivity(intent);
+		finish();
 	}
 	
 	public void deleteHandler(View v) {
