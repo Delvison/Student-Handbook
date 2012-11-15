@@ -37,7 +37,7 @@ public class ProgressActivity extends ListActivity {
 	}
 
 	public void initProgress() {
-		Cursor cursor1 = db.rawQuery("select * from Courses where CourseName ='" + cName
+		/*Cursor cursor1 = db.rawQuery("select * from Courses where CourseName ='" + cName
 						+ "'", null);
 		cursor1.moveToFirst();
 		String name = cursor1.getString(cursor1.getColumnIndex("CourseName"));
@@ -60,15 +60,45 @@ public class ProgressActivity extends ListActivity {
 
 		values.put("Grade", grade);
 
+		db.insert("Courses", null, values);*/
+		
+		Cursor cursor2 = db.rawQuery(
+				"select * from Assignments where CourseName ='" + cName
+						+ "' and Complete = 1", null); 
+		Cursor cursor3 = db.rawQuery("select * from Exams where CourseName ='"
+				+ cName + "' and Complete = 1", null);
+		
+		int received = 0;
+		int potential = 0;
+		int grade;
+		
+		cursor2.moveToFirst();
+		while (cursor2.isAfterLast() == false) {
+			received = received + cursor2.getInt(cursor2.getColumnIndex("PointsRecieved"));
+			potential = potential + cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
+			cursor2.moveToNext();
+		}
+		
+		cursor3.moveToFirst();
+		while (cursor3.isAfterLast() == false) {
+			received = received + cursor3.getInt(cursor3.getColumnIndex("PointsRecieved"));
+			potential = potential + cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
+			cursor3.moveToNext();
+		}
+		
+		if(potential == 0) grade = 100;
+	    else grade = (received/potential) * 100;
+		
+		ContentValues values = new ContentValues();
+		values.put("Grade", grade);
 		db.insert("Courses", null, values);
-
 	}
 
 	public void backHandler(View v) {
 		finish();
 	}
 
-	private void popGrades() {
+	/*private void popGrades() {
 		Cursor cursor2 = db.rawQuery(
 				"select * from Assignments where CourseName ='" + cName
 						+ "' and Complete = 1", null); 
@@ -114,7 +144,7 @@ public class ProgressActivity extends ListActivity {
 			
 			cursor3.moveToNext();
 		}
-	}
+	}*/
 		
 	private void popAssignment() {
 		Cursor cursor2 = db.rawQuery(
