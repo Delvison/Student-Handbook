@@ -1,14 +1,16 @@
 package com.example.studentplanner;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
-public class CourseActivity extends Activity {
+public class CourseActivity extends ListActivity {
 	String cName;
 	TextView courseName;
 	TextView cDesc;
@@ -27,6 +29,7 @@ public class CourseActivity extends Activity {
 		this.initCourse(cName);
 		courseName = (TextView) findViewById(R.id.textView1);
 		courseName.setText(cName);
+		this.list();
 
 	}
 
@@ -105,5 +108,74 @@ public class CourseActivity extends Activity {
 				ProgressActivity.class);
 		intent.putExtra("key", cName);
 		startActivity(intent);
+	}
+	
+	public void list() {
+		String[] l = { "YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
+				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
+		setListAdapter(new ArrayAdapter<String>(this,
+				R.layout.semester_listview, l));// needs an array
+		// get the list view from the view
+		ListView listView = getListView();
+		// set the listview's textfilter to enabled
+		listView.setTextFilterEnabled(true);
 	}
 }

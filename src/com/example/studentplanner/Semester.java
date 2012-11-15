@@ -5,6 +5,9 @@ import java.util.GregorianCalendar;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 public class Semester {
   String term; //fall, spring, winter or summer
   GregorianCalendar startOfSemester;
@@ -95,5 +98,9 @@ public class Semester {
 
 	   return (endTime - startTime) / MILLISECONDS_IN_DAY;
 	   }
-   }		   
+   }
+   
+   public void popList() {
+	   //populate listview with upcoming events and assignments
+   }
 }

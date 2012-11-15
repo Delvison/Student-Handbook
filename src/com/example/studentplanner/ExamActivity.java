@@ -33,8 +33,8 @@ public class ExamActivity extends Activity {
 	        eNameInView = (TextView) findViewById(R.id.examView1);
 	        eNameInView.setText(eName);
 	        this.initAssignment(eName);
-	       // daysInView = (TextView) findViewById(R.id.textView5);
-	        //daysInView.setText(Long.toString(days)+" days left!");
+	        daysInView = (TextView) findViewById(R.id.textView5);
+	        daysInView.setText(Long.toString(days)+" days left!");
 	        
 	    }
 
@@ -59,8 +59,8 @@ public class ExamActivity extends Activity {
          //create a semester object
        Exam ex = new Exam(name,new GregorianCalendar(dueYear,dueMonth,dueDay));
          //calculate days toward end
-      // ex.calculateDaysDue();
-       //days = ex.daysTilDue;
+       ex.calculateDaysDue();
+       days = ex.daysTilDue;
        
        TextView dateInView = (TextView) findViewById(R.id.textView2);
        dateInView.setText(Integer.toString(dueYear)+"/"+Integer.toString(dueMonth)+"/"+Integer.toString(dueDay));

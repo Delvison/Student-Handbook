@@ -22,20 +22,32 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/size" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Upcoming Events" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="-----------------------------------------------------"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/android:list"
         android:layout_width="match_parent"
         android:layout_height="228dp"
-        android:layout_gravity="left"
-        android:layout_weight="0.11" >
-
+        android:layout_weight="0.01" >
     </ListView>
 
     <Button
         android:id="@+id/coursesButton1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
         android:onClick="clickHandler"
         android:text="Courses" />
 
