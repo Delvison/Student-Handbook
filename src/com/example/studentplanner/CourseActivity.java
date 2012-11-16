@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -177,5 +180,35 @@ public class CourseActivity extends ListActivity {
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled
 		listView.setTextFilterEnabled(true);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.course_menu, menu);
+
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.addAssignment:
+			startActivity(new Intent(this, CreateAssignmentActivity.class));
+			finish();
+			return true;
+		case R.id.viewEvents:
+			startActivity(new Intent(this, CreateCourseActivity.class));
+			finish();
+			return true;
+		case R.id.editCourse:
+			Intent i = new Intent(this, EditCourseActivity.class);
+			i.putExtra("key", cName);
+			startActivity(i);
+			finish();
+			return true;
+			
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

@@ -39,7 +39,7 @@ public class EditCourseActivity extends Activity {
 		// open database
 		db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 		// get values for the current semester being viewed
-		Cursor c = db.rawQuery("select * from Courses where name ='" + x
+		Cursor c = db.rawQuery("select * from Courses where CourseName ='" + x
 				+ "'", null);
 		// get those values
 		c.moveToFirst();
@@ -98,7 +98,7 @@ public class EditCourseActivity extends Activity {
 		values.put("Occurences", occurGot);
 		values.put("Semester", semester);
 
-		db.update("Courses", values, "Name=" + "'" + name + "'", null);
+		db.update("Courses", values, "CourseName=" + "'" + name + "'", null);
 		// close db
 
 		db.close();

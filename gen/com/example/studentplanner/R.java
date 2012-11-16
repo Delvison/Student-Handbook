@@ -57,6 +57,7 @@ public final class R {
         public static final int dayView=0x7f0a001a;
         public static final int descView=0x7f0a001b;
         public static final int editButton1=0x7f0a003a;
+        public static final int editCourse=0x7f0a0045;
         public static final int editDescription=0x7f0a0027;
         public static final int editLocation=0x7f0a0028;
         public static final int editName=0x7f0a0026;
@@ -139,6 +140,7 @@ public final class R {
     }
     public static final class menu {
         public static final int activity_main=0x7f090000;
+        public static final int course_menu=0x7f090001;
     }
     public static final class string {
         public static final int Done=0x7f070015;
