@@ -1,11 +1,10 @@
 package com.example.studentplanner;
 
-import java.util.GregorianCalendar;
-
 import android.app.ListActivity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,9 +26,10 @@ public class ProgressActivity extends ListActivity {
 		if (extras != null) {
 			cName = extras.getString("key");
 		}
+
 		initProgress();
-		popAssignment();
-		
+		// popAssignment();
+
 		setListAdapter(new ArrayAdapter<String>(this,
 				R.layout.semester_listview, stringArr));
 		ListView listView = getListView();
@@ -37,115 +37,125 @@ public class ProgressActivity extends ListActivity {
 	}
 
 	public void initProgress() {
-		/*Cursor cursor1 = db.rawQuery("select * from Courses where CourseName ='" + cName
-						+ "'", null);
-		cursor1.moveToFirst();
-		String name = cursor1.getString(cursor1.getColumnIndex("CourseName"));
-		String desc = cursor1.getString(cursor1.getColumnIndex("Description"));
-		String loc = cursor1.getString(cursor1.getColumnIndex("Location"));
-		int startHr = cursor1.getInt(cursor1.getColumnIndex("HourStart"));
-		int startMin = cursor1.getInt(cursor1.getColumnIndex("MinuteStart"));
-		int startYr = cursor1.getInt(cursor1.getColumnIndex("YearStart"));
-		int startMth = cursor1.getInt(cursor1.getColumnIndex("MonthStart"));
-		int startDay = cursor1.getInt(cursor1.getColumnIndex("DayStart"));
-		String occur = cursor1.getString(cursor1.getColumnIndex("Occurences"));
+		/*
+		 * Cursor cursor1 =
+		 * db.rawQuery("select * from Courses where CourseName ='" + cName +
+		 * "'", null); cursor1.moveToFirst(); String name =
+		 * cursor1.getString(cursor1.getColumnIndex("CourseName")); String desc
+		 * = cursor1.getString(cursor1.getColumnIndex("Description")); String
+		 * loc = cursor1.getString(cursor1.getColumnIndex("Location")); int
+		 * startHr = cursor1.getInt(cursor1.getColumnIndex("HourStart")); int
+		 * startMin = cursor1.getInt(cursor1.getColumnIndex("MinuteStart")); int
+		 * startYr = cursor1.getInt(cursor1.getColumnIndex("YearStart")); int
+		 * startMth = cursor1.getInt(cursor1.getColumnIndex("MonthStart")); int
+		 * startDay = cursor1.getInt(cursor1.getColumnIndex("DayStart")); String
+		 * occur = cursor1.getString(cursor1.getColumnIndex("Occurences"));
+		 * 
+		 * // String course = (String) courses.getSelectedItem().toString();
+		 * //String date = Integer.startYr + "," + startMth + "," + startDay;
+		 * ContentValues values = new ContentValues(); c = new Course(name,
+		 * desc, loc, false); popGrades(); Progress p = new Progress(); int
+		 * grade = p.calculateAverage(c);
+		 * 
+		 * values.put("Grade", grade);
+		 * 
+		 * db.insert("Courses", null, values);
+		 */
+		try {
+			SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+					null);
+			Cursor cursor2 = db.rawQuery(
+					"select * from Assignments where Course ='" + cName
+							+ "' and Complete = 1", null);
+			Cursor cursor3 = db.rawQuery(
+					"select * from Exams where Course ='" + cName
+							+ "' and Complete = 1", null);
 
-		// String course = (String) courses.getSelectedItem().toString();
-		//String date = Integer.startYr + "," + startMth + "," + startDay;
-		ContentValues values = new ContentValues();
-		c = new Course(name, desc, loc, false);
-		popGrades();
-		Progress p = new Progress();
-		int grade = p.calculateAverage(c);
+			int received = 0;
+			int potential = 0;
+			int grade;
 
-		values.put("Grade", grade);
+			cursor2.moveToFirst();
+			while (cursor2.isAfterLast() == false) {
+				received = received
+						+ cursor2.getInt(cursor2
+								.getColumnIndex("PointsRecieved"));
+				potential = potential
+						+ cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
+				cursor2.moveToNext();
+			}
 
-		db.insert("Courses", null, values);*/
-		
-		Cursor cursor2 = db.rawQuery(
-				"select * from Assignments where CourseName ='" + cName
-						+ "' and Complete = 1", null); 
-		Cursor cursor3 = db.rawQuery("select * from Exams where CourseName ='"
-				+ cName + "' and Complete = 1", null);
-		
-		int received = 0;
-		int potential = 0;
-		int grade;
-		
-		cursor2.moveToFirst();
-		while (cursor2.isAfterLast() == false) {
-			received = received + cursor2.getInt(cursor2.getColumnIndex("PointsRecieved"));
-			potential = potential + cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
-			cursor2.moveToNext();
+			cursor3.moveToFirst();
+			while (cursor3.isAfterLast() == false) {
+				received = received
+						+ cursor3.getInt(cursor3
+								.getColumnIndex("PointsRecieved"));
+				potential = potential
+						+ cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
+				cursor3.moveToNext();
+			}
+
+			if (potential == 0)
+				grade = 100;
+			else
+				grade = (received / potential) * 100;
+
+			ContentValues values = new ContentValues();
+			values.put("Grade", grade);
+			db.insert("Courses", null, values);
+		} catch (SQLiteException e) {
+			stringArr = new String[1];
+			stringArr[0] = "nothing.";
 		}
-		
-		cursor3.moveToFirst();
-		while (cursor3.isAfterLast() == false) {
-			received = received + cursor3.getInt(cursor3.getColumnIndex("PointsRecieved"));
-			potential = potential + cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
-			cursor3.moveToNext();
-		}
-		
-		if(potential == 0) grade = 100;
-	    else grade = (received/potential) * 100;
-		
-		ContentValues values = new ContentValues();
-		values.put("Grade", grade);
-		db.insert("Courses", null, values);
 	}
 
 	public void backHandler(View v) {
 		finish();
 	}
 
-	/*private void popGrades() {
-		Cursor cursor2 = db.rawQuery(
-				"select * from Assignments where CourseName ='" + cName
-						+ "' and Complete = 1", null); 
-		Cursor cursor3 = db.rawQuery("select * from Exams where CourseName ='"
-				+ cName + "' and Complete = 1", null);
-		
-		cursor2.moveToFirst();
-		
-		while (cursor2.isAfterLast() == false) {
-			String temp = cursor2.getString(cursor2.getColumnIndex("Name"));
-			String temp2 = cursor2.getString(cursor2.getColumnIndex("Description"));
-			int dueYear = cursor2.getInt(cursor2.getColumnIndex("DueYear"));
-			int dueMonth = cursor2.getInt(cursor2.getColumnIndex("DueMonth"));
-			int dueDay = cursor2.getInt(cursor2.getColumnIndex("DueDay"));
-			int pointsR = cursor2.getInt(cursor2.getColumnIndex("PointsRecieved"));
-			int pointsM = cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
-			int comp = cursor2.getInt(cursor2.getColumnIndex("Complete"));
-			boolean complete = false;
-			if(comp == 1) complete = true;
-			
-			c.addAssignment(temp, new GregorianCalendar(dueYear, dueMonth, dueDay), temp2, pointsM);
-			c.searchForAssignment(temp).setIsComplete(complete);
-			c.searchForAssignment(temp).setPointsRecieved(pointsR);
-			
-			cursor2.moveToNext();
-		}
-		
-		cursor3.moveToFirst();
-		while (cursor3.isAfterLast() == false) {
-			String temp = cursor3.getString(cursor3.getColumnIndex("Name"));
-			int dueYear = cursor3.getInt(cursor3.getColumnIndex("DueYear"));
-			int dueMonth = cursor3.getInt(cursor3.getColumnIndex("DueMonth"));
-			int dueDay = cursor3.getInt(cursor3.getColumnIndex("DueDay"));
-			int pointsR = cursor3.getInt(cursor3.getColumnIndex("PointsRecieved"));
-			int pointsM = cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
-			int comp = cursor3.getInt(cursor3.getColumnIndex("Complete"));
-			boolean complete = false;
-			if(comp == 1) complete = true;
-			
-			c.addExam(temp, new GregorianCalendar(dueYear, dueMonth, dueDay), pointsM);
-			c.searchForExam(temp).setIsComplete(complete);
-			c.searchForExam(temp).setPointsReceived(pointsR);
-			
-			cursor3.moveToNext();
-		}
-	}*/
-		
+	/*
+	 * private void popGrades() { Cursor cursor2 = db.rawQuery(
+	 * "select * from Assignments where CourseName ='" + cName +
+	 * "' and Complete = 1", null); Cursor cursor3 =
+	 * db.rawQuery("select * from Exams where CourseName ='" + cName +
+	 * "' and Complete = 1", null);
+	 * 
+	 * cursor2.moveToFirst();
+	 * 
+	 * while (cursor2.isAfterLast() == false) { String temp =
+	 * cursor2.getString(cursor2.getColumnIndex("Name")); String temp2 =
+	 * cursor2.getString(cursor2.getColumnIndex("Description")); int dueYear =
+	 * cursor2.getInt(cursor2.getColumnIndex("DueYear")); int dueMonth =
+	 * cursor2.getInt(cursor2.getColumnIndex("DueMonth")); int dueDay =
+	 * cursor2.getInt(cursor2.getColumnIndex("DueDay")); int pointsR =
+	 * cursor2.getInt(cursor2.getColumnIndex("PointsRecieved")); int pointsM =
+	 * cursor2.getInt(cursor2.getColumnIndex("MaxPoints")); int comp =
+	 * cursor2.getInt(cursor2.getColumnIndex("Complete")); boolean complete =
+	 * false; if(comp == 1) complete = true;
+	 * 
+	 * c.addAssignment(temp, new GregorianCalendar(dueYear, dueMonth, dueDay),
+	 * temp2, pointsM); c.searchForAssignment(temp).setIsComplete(complete);
+	 * c.searchForAssignment(temp).setPointsRecieved(pointsR);
+	 * 
+	 * cursor2.moveToNext(); }
+	 * 
+	 * cursor3.moveToFirst(); while (cursor3.isAfterLast() == false) { String
+	 * temp = cursor3.getString(cursor3.getColumnIndex("Name")); int dueYear =
+	 * cursor3.getInt(cursor3.getColumnIndex("DueYear")); int dueMonth =
+	 * cursor3.getInt(cursor3.getColumnIndex("DueMonth")); int dueDay =
+	 * cursor3.getInt(cursor3.getColumnIndex("DueDay")); int pointsR =
+	 * cursor3.getInt(cursor3.getColumnIndex("PointsRecieved")); int pointsM =
+	 * cursor3.getInt(cursor3.getColumnIndex("MaxPoints")); int comp =
+	 * cursor3.getInt(cursor3.getColumnIndex("Complete")); boolean complete =
+	 * false; if(comp == 1) complete = true;
+	 * 
+	 * c.addExam(temp, new GregorianCalendar(dueYear, dueMonth, dueDay),
+	 * pointsM); c.searchForExam(temp).setIsComplete(complete);
+	 * c.searchForExam(temp).setPointsReceived(pointsR);
+	 * 
+	 * cursor3.moveToNext(); } }
+	 */
+
 	private void popAssignment() {
 		Cursor cursor2 = db.rawQuery(
 				"select * from Assignments where CourseName ='" + cName
@@ -164,34 +174,36 @@ public class ProgressActivity extends ListActivity {
 		// while the cursor position isn't passed the last item in the cursor
 		while (cursor2.isAfterLast() == false) {
 			String temp = cursor2.getString(cursor2.getColumnIndex("Name"));
-			int temp1 = cursor2.getInt(cursor2.getColumnIndex("PointsRecieved"));
+			int temp1 = cursor2
+					.getInt(cursor2.getColumnIndex("PointsRecieved"));
 			int temp2 = cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
-			int grade = temp1/temp2 * 100;
+			int grade = temp1 / temp2 * 100;
 			// store the string in "Session" column into the array of semesters
-			stringArr[count] =  temp +" "+Integer.toString(grade);
+			stringArr[count] = temp + " " + Integer.toString(grade);
 			// increment count
 			count++;
 			// move cursor by 1
 			cursor2.moveToNext();
 		}
-				cursor3.moveToFirst();
+		cursor3.moveToFirst();
 
 		while (cursor3.isAfterLast() == false) {
 			String temp = cursor3.getString(cursor3.getColumnIndex("Name"));
-			int temp1 = cursor3.getInt(cursor3.getColumnIndex("PointsRecieved"));
+			int temp1 = cursor3
+					.getInt(cursor3.getColumnIndex("PointsRecieved"));
 			int temp2 = cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
-			int grade = temp1/temp2 * 100;
+			int grade = temp1 / temp2 * 100;
 			// store the string in "Session" column into the array of semesters
-			stringArr[count] =  temp +" "+Integer.toString(grade);
+			stringArr[count] = temp + " " + Integer.toString(grade);
 			// increment count
 			count++;
 			// move cursor by 1
 			cursor3.moveToNext();
 		}
-		
+
 		// add an "add semester option
 		// close the cursor
-		cursor2.close();		
+		cursor2.close();
 		cursor3.close();
 
 		// close the database

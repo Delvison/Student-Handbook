@@ -111,8 +111,8 @@ public class SemesterActivity extends ListActivity {
 				"Course5", "Course6" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Choose a course.");
-		//this.popCourses();
-		builder.setItems(items, new DialogInterface.OnClickListener() {
+		this.popCourses();
+		builder.setItems(courseArr, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
 				// this string holds the list item clicked
 				String rightMeow = courseArr[item];
@@ -122,11 +122,8 @@ public class SemesterActivity extends ListActivity {
 				// ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 				// if item clicked equals add semester
 
-				if (rightMeow.equals("+Add Course")) {
-					Intent intent = new Intent(getApplicationContext(),
-							CreateCourseActivity.class);
-					// then go to the CreateSemesterActivity
-					startActivity(intent);
+				if (rightMeow.equals("No Courses Exist.")) {
+                       //do nothing
 				} else {
 					Intent intent = new Intent(getApplicationContext(),
 							CourseActivity.class);
@@ -269,7 +266,7 @@ public class SemesterActivity extends ListActivity {
 			db.close();
 		} catch (SQLiteException e) {
 			courseArr = new String[1];
-			courseArr[1] = "No Courses Exist.";
+			courseArr[0] = "No Courses Exist.";
 		}
 	}
 
