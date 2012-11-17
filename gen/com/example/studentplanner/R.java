@@ -164,6 +164,7 @@ public final class R {
         public static final int title_activity_main=0x7f070003;
         public static final int title_activity_semester_create=0x7f070009;
         public static final int title_activity_semester_menu=0x7f07000a;
+        public static final int vibrate=0x7f070016;
         public static final int winter=0x7f070006;
     }
     public static final class style {

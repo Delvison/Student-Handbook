@@ -41,5 +41,6 @@
         <item >Weekly</item>
         <item >Not Reoccuring</item>
     </string-array>
+    <string name="vibrate">Planner Vibrate</string>
     
 </resources>
