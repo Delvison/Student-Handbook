@@ -1,5 +1,7 @@
 package com.example.studentplanner;
 
+import java.util.Calendar;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -25,11 +27,10 @@ public class VibrateService extends Service {
 		//this is what runs when we call startService();
 		//get the systems audio manager
         amanager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);  
-        int prevVolume = amanager.getRingerMode();
+        prevVolume = amanager.getRingerMode();
         
         
 		return START_STICKY; //keeps going until explicitly stopped
-		
 	}
 	@Override
 	public void onDestroy(){
@@ -42,7 +43,6 @@ public class VibrateService extends Service {
 	//called when the user is out of class
 	public void outClass() {
 		amanager.setRingerMode(prevVolume);
-		
 	}
 
 }
