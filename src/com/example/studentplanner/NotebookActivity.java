@@ -32,7 +32,7 @@ public class NotebookActivity extends ListActivity {
     public void initNotebook(){
     	
     	cName = (TextView) findViewById(R.id.textView1);
-    	cName.setText(courseName + " NoteBook");
+    	cName.setText(courseName);
     	//creates a new database. Needs to be connected to a single database and added as a table
     	SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
     	db.execSQL("CREATE TABLE IF NOT EXISTS Notes (CourseName VARCHAR, NoteName VARCHAR,Note VARCHAR)");

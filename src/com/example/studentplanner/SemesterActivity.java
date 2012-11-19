@@ -153,6 +153,7 @@ public class SemesterActivity extends ListActivity {
 				CourseListviewActivity.class);
 		intent.putExtra("key", sName);
 		// startActivity(intent);
+		
 	}
 
 	public void miscClick(View v) {

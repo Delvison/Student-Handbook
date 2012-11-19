@@ -62,6 +62,7 @@ public final class R {
         public static final int dayView=0x7f0a001a;
         public static final int descView=0x7f0a001b;
         public static final int editButton1=0x7f0a003a;
+        public static final int editCourse=0x7f0a0046;
         public static final int editDescription=0x7f0a0027;
         public static final int editLocation=0x7f0a0028;
         public static final int editName=0x7f0a0026;
@@ -151,6 +152,7 @@ public final class R {
         public static final int activity_notification=0x7f090001;
         public static final int activity_set_alarm=0x7f090002;
         public static final int alarm_popup_activity=0x7f090003;
+        public static final int course_menu=0x7f090004;
     }
     public static final class string {
         public static final int Done=0x7f070015;
@@ -178,14 +180,15 @@ public final class R {
         public static final int title_activity_semester_create=0x7f070009;
         public static final int title_activity_semester_menu=0x7f07000a;
         public static final int title_activity_set_alarm=0x7f070017;
+        public static final int vibrate=0x7f07001a;
         public static final int winter=0x7f070006;
     }
     public static final class style {
         public static final int AppTheme=0x7f080000;
-        /**    <item name="android:background">@drawable/patched_button</item> 
+        /**      <item name="android:background">@drawable/patched_button</item> 
          */
         public static final int MyCustomButton=0x7f080002;
-        /**     <item name="android:windowBackground">@drawable/my_gradient</item> 
+        /**    <item name="android:windowBackground">@drawable/my_gradient</item> 
          */
         public static final int MyCustomTheme=0x7f080001;
     }

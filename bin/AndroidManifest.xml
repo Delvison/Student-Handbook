@@ -134,6 +134,7 @@
             android:label="Assignments"
             android:theme="@style/MyCustomTheme" >
         </activity>
+
         <activity
             android:name=".NotificationActivity"
             android:label="@string/title_activity_notification_" >
@@ -161,6 +162,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <service 
+            android:name=".VibrateService" 
+            android:process=":my_process">
+        </service>
+
     </application>
 
 </manifest>

@@ -14,10 +14,13 @@ import android.widget.Spinner;
 public class ProgressActivity extends ListActivity {
 	String cName;
 	String[] stringArr;
+	String[] assignArr;
+	String[] examArr;
 	Spinner courses;
 	SQLiteDatabase db;
 	Course c;
-
+	int i; //count of both
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,147 +29,31 @@ public class ProgressActivity extends ListActivity {
 		if (extras != null) {
 			cName = extras.getString("key");
 		}
-
-		initProgress();
-		// popAssignment();
-
+		popAssignment();
+        popExam();
+        bridge();
 		setListAdapter(new ArrayAdapter<String>(this,
 				R.layout.semester_listview, stringArr));
-		ListView listView = getListView();
+	
 
-	}
-
-	public void initProgress() {
-		/*
-		 * Cursor cursor1 =
-		 * db.rawQuery("select * from Courses where CourseName ='" + cName +
-		 * "'", null); cursor1.moveToFirst(); String name =
-		 * cursor1.getString(cursor1.getColumnIndex("CourseName")); String desc
-		 * = cursor1.getString(cursor1.getColumnIndex("Description")); String
-		 * loc = cursor1.getString(cursor1.getColumnIndex("Location")); int
-		 * startHr = cursor1.getInt(cursor1.getColumnIndex("HourStart")); int
-		 * startMin = cursor1.getInt(cursor1.getColumnIndex("MinuteStart")); int
-		 * startYr = cursor1.getInt(cursor1.getColumnIndex("YearStart")); int
-		 * startMth = cursor1.getInt(cursor1.getColumnIndex("MonthStart")); int
-		 * startDay = cursor1.getInt(cursor1.getColumnIndex("DayStart")); String
-		 * occur = cursor1.getString(cursor1.getColumnIndex("Occurences"));
-		 * 
-		 * // String course = (String) courses.getSelectedItem().toString();
-		 * //String date = Integer.startYr + "," + startMth + "," + startDay;
-		 * ContentValues values = new ContentValues(); c = new Course(name,
-		 * desc, loc, false); popGrades(); Progress p = new Progress(); int
-		 * grade = p.calculateAverage(c);
-		 * 
-		 * values.put("Grade", grade);
-		 * 
-		 * db.insert("Courses", null, values);
-		 */
-		try {
-			SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
-					null);
-			Cursor cursor2 = db.rawQuery(
-					"select * from Assignments where Course ='" + cName
-							+ "' and Complete = 1", null);
-			Cursor cursor3 = db.rawQuery(
-					"select * from Exams where Course ='" + cName
-							+ "' and Complete = 1", null);
-
-			int received = 0;
-			int potential = 0;
-			int grade;
-
-			cursor2.moveToFirst();
-			while (cursor2.isAfterLast() == false) {
-				received = received
-						+ cursor2.getInt(cursor2
-								.getColumnIndex("PointsRecieved"));
-				potential = potential
-						+ cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
-				cursor2.moveToNext();
-			}
-
-			cursor3.moveToFirst();
-			while (cursor3.isAfterLast() == false) {
-				received = received
-						+ cursor3.getInt(cursor3
-								.getColumnIndex("PointsRecieved"));
-				potential = potential
-						+ cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
-				cursor3.moveToNext();
-			}
-
-			if (potential == 0)
-				grade = 100;
-			else
-				grade = (received / potential) * 100;
-
-			ContentValues values = new ContentValues();
-			values.put("Grade", grade);
-			db.insert("Courses", null, values);
-		} catch (SQLiteException e) {
-			stringArr = new String[1];
-			stringArr[0] = "nothing.";
-		}
 	}
 
 	public void backHandler(View v) {
 		finish();
 	}
 
-	/*
-	 * private void popGrades() { Cursor cursor2 = db.rawQuery(
-	 * "select * from Assignments where CourseName ='" + cName +
-	 * "' and Complete = 1", null); Cursor cursor3 =
-	 * db.rawQuery("select * from Exams where CourseName ='" + cName +
-	 * "' and Complete = 1", null);
-	 * 
-	 * cursor2.moveToFirst();
-	 * 
-	 * while (cursor2.isAfterLast() == false) { String temp =
-	 * cursor2.getString(cursor2.getColumnIndex("Name")); String temp2 =
-	 * cursor2.getString(cursor2.getColumnIndex("Description")); int dueYear =
-	 * cursor2.getInt(cursor2.getColumnIndex("DueYear")); int dueMonth =
-	 * cursor2.getInt(cursor2.getColumnIndex("DueMonth")); int dueDay =
-	 * cursor2.getInt(cursor2.getColumnIndex("DueDay")); int pointsR =
-	 * cursor2.getInt(cursor2.getColumnIndex("PointsRecieved")); int pointsM =
-	 * cursor2.getInt(cursor2.getColumnIndex("MaxPoints")); int comp =
-	 * cursor2.getInt(cursor2.getColumnIndex("Complete")); boolean complete =
-	 * false; if(comp == 1) complete = true;
-	 * 
-	 * c.addAssignment(temp, new GregorianCalendar(dueYear, dueMonth, dueDay),
-	 * temp2, pointsM); c.searchForAssignment(temp).setIsComplete(complete);
-	 * c.searchForAssignment(temp).setPointsRecieved(pointsR);
-	 * 
-	 * cursor2.moveToNext(); }
-	 * 
-	 * cursor3.moveToFirst(); while (cursor3.isAfterLast() == false) { String
-	 * temp = cursor3.getString(cursor3.getColumnIndex("Name")); int dueYear =
-	 * cursor3.getInt(cursor3.getColumnIndex("DueYear")); int dueMonth =
-	 * cursor3.getInt(cursor3.getColumnIndex("DueMonth")); int dueDay =
-	 * cursor3.getInt(cursor3.getColumnIndex("DueDay")); int pointsR =
-	 * cursor3.getInt(cursor3.getColumnIndex("PointsRecieved")); int pointsM =
-	 * cursor3.getInt(cursor3.getColumnIndex("MaxPoints")); int comp =
-	 * cursor3.getInt(cursor3.getColumnIndex("Complete")); boolean complete =
-	 * false; if(comp == 1) complete = true;
-	 * 
-	 * c.addExam(temp, new GregorianCalendar(dueYear, dueMonth, dueDay),
-	 * pointsM); c.searchForExam(temp).setIsComplete(complete);
-	 * c.searchForExam(temp).setPointsReceived(pointsR);
-	 * 
-	 * cursor3.moveToNext(); } }
-	 */
-
 	private void popAssignment() {
+		try{
+		 i=0;
+		 db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+					null);
 		Cursor cursor2 = db.rawQuery(
-				"select * from Assignments where CourseName ='" + cName
+				"select * from Assignments where Course ='" + cName
 						+ "' and Complete = 1", null); // get those values
-
-		Cursor cursor3 = db.rawQuery("select * from Exams where CourseName ='"
-				+ cName + "' and Complete = 1", null); // get those values
-
-		int i = cursor2.getCount() + cursor3.getCount();
+		
+		 i = i+ cursor2.getCount();
+		 assignArr = new String[cursor2.getCount()];
 		// instantiate array of semesters by size of the cursor + 1
-		stringArr = new String[i];
 		// set up a count int to keep track of array positions
 		int count = 0;
 		// move the cursor to first position
@@ -179,12 +66,28 @@ public class ProgressActivity extends ListActivity {
 			int temp2 = cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
 			int grade = temp1 / temp2 * 100;
 			// store the string in "Session" column into the array of semesters
-			stringArr[count] = temp + " " + Integer.toString(grade);
+			assignArr[count] = temp + " " + Integer.toString(grade);
 			// increment count
 			count++;
 			// move cursor by 1
 			cursor2.moveToNext();
+			
 		}
+		cursor2.close();
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void popExam() {
+		try{
+		int count=0;
+		Cursor cursor3 = db.rawQuery("select * from Exams where Course ='"
+				+ cName + "' and Complete = 1", null); // get those values
+		 i = i+ cursor3.getCount();
+		 examArr = new String[cursor3.getCount()];
+
 		cursor3.moveToFirst();
 
 		while (cursor3.isAfterLast() == false) {
@@ -194,7 +97,7 @@ public class ProgressActivity extends ListActivity {
 			int temp2 = cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
 			int grade = temp1 / temp2 * 100;
 			// store the string in "Session" column into the array of semesters
-			stringArr[count] = temp + " " + Integer.toString(grade);
+			examArr[count] = temp + " " + Integer.toString(grade);
 			// increment count
 			count++;
 			// move cursor by 1
@@ -203,11 +106,25 @@ public class ProgressActivity extends ListActivity {
 
 		// add an "add semester option
 		// close the cursor
-		cursor2.close();
 		cursor3.close();
-
 		// close the database
 		db.close();
+		}catch (SQLiteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void bridge(){
+		stringArr = new String[i];
+		int count= 0;
+		for (int j = 0; j < assignArr.length-1;j++){
+			stringArr[count] = assignArr[j];
+			count++;
+		}
+		for (int h = 0; h < examArr.length-1;h++){
+			stringArr[count] = examArr[h];
+			count++;
+		}
 	}
 
 }
