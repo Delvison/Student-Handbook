@@ -75,6 +75,7 @@ public class CreateAssignmentActivity extends Activity {
         db.close();
       
         Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        //Intent intent = new Intent(getApplicationContext(), SetAlarmActivity.class);
         intent.putExtra("key", course);
         startActivity(intent);
         finish();

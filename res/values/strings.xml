@@ -25,21 +25,38 @@
     <string name="locationString">where yo class at</string>
     <string name="miscString">name of misc</string>
     <string name="gradeString">grade of this course</string>
+
     <string-array name="reoccurenceStringArray">
-        <item >MWF</item>
-        <item >TH</item>
-        <item >MW</item>
-        <item >Weekly</item>
+        <item>MWF</item>
+        <item>TH</item>
+        <item>MW</item>
+        <item>Weekly</item>
     </string-array>
+
     <string name="addNote">Add Note</string>
     <string name="createNote">Create Note</string>
     <string name="currentDateTitle">current date in title</string>
     <string name="Title">Title</string>
     <string name="Done">Done</string>
+
     <string-array name="reoccurenceMiscArray">
-        <item >Monthly</item>
-        <item >Weekly</item>
-        <item >Not Reoccuring</item>
+        <item>Monthly</item>
+        <item>Weekly</item>
+        <item>Not Reoccuring</item>
     </string-array>
-    
+
+    <string name="title_activity_notification_">Notification_Activity</string>
+    <string name="title_activity_set_alarm">SetAlarmActivity</string>
+
+    <string-array name="alarm_options_array">
+        <item>5 min</item>
+        <item>15 min</item>
+        <item>30 min</item>
+        <item>1 hour</item>
+        <item>1 day</item>
+    </string-array>
+
+    <string name="title_activity_alarm_popup">AlarmPopupActivity</string>
+    <string name="ok">OK</string>
+
 </resources>

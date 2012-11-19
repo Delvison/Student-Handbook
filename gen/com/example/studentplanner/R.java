@@ -9,6 +9,7 @@ package com.example.studentplanner;
 
 public final class R {
     public static final class array {
+        public static final int alarm_options_array=0x7f060004;
         public static final int reoccurenceMiscArray=0x7f060003;
         public static final int reoccurenceStringArray=0x7f060002;
         public static final int semesters=0x7f060000;
@@ -17,6 +18,8 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int black=0x7f040002;
+        public static final int list_background_color=0x7f040001;
         public static final int my_custom_color=0x7f040000;
     }
     public static final class dimen {
@@ -25,11 +28,13 @@ public final class R {
     public static final class drawable {
         public static final int ic_action_search=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int my_custom_selector=0x7f020002;
-        public static final int my_gradient=0x7f020003;
-        public static final int my_nine_patch=0x7f020004;
-        public static final int patched_button=0x7f020005;
-        public static final int red=0x7f020006;
+        public static final int list_background_gradient=0x7f020002;
+        public static final int my_custom_selector=0x7f020003;
+        public static final int my_gradient=0x7f020004;
+        public static final int my_nine_patch=0x7f020005;
+        public static final int patched_button=0x7f020006;
+        public static final int red=0x7f020007;
+        public static final int title_gradient=0x7f020008;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0a003d;
@@ -72,6 +77,7 @@ public final class R {
         public static final int examView1=0x7f0a003b;
         public static final int listView1=0x7f0a0039;
         public static final int locView=0x7f0a001c;
+        public static final int menu_settings=0x7f0a0045;
         public static final int miscButton1=0x7f0a0040;
         public static final int notebookButton=0x7f0a0021;
         public static final int progressBar1=0x7f0a003e;
@@ -104,41 +110,47 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int activity_semester_create=0x7f030001;
-        public static final int add_assignment_view=0x7f030002;
-        public static final int add_exam_view=0x7f030003;
-        public static final int assignment_listview=0x7f030004;
-        public static final int assignment_view=0x7f030005;
-        public static final int course_listview=0x7f030006;
-        public static final int course_view=0x7f030007;
-        public static final int create_assignment_view=0x7f030008;
-        public static final int create_course=0x7f030009;
-        public static final int create_exam_view=0x7f03000a;
-        public static final int create_misc=0x7f03000b;
-        public static final int create_note_view=0x7f03000c;
-        public static final int create_notebook_view=0x7f03000d;
-        public static final int create_semester=0x7f03000e;
-        public static final int create_semester_view=0x7f03000f;
-        public static final int edit_assignment_view=0x7f030010;
-        public static final int edit_course_view=0x7f030011;
-        public static final int edit_exam_view=0x7f030012;
-        public static final int edit_misc_view=0x7f030013;
-        public static final int edit_semester_view=0x7f030014;
-        public static final int events_view=0x7f030015;
-        public static final int exam_view=0x7f030016;
-        public static final int main_view=0x7f030017;
-        public static final int misc_listview=0x7f030018;
-        public static final int misc_view=0x7f030019;
-        public static final int note_view=0x7f03001a;
-        public static final int notebook_view=0x7f03001b;
-        public static final int progress_view=0x7f03001c;
-        public static final int semester_button=0x7f03001d;
-        public static final int semester_listview=0x7f03001e;
-        public static final int semester_menu_view=0x7f03001f;
-        public static final int semester_view=0x7f030020;
+        public static final int activity_notification=0x7f030001;
+        public static final int activity_semester_create=0x7f030002;
+        public static final int add_assignment_view=0x7f030003;
+        public static final int add_exam_view=0x7f030004;
+        public static final int alarm_popup_view=0x7f030005;
+        public static final int assignment_listview=0x7f030006;
+        public static final int assignment_view=0x7f030007;
+        public static final int course_listview=0x7f030008;
+        public static final int course_view=0x7f030009;
+        public static final int create_assignment_view=0x7f03000a;
+        public static final int create_course=0x7f03000b;
+        public static final int create_exam_view=0x7f03000c;
+        public static final int create_misc=0x7f03000d;
+        public static final int create_note_view=0x7f03000e;
+        public static final int create_notebook_view=0x7f03000f;
+        public static final int create_semester=0x7f030010;
+        public static final int create_semester_view=0x7f030011;
+        public static final int edit_assignment_view=0x7f030012;
+        public static final int edit_course_view=0x7f030013;
+        public static final int edit_exam_view=0x7f030014;
+        public static final int edit_misc_view=0x7f030015;
+        public static final int edit_semester_view=0x7f030016;
+        public static final int events_view=0x7f030017;
+        public static final int exam_view=0x7f030018;
+        public static final int main_view=0x7f030019;
+        public static final int misc_listview=0x7f03001a;
+        public static final int misc_view=0x7f03001b;
+        public static final int note_view=0x7f03001c;
+        public static final int notebook_view=0x7f03001d;
+        public static final int progress_view=0x7f03001e;
+        public static final int semester_button=0x7f03001f;
+        public static final int semester_listview=0x7f030020;
+        public static final int semester_menu_view=0x7f030021;
+        public static final int semester_view=0x7f030022;
+        public static final int set_alarm_view=0x7f030023;
     }
     public static final class menu {
         public static final int activity_main=0x7f090000;
+        public static final int activity_notification=0x7f090001;
+        public static final int activity_set_alarm=0x7f090002;
+        public static final int alarm_popup_activity=0x7f090003;
     }
     public static final class string {
         public static final int Done=0x7f070015;
@@ -155,13 +167,17 @@ public final class R {
         public static final int locationString=0x7f07000e;
         public static final int menu_settings=0x7f070002;
         public static final int miscString=0x7f07000f;
+        public static final int ok=0x7f070019;
         public static final int semesterString=0x7f07000b;
         public static final int spring=0x7f070005;
         public static final int summer=0x7f070007;
+        public static final int title_activity_alarm_popup=0x7f070018;
         public static final int title_activity_create_semester=0x7f070008;
         public static final int title_activity_main=0x7f070003;
+        public static final int title_activity_notification_=0x7f070016;
         public static final int title_activity_semester_create=0x7f070009;
         public static final int title_activity_semester_menu=0x7f07000a;
+        public static final int title_activity_set_alarm=0x7f070017;
         public static final int winter=0x7f070006;
     }
     public static final class style {
