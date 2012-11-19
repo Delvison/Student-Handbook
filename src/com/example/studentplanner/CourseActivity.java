@@ -34,7 +34,8 @@ public class CourseActivity extends ListActivity {
 	double grade;
 	SQLiteDatabase db;
 	TextView gr;
-
+	String[] evArr;
+	int eventTot;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,11 @@ public class CourseActivity extends ListActivity {
 		this.initCourse(cName);
 		courseName = (TextView) findViewById(R.id.textView1);
 		courseName.setText(cName);
+		this.popEvents();
 		this.list();
 		this.calcGrade();
-		gr.setText(Double.toString(grade));
+		int c = (int) grade;
+		gr.setText("Grade: " + Integer.toString(c));
 
 	}
 
@@ -60,23 +63,22 @@ public class CourseActivity extends ListActivity {
 		// " Location VARCHAR, HourStart INT, MinuteStart INT, YearStart INT, MonthStart INT, DayStart INT, "
 		// +
 		// " Occurences VARCHAR)");
-		db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
-				null);
+		db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
 		// get values for the current semester being viewed
 		Cursor cursor = db.rawQuery("select * from Courses where CourseName ='"
 				+ c + "'", null);
 		// get those values
 		cursor.moveToFirst();
-		 String name = cursor.getString(cursor.getColumnIndex("CourseName"));
-		 desc = cursor.getString(cursor.getColumnIndex("Description"));
-		 loc = cursor.getString(cursor.getColumnIndex("Location"));
-		 startHr = cursor.getInt(cursor.getColumnIndex("HourStart"));
-		 startMin = cursor.getInt(cursor.getColumnIndex("MinuteStart"));
-		 startYr = cursor.getInt(cursor.getColumnIndex("YearStart"));
-		 startMth = cursor.getInt(cursor.getColumnIndex("MonthStart"));
-		 startDay = cursor.getInt(cursor.getColumnIndex("DayStart"));
-		 occur = cursor.getString(cursor.getColumnIndex("Occurences"));
-		 semester = cursor.getString(cursor.getColumnIndex("Semester"));
+		String name = cursor.getString(cursor.getColumnIndex("CourseName"));
+		desc = cursor.getString(cursor.getColumnIndex("Description"));
+		loc = cursor.getString(cursor.getColumnIndex("Location"));
+		startHr = cursor.getInt(cursor.getColumnIndex("HourStart"));
+		startMin = cursor.getInt(cursor.getColumnIndex("MinuteStart"));
+		startYr = cursor.getInt(cursor.getColumnIndex("YearStart"));
+		startMth = cursor.getInt(cursor.getColumnIndex("MonthStart"));
+		startDay = cursor.getInt(cursor.getColumnIndex("DayStart"));
+		occur = cursor.getString(cursor.getColumnIndex("Occurences"));
+		semester = cursor.getString(cursor.getColumnIndex("Semester"));
 
 		// close cursor and database
 		cursor.close();
@@ -99,8 +101,7 @@ public class CourseActivity extends ListActivity {
 		}
 		cLoc.setText(loc);
 		cDays.setText(occur);
-		 gr = (TextView) findViewById(R.id.textView2);
-
+		gr = (TextView) findViewById(R.id.textView2);
 
 	}
 
@@ -124,14 +125,14 @@ public class CourseActivity extends ListActivity {
 		intent.putExtra("CourseName", cName);
 		startActivity(intent);
 	}
-	
+
 	public void progressClick(View v) {
 		Intent intent = new Intent(getApplicationContext(),
 				ProgressActivity.class);
 		intent.putExtra("key", cName);
 		startActivity(intent);
 	}
-	
+
 	public void list() {
 		String[] l = { "YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
@@ -194,13 +195,13 @@ public class CourseActivity extends ListActivity {
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
 		setListAdapter(new ArrayAdapter<String>(this,
-				R.layout.semester_listview, l));// needs an array
+				R.layout.semester_listview, evArr));// needs an array
 		// get the list view from the view
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled
 		listView.setTextFilterEnabled(true);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -226,12 +227,12 @@ public class CourseActivity extends ListActivity {
 			startActivity(i);
 			finish();
 			return true;
-			
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public void calcGrade(){
+
+	public void calcGrade() {
 		try {
 			SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
 					null);
@@ -241,7 +242,7 @@ public class CourseActivity extends ListActivity {
 			Cursor examCursor = db.rawQuery(
 					"select * from Exams where Course ='" + cName
 							+ "' and Complete = 1", null);
-//split calculations into two methods
+			// split calculations into two methods
 			double received = 0;
 			double potential = 0;
 
@@ -251,7 +252,8 @@ public class CourseActivity extends ListActivity {
 						+ assignCursor.getInt(assignCursor
 								.getColumnIndex("PointsRecieved"));
 				potential = potential
-						+ assignCursor.getInt(assignCursor.getColumnIndex("MaxPoints"));
+						+ assignCursor.getInt(assignCursor
+								.getColumnIndex("MaxPoints"));
 				assignCursor.moveToNext();
 			}
 
@@ -261,7 +263,8 @@ public class CourseActivity extends ListActivity {
 						+ examCursor.getInt(examCursor
 								.getColumnIndex("PointsRecieved"));
 				potential = potential
-						+ examCursor.getInt(examCursor.getColumnIndex("MaxPoints"));
+						+ examCursor.getInt(examCursor
+								.getColumnIndex("MaxPoints"));
 				examCursor.moveToNext();
 			}
 
@@ -273,7 +276,7 @@ public class CourseActivity extends ListActivity {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void update() {
 		ContentValues values = new ContentValues();
 		values.put("CourseName", cName);
@@ -287,4 +290,75 @@ public class CourseActivity extends ListActivity {
 
 		db.update("Courses", values, "CourseName=" + "'" + cName + "'", null);
 	}
+
+	public void popEvents() {
+		int a=0, ex =0;
+		Cursor aCursor = null;
+		Cursor eCursor = null;
+		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+				null);
+		try {
+			aCursor = db.rawQuery("SELECT * FROM Assignments WHERE Course='"
+					+ cName + "'", null);
+			a = aCursor.getCount();
+
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+		try {
+			eCursor = db.rawQuery("SELECT * FROM Exams WHERE Course='" + cName
+					+ "'", null);
+			ex = eCursor.getCount();
+
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+
+		evArr = new String[(a + ex)];
+		// set up a count int to keep track of array positions
+		int count = 0;
+		// move the cursor to first position
+		if (aCursor != null) {
+			aCursor.moveToFirst();
+			// while the cursor position isn't passed the last item in the
+			// cursor
+			while (aCursor.isAfterLast() == false) {
+				// store the string in "Session" column into the array of
+				// semesters
+				String s = aCursor.getString(aCursor.getColumnIndex("Name"));
+				s = s + "\n" + aCursor.getInt(aCursor.getColumnIndex("DueMonth")) + "/"
+						+ aCursor.getInt(aCursor.getColumnIndex("DueDay")) + "/"
+						+ aCursor.getInt(aCursor.getColumnIndex("DueYear"));
+
+				evArr[count] = s;
+				// increment count
+				count++;
+				// move cursor by 1
+				aCursor.moveToNext();
+			}
+			aCursor.close();
+		}
+		
+		if (eCursor != null) {
+			eCursor.moveToFirst();
+			// while the cursor position isn't passed the last item in the
+			// cursor
+			while (eCursor.isAfterLast() == false) {
+				// store the string in "Session" column into the array of
+				// semesters
+				String s = eCursor.getString(eCursor.getColumnIndex("Name"));
+				s = s + "\n" + eCursor.getInt(eCursor.getColumnIndex("DueMonth")) + "/"
+						+ eCursor.getInt(eCursor.getColumnIndex("DueDay")) + "/"
+						+ eCursor.getInt(eCursor.getColumnIndex("DueYear"));
+
+				evArr[count] = s;
+				// increment count
+				count++;
+				// move cursor by 1
+				eCursor.moveToNext();
+			}
+			eCursor.close();
+		}
+	}
+
 }
