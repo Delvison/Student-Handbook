@@ -39,7 +39,7 @@ public class CourseActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.course_view);
+		setContentView(R.layout.course_view2);
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			cName = extras.getString("key");

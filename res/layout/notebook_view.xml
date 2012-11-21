@@ -24,7 +24,7 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:fadingEdge="vertical" 
-        android:textColor="@color/black">
+        android:textColor="#fff">
 
     </ListView>
 

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/title_gradient" >
+
+    <ListView
+        android:id="@+id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_above="@+id/assignmentButton"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dayView"
+        android:layout_weight="0.01"
+        android:background="@drawable/list_background_gradient" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/notebookButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="notebookHandler"
+        android:text="Notebook" />
+
+    <Button
+        android:id="@+id/assignmentButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/notebookButton"
+        android:layout_toLeftOf="@+id/notebookButton"
+        android:layout_weight="0.58"
+        android:onClick="clickHandler"
+        android:text="Assignments" />
+
+    <Button
+        android:id="@+id/examButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/notebookButton"
+        android:layout_alignParentRight="true"
+        android:layout_weight="0.13"
+        android:onClick="examClick"
+        android:text="Exams" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/courseString"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/size" />
+
+    <Button
+        android:id="@+id/progressButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/assignmentButton"
+        android:layout_toLeftOf="@+id/notebookButton"
+        android:layout_weight="1.19"
+        android:onClick="progressClick"
+        android:text="Progress" />
+
+    <TextView
+        android:id="@+id/locView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="22dp"
+        android:text="@string/locationString"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/descView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="description here"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/dayView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/locView"
+        android:text="DAYS" />
+
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locView"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/dayView"
+        android:text="TIME" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/locView"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>
