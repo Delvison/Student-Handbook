@@ -199,12 +199,14 @@ public class CourseActivity extends ListActivity {
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
+		if (eventTot != 0) {
 		setListAdapter(new ArrayAdapter<String>(this,
 				R.layout.semester_listview, evArr));// needs an array
 		// get the list view from the view
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled
 		listView.setTextFilterEnabled(true);
+		}
 	}
 
 	@Override
@@ -326,8 +328,9 @@ public class CourseActivity extends ListActivity {
 		} catch (SQLiteException e) {
 			e.printStackTrace();
 		}
-
-		evArr = new String[(a + ex)];
+		
+        eventTot = a + ex; //combine both counts
+		evArr = new String[eventTot];
 		// set up a count int to keep track of array positions
 		int count = 0;
 		// move the cursor to first position
