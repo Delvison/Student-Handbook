@@ -36,6 +36,9 @@ public class CourseActivity extends ListActivity {
 	TextView gr;
 	String[] evArr;
 	int eventTot;
+	double received = 0;
+	double potential = 0;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class CourseActivity extends ListActivity {
 		courseName.setText(cName);
 		this.popEvents();
 		this.list();
+		this.calcAssign();
+		this.calcExam();
 		this.calcGrade();
 		int c = (int) grade;
 		gr.setText("Grade: " + Integer.toString(c));
@@ -232,19 +237,13 @@ public class CourseActivity extends ListActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void calcGrade() {
+	public void calcAssign() {
 		try {
 			SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
 					null);
 			Cursor assignCursor = db.rawQuery(
 					"select * from Assignments where Course ='" + cName
 							+ "' and Complete = 1", null);
-			Cursor examCursor = db.rawQuery(
-					"select * from Exams where Course ='" + cName
-							+ "' and Complete = 1", null);
-			// split calculations into two methods
-			double received = 0;
-			double potential = 0;
 
 			assignCursor.moveToFirst();
 			while (assignCursor.isAfterLast() == false) {
@@ -257,6 +256,19 @@ public class CourseActivity extends ListActivity {
 				assignCursor.moveToNext();
 			}
 
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void calcExam() {
+		try {
+			SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+					null);
+			Cursor examCursor = db.rawQuery(
+					"select * from Exams where Course ='" + cName
+							+ "' and Complete = 1", null);
+			
 			examCursor.moveToFirst();
 			while (examCursor.isAfterLast() == false) {
 				received = received
@@ -268,15 +280,16 @@ public class CourseActivity extends ListActivity {
 				examCursor.moveToNext();
 			}
 
-			if (potential == 0)
-				grade = 100;
-			else
-				grade = (received / potential) * 100;
 		} catch (SQLiteException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void calcGrade() {
+		if (potential == 0)	grade = 100;
+		else grade = (received / potential) * 100;
+	}
+	
 	public void update() {
 		ContentValues values = new ContentValues();
 		values.put("CourseName", cName);

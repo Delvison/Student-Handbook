@@ -29,9 +29,10 @@ public class ProgressActivity extends ListActivity {
 		if (extras != null) {
 			cName = extras.getString("key");
 		}
-		popAssignment();
-        popExam();
-        bridge();
+		//popAssignment();
+        //popExam();
+        //bridge();
+		popEvents();
 		setListAdapter(new ArrayAdapter<String>(this,
 				R.layout.semester_listview, stringArr));
 	
@@ -42,7 +43,7 @@ public class ProgressActivity extends ListActivity {
 		finish();
 	}
 
-	private void popAssignment() {
+	/*private void popAssignment() {
 		try{
 		 i=0;
 		 db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
@@ -124,6 +125,76 @@ public class ProgressActivity extends ListActivity {
 		for (int h = 0; h < examArr.length-1;h++){
 			stringArr[count] = examArr[h];
 			count++;
+		}
+	}*/
+	
+	public void popEvents() {
+		int a=0, ex =0;
+		Cursor aCursor = null;
+		Cursor eCursor = null;
+		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+				null);
+		try {
+			aCursor = db.rawQuery("SELECT * FROM Assignments WHERE Course='"
+					+ cName + "'", null);
+			a = aCursor.getCount();
+
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+		try {
+			eCursor = db.rawQuery("SELECT * FROM Exams WHERE Course='" + cName
+					+ "'", null);
+			ex = eCursor.getCount();
+
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+
+		stringArr = new String[(a + ex)];
+		// set up a count int to keep track of array positions
+		int count = 0;
+		// move the cursor to first position
+		if (aCursor != null) {
+			aCursor.moveToFirst();
+			// while the cursor position isn't passed the last item in the
+			// cursor
+			while (aCursor.isAfterLast() == false) {
+				// store the string in "Session" column into the array of
+				// semesters
+				String s = aCursor.getString(aCursor.getColumnIndex("Name"));
+				int temp1 = aCursor.getInt(aCursor.getColumnIndex("PointsRecieved"));
+				int temp2 = aCursor.getInt(aCursor.getColumnIndex("MaxPoints"));
+				int grade = (temp1/temp2)*100;
+				s = s + " - " + Integer.toString(grade);
+				stringArr[count] = s;
+				// increment count
+				count++;
+				// move cursor by 1
+				aCursor.moveToNext();
+			}
+			aCursor.close();
+		}
+		
+		if (eCursor != null) {
+			eCursor.moveToFirst();
+			// while the cursor position isn't passed the last item in the
+			// cursor
+			while (eCursor.isAfterLast() == false) {
+				// store the string in "Session" column into the array of
+				// semesters
+				String s = eCursor.getString(eCursor.getColumnIndex("Name"));
+				int temp1 = eCursor.getInt(eCursor.getColumnIndex("PointsRecieved"));
+				int temp2 = eCursor.getInt(eCursor.getColumnIndex("MaxPoints"));
+				int grade = (temp1/temp2)*100;
+				s = s + " - " + Integer.toString(grade);
+				stringArr[count] = s;
+				// increment count
+				count++;
+				// move cursor by 1
+				eCursor.moveToNext();
+			}
+			eCursor.close();
 		}
 	}
 
