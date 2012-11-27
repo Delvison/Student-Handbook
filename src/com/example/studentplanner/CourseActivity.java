@@ -376,5 +376,8 @@ public class CourseActivity extends ListActivity {
 			eCursor.close();
 		}
 	}
-
+	
+	protected void onResume(){
+		super.onResume();
+	}
 }
