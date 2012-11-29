@@ -40,9 +40,9 @@
     <string name="Done">Done</string>
 
     <string-array name="reoccurenceMiscArray">
-        <item>Monthly</item>
-        <item>Weekly</item>
         <item>Not Reoccuring</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
     </string-array>
 
     <string name="title_activity_notification_">Notification_Activity</string>

@@ -28,9 +28,11 @@ public class SemesterActivity extends ListActivity {
 	long days;
 	Button courses;
 	Button Events;
+	Bundle b;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		this.b = savedInstanceState;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.semester_view2);
 		Bundle extras = getIntent().getExtras();
@@ -144,7 +146,6 @@ public class SemesterActivity extends ListActivity {
 				Intent intent = new Intent(getApplicationContext(),
 						CreateCourseActivity.class);
 				startActivity(intent);
-				finish();
 			}
 		});
 		alert.show();
@@ -164,67 +165,7 @@ public class SemesterActivity extends ListActivity {
 	}
 
 	public void list() {
-		String[] l = { "YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
-				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
-		//String[] crap = this.popAllEvents();
+		String[] l;
 		l = this.popAllEvents();
 		//l[0] = Integer.toString(this.countAllEvents());
 		setListAdapter(new ArrayAdapter<String>(this,
@@ -420,7 +361,9 @@ public class SemesterActivity extends ListActivity {
 			a.moveToFirst();
 			while (a.isAfterLast() == false) {
 				String s = "(Event)" + a.getString(a.getColumnIndex("MiscName"));
-				s = s + "\n" + a.getInt(a.getColumnIndex("MonthStart"))  + "/"
+				 int m =1 + a.getInt(a.getColumnIndex("MonthStart")); 
+				
+				s = s + "\n" + m + "/"
 						+ a.getInt(a.getColumnIndex("DayStart")) + "/"
 						+ a.getInt(a.getColumnIndex("YearStart"));
 				allEvents[posHolder] = s;
@@ -447,7 +390,8 @@ public class SemesterActivity extends ListActivity {
 				b.moveToFirst();
 				while (b.isAfterLast() == false) {
 					String s = "(Assign.) "+b.getString(b.getColumnIndex("Name"));
-					s = s + "\n" + b.getInt(b.getColumnIndex("DueMonth")) + "/"
+					int m = 1+ b.getInt(b.getColumnIndex("DueMonth"));
+					s = s + "\n" + m + "/"
 							+ b.getInt(b.getColumnIndex("DueDay")) + "/"
 							+ b.getInt(b.getColumnIndex("DueYear"));
 					allEvents[posHolder] = s;
@@ -474,7 +418,8 @@ public class SemesterActivity extends ListActivity {
 				c.moveToFirst();
 				while (c.isAfterLast() == false) {
 					String s = "(Exam) "+c.getString(c.getColumnIndex("Name"));
-					s = s + "\n" + c.getInt(c.getColumnIndex("DueMonth")) + "/"
+					int m = 1 + c.getInt(c.getColumnIndex("DueMonth"));
+					s = s + "\n" + m + "/"
 							+ c.getInt(c.getColumnIndex("DueDay")) + "/"
 							+ c.getInt(c.getColumnIndex("DueYear"));
 					allEvents[posHolder] = s;
@@ -493,5 +438,9 @@ public class SemesterActivity extends ListActivity {
 		return allEvents;
 	}
 	
+	public void onResume(){
+		super.onResume();
+		this.onCreate(b);
+	}
 
 }

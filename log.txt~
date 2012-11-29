@@ -1,15 +1,3 @@
-====
--- Brian -- domain analysis
--- Delvison -- screenshot views
-                --Semester, course, create course, course list
-
-sources
-- semester
-- Course
-- Notebook and note
-- 
-
-
 
 ====Wed Oct 31 21:06:18 EDT 2012 delvison
 --SQLiteDatabaseHelper <-- look into this.
