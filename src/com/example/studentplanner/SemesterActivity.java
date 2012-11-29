@@ -32,7 +32,7 @@ public class SemesterActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.semester_view);
+		setContentView(R.layout.semester_view2);
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			sName = extras.getString("key");

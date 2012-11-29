@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center|fill_vertical"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/title_gradient">
 
     <TextView
         android:id="@+id/textView4"
