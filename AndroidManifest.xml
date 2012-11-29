@@ -67,7 +67,7 @@
         </activity>
         <activity
             android:name=".CreateNoteActivity"
-            android:label="CreateNote" >
+            android:label="Create a Note" >
         </activity>
         <activity
             android:name=".AssignmentListviewActivity"
@@ -76,62 +76,62 @@
         </activity>
         <activity
             android:name=".AssignmentActivity"
-            android:label="Assignments"
+            android:label="Assignment"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditAssignmentActivity"
-            android:label="Assignments"
+            android:label="Edit Assignment"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ExamListviewActivity"
-            android:label="Assignments"
+            android:label="Exams"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ExamActivity"
-            android:label="Assignments"
+            android:label="Exams"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditExamActivity"
-            android:label="Assignments"
+            android:label="Edit Exam"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditSemesterActivity"
-            android:label="Assignments"
+            android:label="Edit Semester"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditCourseActivity"
-            android:label="Edit"
+            android:label="Edit Course"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditMiscActivity"
-            android:label="Miscs"
+            android:label="Edit Event"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".MiscActivity"
-            android:label="Miscs"
+            android:label="Event"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".MiscListviewActivity"
-            android:label="Miscs"
+            android:label="Events"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateMiscActivity"
-            android:label="Assignments"
+            android:label="Create an Event"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ProgressActivity"
-            android:label="Assignments"
+            android:label="Progress"
             android:theme="@style/MyCustomTheme" >
         </activity>
 

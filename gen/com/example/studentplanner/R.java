@@ -140,17 +140,18 @@ public final class R {
         public static final int events_view=0x7f030018;
         public static final int exam_view=0x7f030019;
         public static final int main_view=0x7f03001a;
-        public static final int misc_listview=0x7f03001b;
-        public static final int misc_view=0x7f03001c;
-        public static final int note_view=0x7f03001d;
-        public static final int notebook_view=0x7f03001e;
-        public static final int progress_view=0x7f03001f;
-        public static final int semester_button=0x7f030020;
-        public static final int semester_listview=0x7f030021;
-        public static final int semester_menu_view=0x7f030022;
-        public static final int semester_view=0x7f030023;
-        public static final int semester_view2=0x7f030024;
-        public static final int set_alarm_view=0x7f030025;
+        public static final int master_listview=0x7f03001b;
+        public static final int misc_listview=0x7f03001c;
+        public static final int misc_view=0x7f03001d;
+        public static final int note_view=0x7f03001e;
+        public static final int notebook_view=0x7f03001f;
+        public static final int progress_view=0x7f030020;
+        public static final int semester_button=0x7f030021;
+        public static final int semester_listview=0x7f030022;
+        public static final int semester_menu_view=0x7f030023;
+        public static final int semester_view=0x7f030024;
+        public static final int semester_view2=0x7f030025;
+        public static final int set_alarm_view=0x7f030026;
     }
     public static final class menu {
         public static final int activity_main=0x7f090000;

@@ -47,7 +47,7 @@ public class SemesterActivity extends ListActivity {
 		} else {
 			daysInView.setText("Semester Over.");
 		}
-		//this.popEvents();
+		// this.popEvents();
 		this.list();
 	}
 
@@ -123,7 +123,7 @@ public class SemesterActivity extends ListActivity {
 				// if item clicked equals add semester
 
 				if (rightMeow.equals("No Courses Exist.")) {
-                       //do nothing
+					// do nothing
 				} else {
 					Intent intent = new Intent(getApplicationContext(),
 							CourseActivity.class);
@@ -153,7 +153,7 @@ public class SemesterActivity extends ListActivity {
 				CourseListviewActivity.class);
 		intent.putExtra("key", sName);
 		// startActivity(intent);
-		
+
 	}
 
 	public void miscClick(View v) {
@@ -224,6 +224,9 @@ public class SemesterActivity extends ListActivity {
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ",
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
+		//String[] crap = this.popAllEvents();
+		l = this.popAllEvents();
+		//l[0] = Integer.toString(this.countAllEvents());
 		setListAdapter(new ArrayAdapter<String>(this,
 				R.layout.semester_listview, l));// needs an array
 		// get the list view from the view
@@ -279,7 +282,7 @@ public class SemesterActivity extends ListActivity {
 					null);
 			Cursor c = db.rawQuery("SELECT Name FROM Assignments", null);
 			int i = c.getCount();
-		    assArr = new String[i];
+			assArr = new String[i];
 			// set up a count int to keep track of array positions
 			int count = 0;
 			// move the cursor to first position
@@ -298,14 +301,193 @@ public class SemesterActivity extends ListActivity {
 			}
 			// close the cursor
 			c.close();
-			//loop through each assignment. check date to see if its in the future.
-			//if it is, add it to the main array that will be used in the listview
-			
+			// loop through each assignment. check date to see if its in the
+			// future.
+			// if it is, add it to the main array that will be used in the
+			// listview
 
 		} catch (SQLiteException e) {
-		//state that there are no upcoming events
+			// state that there are no upcoming events
 			assArr = new String[1];
 			assArr[1] = "No Upcoming Events.";
 		}
+	}
+
+	public String[] arrayOfCourses() {
+		String[] courseArr; // holds all courses pertaining to the semester
+		// open database
+		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+				null);
+
+		try {
+			Cursor c = db.rawQuery(
+					"SELECT CourseName FROM Courses WHERE Semester ='" + sName
+							+ "'", null);
+			int i = c.getCount();
+			courseArr = new String[i];
+			c.moveToFirst();
+			int count = 0;
+			// while the cursor position isn't passed the last item in the
+			// cursor
+			while (c.isAfterLast() == false) {
+				// store the string in "Session" column into the array of
+				// semesters
+				courseArr[count] = c.getString(c.getColumnIndex("CourseName"));
+				// increment count
+				count++;
+				// move cursor by 1
+				c.moveToNext();
+			}
+			// close the cursor
+			c.close();
+			// loop through each assignment. check date to see if its in the
+			// future.
+			// if it is, add it to the main array that will be used in the
+			// listview
+		} catch (SQLiteException e) {
+			courseArr = new String[1];
+			courseArr[0]= "No Courses Exist"; 
+			e.printStackTrace();
+		}
+		// now we have all of our courses
+		return courseArr;
+	}
+
+	public int countAllEvents() {
+		int eventCounter = 0; // keeps count of all events
+		String[] courseArr = this.arrayOfCourses(); // holds all courses
+													// pertaining to the
+													// semester
+		// open database
+		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+				null);
+
+		// count up assignments belonging to these courses, this wont
+		// execute if 0 courses exist
+		Cursor b = null;
+		for (int a = 0; a < courseArr.length; a++) {
+			String currentCourse = courseArr[a];
+			try {
+				b = db.rawQuery("SELECT Name FROM Assignments WHERE Course ='"
+						+ currentCourse + "'", null);
+				eventCounter = eventCounter + b.getCount();
+						b.close();
+
+			} catch (SQLiteException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// next count up exams belonging to these courses, this wont execute if
+		// 0 courses exist
+		Cursor d = null;
+		for (int a = 0; a < courseArr.length; a++) {
+			String currentCourse = courseArr[a];
+			try {
+				d = db.rawQuery("SELECT Name FROM Exams WHERE Course ='"
+						+ currentCourse + "'", null);
+				eventCounter = eventCounter + d.getCount();
+						d.close();
+			} catch (SQLiteException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// next count up misc. events belonging to semester
+		try {
+			Cursor e = db.rawQuery("SELECT MiscName FROM Miscs WHERE Semester ='"
+					+ sName + "'", null);
+			eventCounter = eventCounter + e.getCount();
+			e.close();
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+		db.close();
+		return eventCounter;
+	}
+
+	public String[] popAllEvents() {
+		int total = this.countAllEvents();
+		String[] allEvents = new String[total];// holds all events
+		int posHolder = 0;// keeps track of position in the array
+		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+				null);
+
+		// first populate the array with events belonging to the semester
+		try {
+			Cursor a = db.rawQuery("SELECT * FROM Miscs WHERE Semester ='"
+					+ sName + "'", null);
+			a.moveToFirst();
+			while (a.isAfterLast() == false) {
+				String s = "(Event)" + a.getString(a.getColumnIndex("MiscName"));
+				s = s + "\n" + a.getInt(a.getColumnIndex("MonthStart")) + "/"
+						+ a.getInt(a.getColumnIndex("DayStart")) + "/"
+						+ a.getInt(a.getColumnIndex("YearStart"));
+				allEvents[posHolder] = s;
+				// increment count
+				posHolder++;
+				// move cursor by 1
+				a.moveToNext();
+			}
+			a.close();
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+		}
+
+		// next populate the array with assignments belonging to courses of the
+		// semester
+		String[] courseArr = this.arrayOfCourses();
+
+		Cursor b = null;
+		for (int a = 0; a < courseArr.length; a++) {
+			String currentCourse = courseArr[a];
+			try {
+				b = db.rawQuery("SELECT * FROM Assignments WHERE Course ='"
+						+ currentCourse + "'", null);
+				b.moveToFirst();
+				while (b.isAfterLast() == false) {
+					String s = "(Assign.) "+b.getString(b.getColumnIndex("Name"));
+					s = s + "\n" + b.getInt(b.getColumnIndex("DueMonth")) + "/"
+							+ b.getInt(b.getColumnIndex("DueDay")) + "/"
+							+ b.getInt(b.getColumnIndex("DueYear"));
+					allEvents[posHolder] = s;
+					// increment count
+					posHolder++;
+					// move cursor by 1
+					b.moveToNext();
+				}
+			} catch (SQLiteException e) {
+				e.printStackTrace();
+			}
+		}
+		b.close();
+
+		// next populate the array with exams belonging to courses of the
+		// semester
+		Cursor c = null;
+		for (int a = 0; a < courseArr.length; a++) {
+			String currentCourse = courseArr[a];
+			try {
+				c = db.rawQuery("SELECT * FROM Exams WHERE Course ='"
+						+ currentCourse + "'", null);
+				c.moveToFirst();
+				while (c.isAfterLast() == false) {
+					String s = "(Exam) "+c.getString(c.getColumnIndex("Name"));
+					s = s + "\n" + c.getInt(c.getColumnIndex("DueMonth")) + "/"
+							+ c.getInt(c.getColumnIndex("DueDay")) + "/"
+							+ c.getInt(c.getColumnIndex("DueYear"));
+					allEvents[posHolder] = s;
+					// increment count
+					posHolder++;
+					// move cursor by 1
+					c.moveToNext();
+				}
+			} catch (SQLiteException e) {
+				e.printStackTrace();
+			}
+		}
+		//c.close();
+		db.close();
+		return allEvents;
 	}
 }
