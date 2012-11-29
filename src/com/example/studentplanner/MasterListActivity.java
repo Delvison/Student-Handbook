@@ -10,10 +10,9 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class MasterListActivity extends ListActivity {
 
@@ -145,7 +144,7 @@ public class MasterListActivity extends ListActivity {
 			assignCursor.moveToFirst();
 			while (assignCursor.isAfterLast() == false) {
 				evArr[counter] = assignCursor.getString(assignCursor.getColumnIndex("Name"));
-				dateArr[counter] = GregorianCalendar(assignCursor.getInt(assignCursor.getColumnIndex("DueYear")), 
+				dateArr[counter] =  new GregorianCalendar(assignCursor.getInt(assignCursor.getColumnIndex("DueYear")), 
 						assignCursor.getInt(assignCursor.getColumnIndex("DueMonth")),
 						assignCursor.getInt(assignCursor.getColumnIndex("DueDay")));
 				counter++;
@@ -160,7 +159,7 @@ public class MasterListActivity extends ListActivity {
 			examCursor.moveToFirst();
 			while (examCursor.isAfterLast() == false) {
 				evArr[counter] = examCursor.getString(examCursor.getColumnIndex("Name"));
-				dateArr[counter] = GregorianCalendar(examCursor.getInt(examCursor.getColumnIndex("DueYear")), 
+				dateArr[counter] = new GregorianCalendar(examCursor.getInt(examCursor.getColumnIndex("DueYear")), 
 						examCursor.getInt(examCursor.getColumnIndex("DueMonth")),
 						examCursor.getInt(examCursor.getColumnIndex("DueDay")));
 				counter++;
@@ -174,7 +173,7 @@ public class MasterListActivity extends ListActivity {
 			miscCursor.moveToFirst();
 			while (miscCursor.isAfterLast() == false) {
 				evArr[counter] = miscCursor.getString(miscCursor.getColumnIndex("MiscName"));
-				dateArr[counter] = GregorianCalendar(miscCursor.getInt(miscCursor.getColumnIndex("YearStart")), 
+				dateArr[counter] = new GregorianCalendar(miscCursor.getInt(miscCursor.getColumnIndex("YearStart")), 
 						miscCursor.getInt(miscCursor.getColumnIndex("MonthStart")),
 						miscCursor.getInt(miscCursor.getColumnIndex("DayStart")));
 				counter++;

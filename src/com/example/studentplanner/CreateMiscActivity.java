@@ -79,7 +79,7 @@ public class CreateMiscActivity extends Activity {
         values.put("Location", loc);
         
         values.put("YearStart", startYear);
-        values.put("MonthStart", startMonth);
+        values.put("MonthStart", startMonth + 1);
         values.put("DayStart", startDay);
 
         values.put("HourStart", startHour);

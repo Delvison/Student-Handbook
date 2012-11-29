@@ -46,7 +46,7 @@ public class CreateNoteActivity extends Activity {
     	
     	if(cBox.isChecked()){
     		date = Calendar.getInstance();
-    		month = date.get(Calendar.MONTH);
+    		month = date.get(Calendar.MONTH) + 1;
     		day = date.get(Calendar.DAY_OF_MONTH);
     		year = date.get(Calendar.YEAR);
     		noteName += " Date: " + month + "/" + day + "/" + year; 

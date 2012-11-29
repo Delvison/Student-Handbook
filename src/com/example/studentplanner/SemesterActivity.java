@@ -228,7 +228,7 @@ public class SemesterActivity extends ListActivity {
 		l = this.popAllEvents();
 		//l[0] = Integer.toString(this.countAllEvents());
 		setListAdapter(new ArrayAdapter<String>(this,
-				R.layout.semester_listview, l));// needs an array
+				R.layout.custom_listview, l));// needs an array
 		// get the list view from the view
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled
@@ -309,7 +309,7 @@ public class SemesterActivity extends ListActivity {
 		} catch (SQLiteException e) {
 			// state that there are no upcoming events
 			assArr = new String[1];
-			assArr[1] = "No Upcoming Events.";
+			assArr[0] = "No Upcoming Events.";
 		}
 	}
 
@@ -420,7 +420,7 @@ public class SemesterActivity extends ListActivity {
 			a.moveToFirst();
 			while (a.isAfterLast() == false) {
 				String s = "(Event)" + a.getString(a.getColumnIndex("MiscName"));
-				s = s + "\n" + a.getInt(a.getColumnIndex("MonthStart")) + "/"
+				s = s + "\n" + a.getInt(a.getColumnIndex("MonthStart"))  + "/"
 						+ a.getInt(a.getColumnIndex("DayStart")) + "/"
 						+ a.getInt(a.getColumnIndex("YearStart"));
 				allEvents[posHolder] = s;
@@ -455,13 +455,14 @@ public class SemesterActivity extends ListActivity {
 					posHolder++;
 					// move cursor by 1
 					b.moveToNext();
+					b.close();
 				}
 			} catch (SQLiteException e) {
 				e.printStackTrace();
 			}
+		
+		
 		}
-		b.close();
-
 		// next populate the array with exams belonging to courses of the
 		// semester
 		Cursor c = null;
@@ -481,13 +482,16 @@ public class SemesterActivity extends ListActivity {
 					posHolder++;
 					// move cursor by 1
 					c.moveToNext();
+					db.close();
 				}
 			} catch (SQLiteException e) {
 				e.printStackTrace();
 			}
 		}
 		//c.close();
-		db.close();
+		
 		return allEvents;
 	}
+	
+
 }

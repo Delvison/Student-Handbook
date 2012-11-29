@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".SemesterActivity"
-            android:label="Hello!"
+            android:label="Semester"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity

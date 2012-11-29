@@ -201,7 +201,7 @@ public class CourseActivity extends ListActivity {
 				"YYYY/MM/DD)\n (Event Here)\n (days left) ", };
 		if (eventTot != 0) {
 		setListAdapter(new ArrayAdapter<String>(this,
-				R.layout.semester_listview, evArr));// needs an array
+				R.layout.custom_listview, evArr));// needs an array
 		// get the list view from the view
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled

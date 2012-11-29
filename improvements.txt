@@ -1,0 +1,34 @@
+November 28, 2012
+
+IMPROVEMENT NOTES: notes are relative to layout files 
+
+Apply to all
+	- Use more consistency with views
+	- Change all listView text color
+	- Views use Calendar.getInstance(). Returns months as 0 based, must add 1 before using  	
+
+Semester Create View
+	- Realign textViews above corresponding component
+
+Semester List View
+	- Match App Color Scheme
+
+Semester View 
+	- first view if a semester has been created (Semester listView must be able to be accessed)  
+	- remove "Hello!" from activity title...
+	- populate list view 
+
+Create Course View 
+	- add text above time picker, such as "Class Time"
+
+Course View
+	- adjust class time to include textView am/pm
+
+Add Assignment View
+	- align text in description textEdit, align top left
+
+ 
+Notebook View
+	- add remove function
+
+ 

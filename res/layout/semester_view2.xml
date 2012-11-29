@@ -17,9 +17,10 @@
         android:layout_height="228dp"
         android:layout_above="@+id/coursesButton1"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imageView1"
+        android:layout_below="@+id/textView3"
         android:layout_weight="0.01"
         android:background="@drawable/list_background_gradient" >
+
     </ListView>
 
     <Button
@@ -48,28 +49,33 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="17dp"
+        android:gravity="center"
+        android:maxLines="@integer/number1"
+        android:shadowColor="@color/black"
         android:text="@string/semesterString"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/size" />
+        android:textSize="@dimen/size"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="Upcoming Events" />
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:text="Upcoming Events"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

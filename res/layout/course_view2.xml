@@ -38,6 +38,7 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/notebookButton"
+        android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/notebookButton"
         android:layout_weight="0.58"
         android:onClick="clickHandler"
@@ -61,12 +62,14 @@
         android:layout_alignParentTop="true"
         android:text="@string/courseString"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/size" />
+        android:textSize="@dimen/size"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/progressButton"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/assignmentButton"
         android:layout_toLeftOf="@+id/notebookButton"
         android:layout_weight="1.19"

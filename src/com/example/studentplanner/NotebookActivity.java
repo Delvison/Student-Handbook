@@ -57,8 +57,9 @@ public class NotebookActivity extends ListActivity {
     	cursor.close();
     	db.close();
     	
-    	setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_listview,stringArray));
+    	setListAdapter(new ArrayAdapter<String>(this, R.layout.custom_listview,stringArray));
     	ListView listView = getListView();
+    	
     	
     	listView.setOnItemClickListener(new OnItemClickListener() {
     		
