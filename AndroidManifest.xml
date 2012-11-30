@@ -13,25 +13,26 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.studentplanner.MainActivity"
-            android:screenOrientation="portrait"
-            android:label="Student Planner" >
+            android:name="com.example.studentplanner.SplashActivity"
+            android:label="Student Planner"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            <activity
+        <activity
             android:name=".SemesterListviewActivity"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_semester_create"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateSemesterActivity"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_semester_create"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
@@ -42,8 +43,8 @@
         </activity>
         <activity
             android:name=".CreateAssignmentActivity"
-            android:screenOrientation="portrait"
             android:label="Add an Assignment"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
@@ -84,8 +85,8 @@
         </activity>
         <activity
             android:name=".CreateNoteActivity"
-            android:screenOrientation="portrait"
-            android:label="Create a Note" >
+            android:label="Create a Note"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AssignmentListviewActivity"
@@ -131,8 +132,8 @@
         </activity>
         <activity
             android:name=".EditCourseActivity"
-            android:screenOrientation="portrait"
             android:label="Edit Course"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
@@ -165,7 +166,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
-         <activity
+        <activity
             android:name="com.example.studentplanner.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
@@ -198,12 +199,10 @@
             </intent-filter>
         </activity>
 
-
-        <service 
-            android:name=".VibrateService" 
-            android:process=":my_process">
+        <service
+            android:name=".VibrateService"
+            android:process=":my_process" >
         </service>
-
     </application>
 
 </manifest>

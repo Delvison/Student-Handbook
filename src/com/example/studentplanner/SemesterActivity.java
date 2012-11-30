@@ -96,7 +96,7 @@ public class SemesterActivity extends ListActivity {
 			startActivity(new Intent(this, SemesterListviewActivity.class));
 			return true;
 		case R.id.viewEvents:
-			startActivity(new Intent(this, MainActivity.class));
+			startActivity(new Intent(this, SplashActivity.class));
 			return true;
 		case R.id.editSemester:
 			Intent i = new Intent(this, EditSemesterActivity.class);
