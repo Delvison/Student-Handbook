@@ -38,14 +38,15 @@ public final class R {
         public static final int my_nine_patch=0x7f020006;
         public static final int patched_button=0x7f020007;
         public static final int plus=0x7f020008;
-        public static final int red=0x7f020009;
-        public static final int semester_title_background=0x7f02000a;
-        public static final int title_gradient=0x7f02000b;
+        public static final int plus_button=0x7f020009;
+        public static final int red=0x7f02000a;
+        public static final int semester_title_background=0x7f02000b;
+        public static final int title_gradient=0x7f02000c;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0b003e;
-        public static final int addAssignment=0x7f0b0043;
-        public static final int addEvent=0x7f0b0042;
+        public static final int addAssignment=0x7f0b0044;
+        public static final int addEvent=0x7f0b0043;
         public static final int assignmentButton=0x7f0b001e;
         public static final int assignmentDatePicker1=0x7f0b0025;
         public static final int assignmentText1=0x7f0b0024;
@@ -68,11 +69,11 @@ public final class R {
         public static final int dayView=0x7f0b001a;
         public static final int descView=0x7f0b001b;
         public static final int editButton1=0x7f0b003b;
-        public static final int editCourse=0x7f0b0048;
+        public static final int editCourse=0x7f0b0049;
         public static final int editDescription=0x7f0b0028;
         public static final int editLocation=0x7f0b0029;
         public static final int editName=0x7f0b0027;
-        public static final int editSemester=0x7f0b0045;
+        public static final int editSemester=0x7f0b0046;
         public static final int editText1=0x7f0b000c;
         public static final int editText2=0x7f0b000d;
         public static final int editText3=0x7f0b0036;
@@ -83,12 +84,13 @@ public final class R {
         public static final int examText1=0x7f0b002c;
         public static final int examView1=0x7f0b003c;
         public static final int imageView1=0x7f0b0022;
-        public static final int item1=0x7f0b0046;
+        public static final int item1=0x7f0b0047;
         public static final int listView1=0x7f0b003a;
         public static final int locView=0x7f0b001c;
-        public static final int menu_settings=0x7f0b0047;
+        public static final int menu_settings=0x7f0b0048;
         public static final int miscButton1=0x7f0b0041;
         public static final int notebookButton=0x7f0b0021;
+        public static final int plus=0x7f0b0042;
         public static final int progressBar1=0x7f0b003f;
         public static final int progressButton=0x7f0b0020;
         public static final int radio0=0x7f0b0004;
@@ -115,7 +117,7 @@ public final class R {
         public static final int textView9=0x7f0b0019;
         public static final int timePicker1=0x7f0b0000;
         public static final int timeView=0x7f0b001d;
-        public static final int viewEvents=0x7f0b0044;
+        public static final int viewEvents=0x7f0b0045;
     }
     public static final class integer {
         public static final int number1=0x7f060000;

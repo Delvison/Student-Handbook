@@ -109,8 +109,6 @@ public class SemesterActivity extends ListActivity {
 
 	// button for course's handler
 	public void clickHandler(View v) {
-		final String[] items = { "Course1", "Course2", "Course3", "Course4",
-				"Course5", "Course6" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Choose a course.");
 		this.popCourses();
@@ -118,11 +116,6 @@ public class SemesterActivity extends ListActivity {
 			public void onClick(DialogInterface dialog, int item) {
 				// this string holds the list item clicked
 				String rightMeow = courseArr[item];
-
-				// When clicked, show a toast with the TextView text
-				// Toast.makeText(getApplicationContext(),
-				// ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-				// if item clicked equals add semester
 
 				if (rightMeow.equals("No Courses Exist.")) {
 					// do nothing
@@ -167,9 +160,9 @@ public class SemesterActivity extends ListActivity {
 	public void list() {
 		String[] l;
 		l = this.popAllEvents();
-		//l[0] = Integer.toString(this.countAllEvents());
-		setListAdapter(new ArrayAdapter<String>(this,
-				R.layout.custom_listview, l));// needs an array
+		// l[0] = Integer.toString(this.countAllEvents());
+		setListAdapter(new ArrayAdapter<String>(this, R.layout.custom_listview,
+				l));// needs an array
 		// get the list view from the view
 		ListView listView = getListView();
 		// set the listview's textfilter to enabled
@@ -287,7 +280,7 @@ public class SemesterActivity extends ListActivity {
 			// listview
 		} catch (SQLiteException e) {
 			courseArr = new String[1];
-			courseArr[0]= "No Courses Exist"; 
+			courseArr[0] = "No Courses Exist";
 			e.printStackTrace();
 		}
 		// now we have all of our courses
@@ -312,7 +305,7 @@ public class SemesterActivity extends ListActivity {
 				b = db.rawQuery("SELECT Name FROM Assignments WHERE Course ='"
 						+ currentCourse + "'", null);
 				eventCounter = eventCounter + b.getCount();
-						b.close();
+				b.close();
 
 			} catch (SQLiteException e) {
 				e.printStackTrace();
@@ -328,7 +321,7 @@ public class SemesterActivity extends ListActivity {
 				d = db.rawQuery("SELECT Name FROM Exams WHERE Course ='"
 						+ currentCourse + "'", null);
 				eventCounter = eventCounter + d.getCount();
-						d.close();
+				d.close();
 			} catch (SQLiteException e) {
 				e.printStackTrace();
 			}
@@ -336,8 +329,9 @@ public class SemesterActivity extends ListActivity {
 
 		// next count up misc. events belonging to semester
 		try {
-			Cursor e = db.rawQuery("SELECT MiscName FROM Miscs WHERE Semester ='"
-					+ sName + "'", null);
+			Cursor e = db.rawQuery(
+					"SELECT MiscName FROM Miscs WHERE Semester ='" + sName
+							+ "'", null);
 			eventCounter = eventCounter + e.getCount();
 			e.close();
 		} catch (SQLiteException e) {
@@ -360,12 +354,12 @@ public class SemesterActivity extends ListActivity {
 					+ sName + "'", null);
 			a.moveToFirst();
 			while (a.isAfterLast() == false) {
-				String s = "(Event)" + a.getString(a.getColumnIndex("MiscName"));
-				 int m =1 + a.getInt(a.getColumnIndex("MonthStart")); 
-				
-				s = s + "\n" + m + "/"
-						+ a.getInt(a.getColumnIndex("DayStart")) + "/"
-						+ a.getInt(a.getColumnIndex("YearStart"));
+				String s = "(Event)"
+						+ a.getString(a.getColumnIndex("MiscName"));
+				int m = 1 + a.getInt(a.getColumnIndex("MonthStart"));
+
+				s = s + "\n" + m + "/" + a.getInt(a.getColumnIndex("DayStart"))
+						+ "/" + a.getInt(a.getColumnIndex("YearStart"));
 				allEvents[posHolder] = s;
 				// increment count
 				posHolder++;
@@ -389,8 +383,9 @@ public class SemesterActivity extends ListActivity {
 						+ currentCourse + "'", null);
 				b.moveToFirst();
 				while (b.isAfterLast() == false) {
-					String s = "(Assign.) "+b.getString(b.getColumnIndex("Name"));
-					int m = 1+ b.getInt(b.getColumnIndex("DueMonth"));
+					String s = "(Assign.) "
+							+ b.getString(b.getColumnIndex("Name"));
+					int m = 1 + b.getInt(b.getColumnIndex("DueMonth"));
 					s = s + "\n" + m + "/"
 							+ b.getInt(b.getColumnIndex("DueDay")) + "/"
 							+ b.getInt(b.getColumnIndex("DueYear"));
@@ -404,8 +399,7 @@ public class SemesterActivity extends ListActivity {
 			} catch (SQLiteException e) {
 				e.printStackTrace();
 			}
-		
-		
+
 		}
 		// next populate the array with exams belonging to courses of the
 		// semester
@@ -417,7 +411,8 @@ public class SemesterActivity extends ListActivity {
 						+ currentCourse + "'", null);
 				c.moveToFirst();
 				while (c.isAfterLast() == false) {
-					String s = "(Exam) "+c.getString(c.getColumnIndex("Name"));
+					String s = "(Exam) "
+							+ c.getString(c.getColumnIndex("Name"));
 					int m = 1 + c.getInt(c.getColumnIndex("DueMonth"));
 					s = s + "\n" + m + "/"
 							+ c.getInt(c.getColumnIndex("DueDay")) + "/"
@@ -433,14 +428,61 @@ public class SemesterActivity extends ListActivity {
 				e.printStackTrace();
 			}
 		}
-		//c.close();
-		
+		// c.close();
+
 		return allEvents;
 	}
-	
-	public void onResume(){
+
+	public void onResume() {
 		super.onResume();
 		this.onCreate(b);
 	}
 
+	public void plusHandler(View v) {
+		final String[] options = { "Add Event", "Add Exam", "Add Assignment" };
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("What would you like to add?");
+		builder.setItems(options, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int item) {
+				// this string holds the list item clicked
+				String rightMeow = options[item];
+
+				if (rightMeow.equals("Add Assignment")) {
+					Intent a = new Intent(getApplicationContext(),
+							CreateAssignmentActivity.class);
+					startActivity(a);
+				} else if (rightMeow.equals("Add Exam")) {
+					Intent intent = new Intent(getApplicationContext(),
+							CreateExamActivity.class);
+					startActivity(intent);
+				} else if (rightMeow.equals("Add Event")) {
+					Intent intent = new Intent(getApplicationContext(),
+							CreateMiscActivity.class);
+					// then go to the CreateSemesterActivity
+					startActivity(intent);
+				} else {
+					Intent intent = new Intent(getApplicationContext(),
+							CourseActivity.class);
+					intent.putExtra("key", rightMeow);
+					startActivity(intent);
+				}
+
+			}
+		});
+		AlertDialog alert = builder.create();
+
+		alert.setButton("Cancel", new DialogInterface.OnClickListener() {
+
+			// Click listener on the neutral button of alert box
+			public void onClick(DialogInterface arg0, int arg1) {
+				// do nothing
+			}
+		});
+		alert.show();
+
+		Intent intent = new Intent(getApplicationContext(),
+				CourseListviewActivity.class);
+		intent.putExtra("key", sName);
+		// startActivity(intent);
+	}
 }
