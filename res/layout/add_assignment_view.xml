@@ -15,7 +15,7 @@
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="wrap_content" />
 
     <TextView
@@ -27,7 +27,7 @@
 
     <EditText
         android:id="@+id/editText1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:ems="10" >
 
@@ -55,7 +55,7 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="103dp"
         android:ems="10"
         android:gravity="left|fill_horizontal"
@@ -63,9 +63,9 @@
 
     <Button
         android:id="@+id/createAssignment"
-        android:layout_width="wrap_content"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:onClick="handleClick"
-        android:text="Add!" />
+        android:text="Done." />
 
 </LinearLayout>

@@ -13,6 +13,7 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:onClick="deleteHandler"
             android:text="Delete" />
 
@@ -77,20 +78,24 @@
         <TimePicker
             android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <Spinner
             android:id="@+id/reoccurSpinner"
-            android:layout_width="match_parent"
-            android:entries="@array/reoccurenceStringArray" 
-            android:layout_height="wrap_content" />
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/reoccurenceStringArray" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:layout_width="293dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="handleClick"
             android:text="Done" />
+
     </LinearLayout>
 
 </ScrollView>

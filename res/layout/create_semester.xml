@@ -7,7 +7,7 @@
 
     <Spinner
         android:id="@+id/sessionSpinner"
-        android:layout_width="match_parent"
+       android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:entries="@array/session_array" />
 
@@ -41,7 +41,7 @@
 
    <Button
        android:id="@+id/createSemester"
-       android:layout_width="wrap_content"
+       android:layout_width="293dp"
        android:layout_height="wrap_content"
        android:text="Done!" 
        android:onClick="handleClick1" />

@@ -383,7 +383,7 @@ public class SemesterActivity extends ListActivity {
 						+ currentCourse + "'", null);
 				b.moveToFirst();
 				while (b.isAfterLast() == false) {
-					String s = "(Assign.) "
+					String s = "(Assign.)"
 							+ b.getString(b.getColumnIndex("Name"));
 					int m = 1 + b.getInt(b.getColumnIndex("DueMonth"));
 					s = s + "\n" + m + "/"
@@ -411,7 +411,7 @@ public class SemesterActivity extends ListActivity {
 						+ currentCourse + "'", null);
 				c.moveToFirst();
 				while (c.isAfterLast() == false) {
-					String s = "(Exam) "
+					String s = "(Exam)"
 							+ c.getString(c.getColumnIndex("Name"));
 					int m = 1 + c.getInt(c.getColumnIndex("DueMonth"));
 					s = s + "\n" + m + "/"

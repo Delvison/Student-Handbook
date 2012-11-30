@@ -17,7 +17,7 @@
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="wrap_content" />
     
     <TextView
@@ -29,7 +29,7 @@
 
     <EditText
         android:id="@+id/editText1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:ems="10" >
 
@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/createExam"
-        android:layout_width="wrap_content"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:text="Add!" 
         android:onClick="handleClick" />
