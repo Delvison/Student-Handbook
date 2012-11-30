@@ -39,11 +39,14 @@ public final class R {
         public static final int my_nine_patch=0x7f020007;
         public static final int patched_button=0x7f020008;
         public static final int plus=0x7f020009;
-        public static final int plus_button=0x7f02000a;
-        public static final int red=0x7f02000b;
-        public static final int semester_title_background=0x7f02000c;
-        public static final int splash=0x7f02000d;
-        public static final int title_gradient=0x7f02000e;
+        public static final int plus2=0x7f02000a;
+        public static final int plus3=0x7f02000b;
+        public static final int plus4=0x7f02000c;
+        public static final int plus_button=0x7f02000d;
+        public static final int red=0x7f02000e;
+        public static final int semester_title_background=0x7f02000f;
+        public static final int splash=0x7f020010;
+        public static final int title_gradient=0x7f020011;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0b003e;

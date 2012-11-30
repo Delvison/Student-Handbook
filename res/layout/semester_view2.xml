@@ -54,15 +54,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white" />
 
-    <Button
-        android:id="@+id/plus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/plus_button"
-        android:onClick="plusHandler" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -84,5 +75,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/size"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/plus_button"
+        android:onClick="plusHandler" />
 
 </RelativeLayout>
