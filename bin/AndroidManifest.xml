@@ -8,12 +8,12 @@
         android:targetSdkVersion="15" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher2"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.studentplanner.MainActivity"
             android:screenOrientation="portrait"
             android:label="Student Planner" >
             <intent-filter>
@@ -21,6 +21,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+            <activity
+            android:name=".SemesterListviewActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_semester_create"
+            android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateSemesterActivity"
@@ -159,7 +165,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
-
+         <activity
+            android:name="com.example.studentplanner.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
         <activity
             android:name=".NotificationActivity"
             android:label="@string/title_activity_notification_" >

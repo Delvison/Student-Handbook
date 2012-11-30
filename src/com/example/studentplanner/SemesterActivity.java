@@ -92,11 +92,11 @@ public class SemesterActivity extends ListActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.addAssignment:
-			startActivity(new Intent(this, CreateAssignmentActivity.class));
+		case R.id.viewsem:
+			startActivity(new Intent(this, SemesterListviewActivity.class));
 			return true;
 		case R.id.viewEvents:
-			startActivity(new Intent(this, CreateCourseActivity.class));
+			startActivity(new Intent(this, MainActivity.class));
 			return true;
 		case R.id.editSemester:
 			Intent i = new Intent(this, EditSemesterActivity.class);
