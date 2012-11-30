@@ -167,6 +167,12 @@
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
+            android:name=".MasterListActivity"
+            android:label="MasterList"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
+        <activity
             android:name="com.example.studentplanner.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
