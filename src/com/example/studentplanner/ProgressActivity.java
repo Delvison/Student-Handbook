@@ -163,10 +163,10 @@ public class ProgressActivity extends ListActivity {
 				// store the string in "Session" column into the array of
 				// semesters
 				String s = aCursor.getString(aCursor.getColumnIndex("Name"));
-				int temp1 = aCursor.getInt(aCursor.getColumnIndex("PointsRecieved"));
-				int temp2 = aCursor.getInt(aCursor.getColumnIndex("MaxPoints"));
-				int grade = (temp1/temp2)*100;
-				s = s + " - " + Integer.toString(grade);
+				double temp1 = (double) aCursor.getInt(aCursor.getColumnIndex("PointsRecieved"));
+				double temp2 = (double) aCursor.getInt(aCursor.getColumnIndex("MaxPoints"));
+				double grade = (temp1/temp2)*100;
+				s = s + " - " + Double.toString(grade);
 				stringArr[count] = s;
 				// increment count
 				count++;
@@ -184,10 +184,10 @@ public class ProgressActivity extends ListActivity {
 				// store the string in "Session" column into the array of
 				// semesters
 				String s = eCursor.getString(eCursor.getColumnIndex("Name"));
-				int temp1 = eCursor.getInt(eCursor.getColumnIndex("PointsRecieved"));
-				int temp2 = eCursor.getInt(eCursor.getColumnIndex("MaxPoints"));
-				int grade = (temp1/temp2)*100;
-				s = s + " - " + Integer.toString(grade);
+				double temp1 = (double) eCursor.getInt(eCursor.getColumnIndex("PointsRecieved"));
+				double temp2 = (double) eCursor.getInt(eCursor.getColumnIndex("MaxPoints"));
+				double grade = (temp1/temp2)*100;
+				s = s + " - " + Double.toString(grade);
 				stringArr[count] = s;
 				// increment count
 				count++;
