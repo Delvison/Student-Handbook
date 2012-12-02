@@ -60,5 +60,6 @@
     <string name="ok">OK</string>
 
     <string name="vibrate">Planner Vibrate</string>
+    <string name="delete_Note">Delete Note</string>
     
 </resources>

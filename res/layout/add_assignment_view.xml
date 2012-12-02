@@ -58,7 +58,7 @@
         android:layout_width="293dp"
         android:layout_height="103dp"
         android:ems="10"
-        android:gravity="left|fill_horizontal"
+        android:gravity="top|left|fill_horizontal"
         android:inputType="textMultiLine" />
 
     <Button
