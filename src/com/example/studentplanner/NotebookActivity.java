@@ -1,6 +1,8 @@
 package com.example.studentplanner;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,9 +20,11 @@ public class NotebookActivity extends ListActivity {
 	String noteName;
 	String[] stringArray;
 	TextView cName;
+	Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	bundle = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notebook_view);    
         //Get extras from the parent Intent
@@ -91,6 +95,40 @@ public class NotebookActivity extends ListActivity {
     	Intent intent = new Intent(getApplicationContext(), CreateNoteActivity.class);
     	intent.putExtra("CourseName", courseName);
     	startActivity(intent);
+    }
+    
+    public void deleteNoteHandle(View v){
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("What note do you wish to remove?");
+		builder.setItems(stringArray, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int item) {
+				String temp = stringArray[item];
+				SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE, null);
+		    	db.execSQL("CREATE TABLE IF NOT EXISTS Notes (CourseName VARCHAR, NoteName VARCHAR,Note VARCHAR)");
+		    	
+		    	db.execSQL("DELETE from Notes where NoteName = '"+temp+"'  ");
+		    	db.close();
+		    	finish();
+		    	
+		    	onCreate(bundle);
+		    	
+		    	
+			}
+		});
+		
+		AlertDialog alert = builder.create();
+		
+		alert.setButton("Cancel", new DialogInterface.OnClickListener() {
+
+			// Click listener on the neutral button of alert box
+			public void onClick(DialogInterface arg0, int arg1) {
+				// do nothing
+				
+			}
+		});
+		
+		alert.show();
+    	
     }
 
 }

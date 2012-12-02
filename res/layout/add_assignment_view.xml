@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/title_gradient"
     android:gravity="center|fill_vertical"
-    android:orientation="vertical" 
-    android:background="@drawable/title_gradient">
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView4"
@@ -15,7 +15,7 @@
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="wrap_content" />
 
     <TextView
@@ -27,7 +27,7 @@
 
     <EditText
         android:id="@+id/editText1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:ems="10" >
 
@@ -55,16 +55,17 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="103dp"
         android:ems="10"
+        android:gravity="top|left|fill_horizontal"
         android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/createAssignment"
-        android:layout_width="wrap_content"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
-        android:text="Add!" 
-        android:onClick="handleClick" />
+        android:onClick="handleClick"
+        android:text="Done." />
 
 </LinearLayout>

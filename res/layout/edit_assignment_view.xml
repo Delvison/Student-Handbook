@@ -131,7 +131,7 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="179dp"
+            android:layout_width="293dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="handleClick"

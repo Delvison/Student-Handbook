@@ -69,7 +69,7 @@ public class CreateSemesterActivity extends Activity {
 			db.close();
 
 			Intent intent = new Intent(getApplicationContext(),
-					MainActivity.class);
+					SemesterListviewActivity.class);
 			startActivity(intent);
 			finish();
 		} catch (SQLiteConstraintException e) {

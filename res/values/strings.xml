@@ -19,7 +19,7 @@
     <string name="title_activity_create_semester">Create Semester</string>
     <string name="title_activity_semester_create">Semester Create</string>
     <string name="title_activity_semester_menu">Semester Menu</string>
-    <string name="semesterString">SemesterNameHere</string>
+    <string name="semesterString">Semester</string>
     <string name="courseString">course name here</string>
     <string name="descriptionString ">description goes here</string>
     <string name="locationString">where yo class at</string>
@@ -40,9 +40,9 @@
     <string name="Done">Done</string>
 
     <string-array name="reoccurenceMiscArray">
-        <item>Monthly</item>
-        <item>Weekly</item>
         <item>Not Reoccuring</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
     </string-array>
 
     <string name="title_activity_notification_">Notification_Activity</string>
@@ -60,5 +60,6 @@
     <string name="ok">OK</string>
 
     <string name="vibrate">Planner Vibrate</string>
+    <string name="delete_Note">Delete Note</string>
     
 </resources>

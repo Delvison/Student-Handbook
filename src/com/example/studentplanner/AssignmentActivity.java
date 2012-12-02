@@ -67,7 +67,7 @@ public class AssignmentActivity extends Activity {
        days = as.daysTilDue;
        
        TextView dateInView = (TextView) findViewById(R.id.textView2);
-       dateInView.setText(Integer.toString(dueYear)+"/"+Integer.toString(dueMonth)+"/"+Integer.toString(dueDay));
+       dateInView.setText(Integer.toString(dueMonth+1)+"/"+Integer.toString(dueDay)+"/"+Integer.toString(dueYear));
 
        descInView = (TextView) findViewById(R.id.textView4);
        descInView.setText(desc);

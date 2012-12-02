@@ -38,12 +38,7 @@
         android:text="-----------------------------------------------------"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <ListView
-        android:id="@+id/android:list"
-        android:layout_width="match_parent"
-        android:layout_height="228dp"
-        android:layout_weight="0.01" >
-    </ListView>
+    b
 
     <Button
         android:id="@+id/coursesButton1"

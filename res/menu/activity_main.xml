@@ -1,6 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/addEvent" android:orderInCategory="100" android:title="+Add Event"></item>
-    <item android:id="@+id/addAssignment" android:orderInCategory="100" android:title="+Add Assignment"></item>
-    <item android:id="@+id/viewEvents" android:orderInCategory="100" android:title="View Events"></item>
-    <item android:id="@+id/editSemester" android:title="Edit Semester" android:orderInCategory="100"></item>
+    <item android:id="@+id/editSemester" android:title="Edit Semester" android:orderInCategory="100"></item><item android:id="@+id/viewEvents" android:orderInCategory="100" android:title="View Events"></item>
+    
+    <item android:id="@+id/viewsem" android:title="View Semesters"></item>
 </menu>

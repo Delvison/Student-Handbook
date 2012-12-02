@@ -65,7 +65,6 @@ public class CreateCourseActivity extends Activity {
    	    TimePicker timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
         int startMinute = timePicker1.getCurrentMinute(); //is this right?
         int startHour = timePicker1.getCurrentHour(); //is this right?
-
         Spinner reoccurSpinner = (Spinner) findViewById(R.id.reoccurSpinner);
         String occurences = (String) reoccurSpinner.getSelectedItem();
         

@@ -29,22 +29,8 @@ public class MasterListActivity extends ListActivity {
 		populateEvents();
 		bubbleSort();
 		setListAdapter(new ArrayAdapter<String>(this, R.layout.semester_listview,evArr));//needs an array
-   	   	//get the list view from the view
-   	   	ListView listView = getListView();
-   	   	//set the listview's textfilter to enabled
-   	   	listView.setTextFilterEnabled(true);
-   	   	//add an onclicklistener
-   	   	listView.setOnItemClickListener(new OnItemClickListener() {
-
-   	   		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-   	   			//this string holds the list item clicked
-   	   			String rightMeow = evArr[position];
-
-   	   			Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
-  				intent.putExtra("key", rightMeow);
-  				startActivity(intent);
-   	   		}
-   	   	}); //close listener
+		ListView listView = getListView();
+		listView.setTextFilterEnabled(true);
 	}
 	
 	public int countAllEvents() {
@@ -143,7 +129,10 @@ public class MasterListActivity extends ListActivity {
 			Cursor assignCursor = db.rawQuery("select * from Assignments where Course ='" + currentCourse + "' and Complete = O", null);
 			assignCursor.moveToFirst();
 			while (assignCursor.isAfterLast() == false) {
-				evArr[counter] = assignCursor.getString(assignCursor.getColumnIndex("Name"));
+				evArr[counter] = assignCursor.getString(assignCursor.getColumnIndex("Name")) + " due: " 
+						+ assignCursor.getInt(assignCursor.getColumnIndex("DueMonth")) + "/" 
+						+ assignCursor.getInt(assignCursor.getColumnIndex("DueDay")) + "/" 
+						+ assignCursor.getInt(assignCursor.getColumnIndex("DueYear"));
 				dateArr[counter] =  new GregorianCalendar(assignCursor.getInt(assignCursor.getColumnIndex("DueYear")), 
 						assignCursor.getInt(assignCursor.getColumnIndex("DueMonth")),
 						assignCursor.getInt(assignCursor.getColumnIndex("DueDay")));
@@ -158,7 +147,10 @@ public class MasterListActivity extends ListActivity {
             Cursor examCursor = db.rawQuery("select * from Exams where Course ='" + currentCourse + "' and Complete = O", null);
 			examCursor.moveToFirst();
 			while (examCursor.isAfterLast() == false) {
-				evArr[counter] = examCursor.getString(examCursor.getColumnIndex("Name"));
+				evArr[counter] = examCursor.getString(examCursor.getColumnIndex("Name")) + " due: " 
+						+ examCursor.getInt(examCursor.getColumnIndex("DueMonth")) + "/" 
+						+ examCursor.getInt(examCursor.getColumnIndex("DueDay")) + "/" 
+						+ examCursor.getInt(examCursor.getColumnIndex("DueYear"));;
 				dateArr[counter] = new GregorianCalendar(examCursor.getInt(examCursor.getColumnIndex("DueYear")), 
 						examCursor.getInt(examCursor.getColumnIndex("DueMonth")),
 						examCursor.getInt(examCursor.getColumnIndex("DueDay")));
@@ -172,13 +164,20 @@ public class MasterListActivity extends ListActivity {
         	Cursor miscCursor = db.rawQuery("select * from Miscs where Semester ='" + sName +"'", null);
 			miscCursor.moveToFirst();
 			while (miscCursor.isAfterLast() == false) {
-				evArr[counter] = miscCursor.getString(miscCursor.getColumnIndex("MiscName"));
+				GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+				evArr[counter] = miscCursor.getString(miscCursor.getColumnIndex("MiscName"))+ " on: " 
+						+ miscCursor.getInt(miscCursor.getColumnIndex("MonthStart")) + "/" 
+						+ miscCursor.getInt(miscCursor.getColumnIndex("DayStart")) + "/" 
+						+ miscCursor.getInt(miscCursor.getColumnIndex("YearStart"));;
 				dateArr[counter] = new GregorianCalendar(miscCursor.getInt(miscCursor.getColumnIndex("YearStart")), 
 						miscCursor.getInt(miscCursor.getColumnIndex("MonthStart")),
 						miscCursor.getInt(miscCursor.getColumnIndex("DayStart")));
-				counter++;
+				if(dateArr[counter].before(gc)){
+					dateArr[counter].clear();
+					evArr[counter].isEmpty();
+				}
+				else counter++;
 				miscCursor.moveToNext();
-				//but this puts in all of the miscs in, including past ones, right?
 			}
         }catch(SQLiteException e){
             e.printStackTrace();
@@ -201,3 +200,4 @@ public class MasterListActivity extends ListActivity {
 	}
 	
 }
+

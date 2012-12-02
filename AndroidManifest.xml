@@ -8,12 +8,15 @@
         android:targetSdkVersion="15" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher2"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="Student Planner" >
+            android:name="com.example.studentplanner.SplashActivity"
+            android:label="Student Planner"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,120 +24,159 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".SemesterListviewActivity"
+            android:label="@string/title_activity_semester_create"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
+        <activity
             android:name=".CreateSemesterActivity"
             android:label="@string/title_activity_semester_create"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateExamActivity"
             android:label="Add an Exam"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateAssignmentActivity"
             android:label="Add an Assignment"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".SemesterActivity"
             android:label="Semester"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateCourseActivity"
             android:label="Create Course"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CourseListviewActivity"
             android:label="Courses"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".NotebookActivity"
             android:label="Notebook"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".NoteViewActivity"
             android:label="Note"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CourseActivity"
             android:label="Course"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateNoteActivity"
-            android:label="Create a Note" >
+            android:label="Create a Note"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AssignmentListviewActivity"
             android:label="Assignments"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".AssignmentActivity"
             android:label="Assignment"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditAssignmentActivity"
             android:label="Edit Assignment"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ExamListviewActivity"
             android:label="Exams"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ExamActivity"
             android:label="Exams"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditExamActivity"
             android:label="Edit Exam"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditSemesterActivity"
             android:label="Edit Semester"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditCourseActivity"
             android:label="Edit Course"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".EditMiscActivity"
             android:label="Edit Event"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".MiscActivity"
             android:label="Event"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".MiscListviewActivity"
             android:label="Events"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".CreateMiscActivity"
             android:label="Create an Event"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
         <activity
             android:name=".ProgressActivity"
             android:label="Progress"
+            android:screenOrientation="portrait"
             android:theme="@style/MyCustomTheme" >
         </activity>
-
+        <activity
+            android:name=".MasterListActivity"
+            android:label="MasterList"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
+        <activity
+            android:name="com.example.studentplanner.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCustomTheme" >
+        </activity>
         <activity
             android:name=".NotificationActivity"
             android:label="@string/title_activity_notification_" >
@@ -163,12 +205,10 @@
             </intent-filter>
         </activity>
 
-
-        <service 
-            android:name=".VibrateService" 
-            android:process=":my_process">
+        <service
+            android:name=".VibrateService"
+            android:process=":my_process" >
         </service>
-
     </application>
 
 </manifest>

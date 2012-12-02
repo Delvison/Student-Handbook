@@ -15,11 +15,9 @@ Semester List View
 
 Semester View 
 	- first view if a semester has been created (Semester listView must be able to be accessed)  
-	- remove "Hello!" from activity title...
-	- populate list view 
 
-Create Course View 
-	- add text above time picker, such as "Class Time"
+
+
 
 Course View
 	- adjust class time to include textView am/pm
@@ -31,4 +29,5 @@ Add Assignment View
 Notebook View
 	- add remove function
 
- 
+
+-- plus button on semester

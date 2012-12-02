@@ -20,7 +20,7 @@
 
     <Spinner
         android:id="@+id/courseSpinner1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
@@ -34,7 +34,7 @@
     
     <EditText
         android:id="@+id/assignmentText1"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:ems="10" >
@@ -64,7 +64,7 @@
 
     <EditText
         android:id="@+id/assignmentText2"
-        android:layout_width="match_parent"
+        android:layout_width="293dp"
         android:layout_height="103dp"
         android:layout_weight="1"
         android:ems="10"
@@ -72,7 +72,7 @@
 
     <Button
         android:id="@+id/createAssignment"
-        android:layout_width="141dp"
+        android:layout_width="293dp"
         android:layout_height="0dp"
         android:layout_weight="1.12"
         android:onClick="handleClick"

@@ -135,7 +135,7 @@ public class EditSemesterActivity extends Activity {
 				db.close();
 				// The neutral button was clicked
 				Intent intent = new Intent(getApplicationContext(),
-						MainActivity.class);
+						SemesterListviewActivity.class);
 				startActivity(intent);
 				finish();
 			}
