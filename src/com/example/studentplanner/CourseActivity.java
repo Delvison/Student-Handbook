@@ -243,7 +243,8 @@ public class CourseActivity extends ListActivity {
 		values.put("Location", loc);
 		values.put("Occurences", occur);
 		values.put("Semester", semester);
-		values.put("Grade", grade);
+		int g = (int) grade;
+		values.put("Grade", g);
 
 		db.update("Courses", values, "CourseName=" + "'" + cName + "'", null);
 	}

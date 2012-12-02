@@ -1,15 +1,15 @@
 package com.example.studentplanner;
 
 import android.app.ListActivity;
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class ProgressActivity extends ListActivity {
 	String cName;
@@ -19,8 +19,10 @@ public class ProgressActivity extends ListActivity {
 	Spinner courses;
 	SQLiteDatabase db;
 	Course c;
-	int i; //count of both
-    
+	ProgressBar pro;
+	int i; // count of both
+	int grado;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,13 +31,17 @@ public class ProgressActivity extends ListActivity {
 		if (extras != null) {
 			cName = extras.getString("key");
 		}
-		//popAssignment();
-        //popExam();
-        //bridge();
+		// popAssignment();
+		// popExam();
+		// bridge();
+		getGrado();
 		popEvents();
 		setListAdapter(new ArrayAdapter<String>(this,
 				R.layout.semester_listview, stringArr));
-	
+		pro = (ProgressBar) findViewById(R.id.progressBar1);
+		pro.setMax(100);
+		// this.getGrado();
+		pro.setProgress(grado);
 
 	}
 
@@ -43,93 +49,8 @@ public class ProgressActivity extends ListActivity {
 		finish();
 	}
 
-	/*private void popAssignment() {
-		try{
-		 i=0;
-		 db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
-					null);
-		Cursor cursor2 = db.rawQuery(
-				"select * from Assignments where Course ='" + cName
-						+ "' and Complete = 1", null); // get those values
-		
-		 i = i+ cursor2.getCount();
-		 assignArr = new String[cursor2.getCount()];
-		// instantiate array of semesters by size of the cursor + 1
-		// set up a count int to keep track of array positions
-		int count = 0;
-		// move the cursor to first position
-		cursor2.moveToFirst();
-		// while the cursor position isn't passed the last item in the cursor
-		while (cursor2.isAfterLast() == false) {
-			String temp = cursor2.getString(cursor2.getColumnIndex("Name"));
-			int temp1 = cursor2
-					.getInt(cursor2.getColumnIndex("PointsRecieved"));
-			int temp2 = cursor2.getInt(cursor2.getColumnIndex("MaxPoints"));
-			int grade = temp1 / temp2 * 100;
-			// store the string in "Session" column into the array of semesters
-			assignArr[count] = temp + " " + Integer.toString(grade);
-			// increment count
-			count++;
-			// move cursor by 1
-			cursor2.moveToNext();
-			
-		}
-		cursor2.close();
-		} catch (SQLiteException e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	public void popExam() {
-		try{
-		int count=0;
-		Cursor cursor3 = db.rawQuery("select * from Exams where Course ='"
-				+ cName + "' and Complete = 1", null); // get those values
-		 i = i+ cursor3.getCount();
-		 examArr = new String[cursor3.getCount()];
-
-		cursor3.moveToFirst();
-
-		while (cursor3.isAfterLast() == false) {
-			String temp = cursor3.getString(cursor3.getColumnIndex("Name"));
-			int temp1 = cursor3
-					.getInt(cursor3.getColumnIndex("PointsRecieved"));
-			int temp2 = cursor3.getInt(cursor3.getColumnIndex("MaxPoints"));
-			int grade = temp1 / temp2 * 100;
-			// store the string in "Session" column into the array of semesters
-			examArr[count] = temp + " " + Integer.toString(grade);
-			// increment count
-			count++;
-			// move cursor by 1
-			cursor3.moveToNext();
-		}
-
-		// add an "add semester option
-		// close the cursor
-		cursor3.close();
-		// close the database
-		db.close();
-		}catch (SQLiteException e){
-			e.printStackTrace();
-		}
-	}
-	
-	public void bridge(){
-		stringArr = new String[i];
-		int count= 0;
-		for (int j = 0; j < assignArr.length-1;j++){
-			stringArr[count] = assignArr[j];
-			count++;
-		}
-		for (int h = 0; h < examArr.length-1;h++){
-			stringArr[count] = examArr[h];
-			count++;
-		}
-	}*/
-	
 	public void popEvents() {
-		int a=0, ex =0;
+		int a = 0, ex = 0;
 		Cursor aCursor = null;
 		Cursor eCursor = null;
 		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
@@ -163,9 +84,11 @@ public class ProgressActivity extends ListActivity {
 				// store the string in "Session" column into the array of
 				// semesters
 				String s = aCursor.getString(aCursor.getColumnIndex("Name"));
-				double temp1 = (double) aCursor.getInt(aCursor.getColumnIndex("PointsRecieved"));
-				double temp2 = (double) aCursor.getInt(aCursor.getColumnIndex("MaxPoints"));
-				double grade = (temp1/temp2)*100;
+				double temp1 = (double) aCursor.getInt(aCursor
+						.getColumnIndex("PointsRecieved"));
+				double temp2 = (double) aCursor.getInt(aCursor
+						.getColumnIndex("MaxPoints"));
+				double grade = (temp1 / temp2) * 100;
 				s = s + " - " + Double.toString(grade);
 				stringArr[count] = s;
 				// increment count
@@ -174,8 +97,9 @@ public class ProgressActivity extends ListActivity {
 				aCursor.moveToNext();
 			}
 			aCursor.close();
+
 		}
-		
+
 		if (eCursor != null) {
 			eCursor.moveToFirst();
 			// while the cursor position isn't passed the last item in the
@@ -184,9 +108,11 @@ public class ProgressActivity extends ListActivity {
 				// store the string in "Session" column into the array of
 				// semesters
 				String s = eCursor.getString(eCursor.getColumnIndex("Name"));
-				double temp1 = (double) eCursor.getInt(eCursor.getColumnIndex("PointsRecieved"));
-				double temp2 = (double) eCursor.getInt(eCursor.getColumnIndex("MaxPoints"));
-				double grade = (temp1/temp2)*100;
+				double temp1 = (double) eCursor.getInt(eCursor
+						.getColumnIndex("PointsRecieved"));
+				double temp2 = (double) eCursor.getInt(eCursor
+						.getColumnIndex("MaxPoints"));
+				double grade = (temp1 / temp2) * 100;
 				s = s + " - " + Double.toString(grade);
 				stringArr[count] = s;
 				// increment count
@@ -196,7 +122,17 @@ public class ProgressActivity extends ListActivity {
 			}
 			eCursor.close();
 		}
+		db.close();
 	}
 
-	
+	public void getGrado() {
+		SQLiteDatabase db = openOrCreateDatabase("PlannerDB", MODE_PRIVATE,
+				null);
+		Cursor f = db.rawQuery("SELECT * FROM Courses WHERE CourseName='"
+				+ cName + "'", null);
+		f.moveToFirst();
+		grado = f.getInt(f.getColumnIndex("Grade"));
+		f.close();
+		db.close();
+	}
 }
